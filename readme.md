@@ -1,4 +1,4 @@
-#Registration Form with html5 css
+# Registration Form with HTML5 and CSS
 
  ![This is an image](Screenshot.png)
 
