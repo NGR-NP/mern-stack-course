@@ -1,0 +1,137 @@
+body {
+  background-color: rgb(153 250 212);
+}
+
+.Section {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+.main {
+  max-width: 680px;
+  font-family: "Courier New", Courier, monospace;
+  /* margin: 4rem 29vw 2rem 29vw; */
+  width: 75vw;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.46);
+  border-radius: 8px;
+  margin: 5rem 0;
+}
+
+.main h2 {
+  color: gray;
+  margin: 0 0 1em 0;
+  font-family: cursive;
+}
+
+form {
+  font-size: 18px;
+  line-height: 33px;
+  color: #8a8a8a;
+}
+
+label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: rgba(243, 244, 245, 0.826);
+  width: -webkit-fill-available;
+  line-height: 3rem;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.sec {
+  padding: 7px;
+}
+
+.gen {
+  display: grid;
+  margin: 1rem 0 0.3rem 0;
+}
+
+.gen label {
+  margin-right: 15px;
+}
+
+.genSec {
+  padding: 0 10px 0 0;
+
+}
+
+#gender {
+  border: none;
+  outline: none;
+  background: #fcfbfb;
+  border-radius: 5px;
+  padding: 10px 9px;
+  cursor: pointer;
+}
+
+#gender option {
+  border: none;
+  outline: none;
+  font-size: 1.5em;
+  cursor: pointer;
+
+}
+
+#gender option:active {
+  border: none;
+  outline: none;
+}
+
+.agree {
+  display: flex;
+  background: #fcfbfb61;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  border-radius: 50px;
+  padding-right: 20px;
+}
+
+.agree label {
+  /* padding-right: 8px; */
+  font-size: 0.6em;
+}
+
+#agree {
+  width: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+
+}
+
+button {
+  height: 42px;
+  width: 122px;
+  font-size: 18px;
+  font-weight: bold;
+  /* background: #a39dff; */
+  background-color: #3bfe59;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 9px;
+}
+
+button:nth-child(1) {
+  background-color: transparent;
+  border: 1px solid #bba4a499;
+  color: #a29292;
+}
