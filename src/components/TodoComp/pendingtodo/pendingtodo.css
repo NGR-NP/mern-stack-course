@@ -1,0 +1,11 @@
+.pendingCont{
+    background-color: #a69da175;
+    width: 71%;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: -0.7rem;
+    text-align: center;
+}

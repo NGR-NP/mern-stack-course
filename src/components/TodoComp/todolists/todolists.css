@@ -1,0 +1,14 @@
+.sec{
+    background-color: rgba(243, 244, 245, 0.961);
+    margin-top: 2rem;
+    padding: 32px 14px;
+    border-radius: 18px;
+}
+.sec .lists{
+    margin: 8px 12px;
+    padding: 19px;
+    background-color: rgba(153, 250, 212, 0.69);
+    border-radius: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

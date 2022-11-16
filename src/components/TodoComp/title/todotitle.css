@@ -1,0 +1,10 @@
+.titleCont {
+    text-align: center;
+    margin: -53px 0 -14px 0;
+    color: rgb(136 136 136);
+}
+
+.titleCont h3 {
+    font-family: ui-monospace;
+    font-size: 57px;
+}
