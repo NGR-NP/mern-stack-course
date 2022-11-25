@@ -1,23 +1,34 @@
-.addCont{
+.addCont {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.addTodo {
+  line-height: 3.5rem;
+  border-radius: 10px;
+  width: 76%;
+  margin: auto;
+  margin-right: 5px;
+  font-size: x-large;
+  font-family: serif;
+}
+.addBtn {
+  height: 50px;
+  width: 120px;
+  border-radius: 11px;
+  background-color: #00ff27d1;
+  padding: 0 22px;
+  margin: auto;
+  margin-left: 16px;
+}
+.gali {
+  position: fixed;
+  color:  red;
+  font-size: 5rem;
+  bottom: -30px;
+  left: 10px;
+}
+.bhag{
     display: flex;
-    align-items: center;
-    width: 100%;
-}
-.addTodo{
-    line-height: 3.5rem;
-    border-radius: 10px;
-    width: 76%;
-    margin: auto;
-    margin-right: 5px;
-    font-size: x-large;
-    font-family: serif;
-}
-.addBtn{
-height: 50px;
-width: 120px;
-border-radius: 11px;
-background-color: #00ff27d1;
-padding: 0 22px;
-margin: auto;
-    margin-left: 16px;
+
 }

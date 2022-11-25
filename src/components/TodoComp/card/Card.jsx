@@ -1,24 +1,32 @@
-import { useState } from 'react';
-import Button from '../../bottom/Button';
-import AddTodo from '../addtodo/AddTodo'
-import TodoLists from '../todolists/TodoLists';
+import { useState } from "react";
+import Button from "../../bottom/Button";
+import AddTodo from "../addtodo/AddTodo";
+import TodoLists from "../todolists/TodoLists";
 const Card = () => {
-    const PendingTodo = "you have 2 pending todo"
-    const [todos, setTodos] = useState([])
-    const onAddtodo = (addTodo) => {
-        setTodos((prev) => [...prev, addTodo])
-    }
-    const clearAllTodo = () => {
-        setTodos([])
-    }
-    return (
-        <>
-            <AddTodo AddTodos={onAddtodo} />
-            <TodoLists todoLists={todos} pending={PendingTodo} />
-            <Button deleteAll={clearAllTodo} />
+  const [todos, setTodos] = useState([
+    {
+      title: "read",
+      strick: false,
+    },
+    {
+      title: "book",
+      strick: false,
+    },
+  ]);
+  const onAddtodo = (addTodo) => {
+    setTodos((prev) => [...prev, addTodo]);
+  };
 
-        </>
-    )
-}
+  const clearAllTodo = () => {
+    setTodos((_) => []);
+  };
+  return (
+    <>
+      <AddTodo AddTodos={onAddtodo} />
+      <TodoLists todoLists={todos} />
+      <Button deleteAll={clearAllTodo} />
+    </>
+  );
+};
 
-export default Card
+export default Card;

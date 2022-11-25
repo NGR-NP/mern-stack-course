@@ -2,14 +2,14 @@ import Registration from './sections/Registration'
 import Todo from './sections/Todo'
 import {
     Routes,
-    Route
+    Route,
 } from "react-router-dom";
 const Rout = () => {
     return (
         <Routes>
-            <Route path='*' element={<div>MERN-STACK</div>}/>
+            <Route path='*' element={<div>page not found</div>}/>
+            <Route path='/' element={<Todo />} />
             <Route path='/register' element={<Registration />} />
-            <Route path='/todo' element={<Todo />} />
         </Routes>
     )
 }
