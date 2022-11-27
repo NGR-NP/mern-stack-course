@@ -1,0 +1,26 @@
+.lostSec {
+  background-color: rgb(153 250 212);
+  align-content: center;
+  height: 100vh;
+}
+.lostSec div {
+  padding-top: 2rem;
+}
+.lostComp {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 6rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+.lostTitle {
+  font-size: 5rem;
+  font-family: cursive;
+}
+.lostDesc {
+  font-size: 2rem;
+  font-family: ui-serif;
+}
