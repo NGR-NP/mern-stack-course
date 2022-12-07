@@ -1,0 +1,26 @@
+.navTopSec {
+  display: flex;
+  max-width: 1200px;
+  width: 100vw;
+  /* flex-wrap: wrap; */
+}
+
+.navTopSec .navTop {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.navTop:nth-child(1){
+  flex: 0.1;
+}
+.navTop:nth-child(3),
+.navTop:nth-child(5) {
+  flex: 1;
+}
+.navLogo {
+  font-size: 2em;
+  color: #8c6b6b;
+  font-family: ui-sans-serif;
+}

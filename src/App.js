@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Nav from "./sections/nav/Nav";
+import "./App.css";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Nav/>
   );
 }
 
 export default App;
+/*
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Person3OutlinedIcon from '@mui/icons-material/Person3Outlined';
+
+import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
+import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+*/
