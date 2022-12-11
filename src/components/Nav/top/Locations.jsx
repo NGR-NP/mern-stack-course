@@ -1,5 +1,7 @@
 import React from "react";
-import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
+import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
+import { locationData } from "../../../data/data";
+import "../../dropdown/customDropdown.css";
 const Locations = () => {
   return (
     <div className="customDropdown customDropdownIconCont" title="Location">
@@ -12,9 +14,11 @@ const Locations = () => {
         <option value="defaultvalue" disabled>
           Loaction
         </option>
-        <option value="ith">ITATHAR</option>
-        <option value="pokhara">POKHARA</option>
-        <option value="ktm">KATHMANDU</option>
+        {locationData.map((data) => (
+          <option key={data.id} value={data.value}>
+            {data.name}
+          </option>
+        ))}
       </select>
       <span className="customDropdownArrow"></span>
     </div>

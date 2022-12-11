@@ -4,10 +4,11 @@ import TopNavSec from "./TopNavSec";
 import './css/Nav.css'
 const Nav = () => {
   return (
-    <nav className="navMain">
+    <section className="navMain">
       <TopNavSec />
+      <span className="navMainLine"/>
       <BottomNavSec />
-    </nav>
+    </section>
   );
 };
 

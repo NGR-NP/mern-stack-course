@@ -1,26 +1,23 @@
-.navTopSec {
+.navBottomSec {
   display: flex;
   max-width: 1400px;
   width: 100vw;
   flex-wrap: wrap;
 }
 
-.navTopSec .navTop {
+ .navBottom {
   flex: 0.5;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1rem;
 }
-.navTop:nth-child(1){
+.navBottom:nth-child(1){
+  flex: 0.1;
+}.navBottom:nth-child(2){
   flex: 0.8;
-  margin: 0;
 }
-.navTop:nth-child(2),
-.navTop:nth-child(4) {
-  flex: 1;
-}
-.navLogo {
-  color: #f1ebeb;
-  font-family: ui-sans-serif;
+.navBottom:nth-child(3),
+.navBottom:nth-child(4){
+  flex: 0.3;
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import AllCategories from "../../components/Nav/AllCategories";
-import Locations from "../../components/Nav/Locations";
-import LogoComp from "../../components/Nav/LogoComp";
-import NavUserComp from "../../components/Nav/NavUserComp";
-import Search from "../../components/Nav/Search";
+// import AllCategories from "../../components/Nav/AllCategories";
+import Locations from "../../components/Nav/top/Locations";
+import LogoComp from "../../components/Nav/top/LogoComp";
+import NavUserComp from "../../components/Nav/top/NavUserComp";
+import Search from "../../components/Nav/top/Search";
 import "./css/TopNavSec.css";
 const TopNavSec = () => {
   return (
@@ -11,9 +11,9 @@ const TopNavSec = () => {
       <div className="navTop navLogo">
         <LogoComp />
       </div>
-      <div className="navTop">
+      {/* <div className="navTop">
         <AllCategories/>
-      </div>
+      </div> */}
       <div className="navTop">
         <Search />
       </div>

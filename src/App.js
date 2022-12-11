@@ -1,8 +1,13 @@
 import Nav from "./sections/nav/Nav";
 import "./App.css";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <Nav/>
+    <>
+      <Nav />
+      <Home/>
+    </>
   );
 }
 

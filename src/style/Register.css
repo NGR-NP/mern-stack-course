@@ -1,0 +1,139 @@
+.registerCont {
+  height: 100vh;
+  background-color: #a8e5ff82;
+}
+
+.registerSec {
+  background-color: var(--lightBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 1500px 9990px 4919px 19911px;
+}
+
+.registerMain {
+  max-width: 560px;
+  font-family: "Courier New", Courier, monospace;
+  width: 83vw;
+  padding: 1.5rem;
+  background-color: var(--lightYellow);
+  border-radius: 18px;
+  margin: 6rem 0;
+}
+.registerTitle {
+  color: var(--lightTitle);
+  text-align: center;
+  margin: 0 0 18px;
+  font-size: 57px;
+  font-family: cursive, ui-monospace;
+}
+
+.regInput {
+  outline: none;
+  border: none;
+  background-color: #f3f4f5d3;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  line-height: 3rem;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.regInputNumDisable[type="number"]::-webkit-inner-spin-button,
+.regInputNumDisable[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+.registerInputCont {
+  padding-bottom: 1rem;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  background-color: #fff6b8;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  line-height: 3rem;
+  padding: 5px 15px 19px 15px;
+}
+.registerInput {
+  outline: none;
+  border: none;
+  background-color: #edfaff;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  line-height: 3rem;
+  border-radius: 6px;
+  padding: 0 15px;
+  color: var(--lightText);
+}
+.registerInputCont label {
+  cursor: pointer;
+}
+
+
+.registerBtn {
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  height: 42px;
+  width: 122px;
+  font-size: 22px;
+  font-weight: 500;
+  background-color: #37c2ff;
+  border: none;
+  color: #f6f0f0;
+  border-radius: 8px;
+  margin: 15px 9px;
+  font-family: cursive, ui-monospace;
+  box-shadow: 0px 3px 9px 3px #d3d8a2;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.registerBtn:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.registerBtn:before {
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+}
+
+.registerBtn:hover {
+  background: #3cb4eb;
+}
+
+.registerBtn:active {
+  background: #00b2ff;
+  top: 2px;
+}
+.registerInputCont {
+  padding-bottom: 1rem;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  background-color: #fff6b8;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  line-height: 3rem;
+  padding: 5px 15px 19px 15px;
+}
+.registerResetBtn {
+  background: #7a7a7a29;
+  color: #a3a1a1;
+  height: 42px;
+  width: 122px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  margin: 15px 9px;
+  font-family: cursive, ui-monospace;
+  box-shadow: 0px 3px 11px 3px #dee4a6;
+  cursor: pointer;
+}

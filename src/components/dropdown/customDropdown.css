@@ -15,7 +15,7 @@ select {
 }
 .customDropdown select option{
   /* font-weight: bold; */
-  font-size: 24px;
+  font-size: 20px;
 }
 .customDropdownIconCont {
   display: flex;
