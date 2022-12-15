@@ -1,6 +1,18 @@
-.contactNumberMain{
-line-height: 15px;
+
+.contactNumberInfo{
+    font-size: 12px;
 }
 .contactNumberIcon{
     margin: 0 7px 0 0px;
+}
+.contactNumberInfo a{
+    color: #d6249f;
+}
+.contactNumber{
+margin: 4px;
+}
+.contactNumberTimes{
+    font-size: 9px;
+    color: #616161;
+    margin: 4px;
 }

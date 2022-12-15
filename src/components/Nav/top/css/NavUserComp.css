@@ -12,9 +12,10 @@
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
+    font-size: 15px;
 }
 .navUserCompSec span{
-    margin: 0 3px;
+    margin:0 10px 0 3px;
     color: rgb(120 111 111);
     font-family: cursive, 'Courier New', Courier, monospace;
 }

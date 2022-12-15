@@ -5,11 +5,13 @@ const ContactNumber = () => {
   return (
     <div className="contactNumberMain centerADiv">
       <div className="contactNumberIcon">
-        <CallTwoToneIcon />
+        <CallTwoToneIcon color="action" fontSize="xsmall" />
       </div>
-      <div className="contactNumberinfo">
+      <div className="contactNumberInfo">
         <div>
-          <p className="contactNumbers">(+977) 9812345678</p>
+          <a href="tel:+9779812345678">
+            <p className="contactNumber">(+977) 9812345678</p>
+          </a>
         </div>
         <div>
           <p className="contactNumberTimes">Sun - Fri 9:00 5:00</p>

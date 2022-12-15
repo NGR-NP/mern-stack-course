@@ -7,7 +7,7 @@ import Search from "../../components/Nav/top/Search";
 import "./css/TopNavSec.css";
 const TopNavSec = () => {
   return (
-    <section className="navTopSec">
+    <section className="navSec">
       <div className="navTop navLogo">
         <LogoComp />
       </div>

@@ -1,7 +1,6 @@
 # Reactjs E-commerce UI
 
- ![This is an image](./src/images/laptop.png)
-
+![This is an image](./src/images/laptop.png)
 
 This site is [Live](https://vrit-tech-mernstack-project-by-roll-1.netlify.app/).
 
@@ -9,8 +8,15 @@ This site is [Live](https://vrit-tech-mernstack-project-by-roll-1.netlify.app/).
 
 on this project i used [Material UI Icons](https://mui.com/material-ui/material-icons).
 
+## image are used from
 
+[nordstrommedia(https://n.nordstrommedia.com)],
+[Lulus(https://www.lulus.com],
+[istockphoto(https://media.istockphoto.com]
 
+## For picking color from image i used this site called
+
+[image color picker(https://imagecolorpicker.com/en)].
 
 ## Learn More
 

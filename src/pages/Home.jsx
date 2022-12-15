@@ -1,16 +1,11 @@
-import React from "react";
-import Welcome from "../images/welcome.jpg";
-import "../style/Home.css";
+import Nav from "../sections/nav/Nav";
+import Hero from "../sections/hero/Hero";
 const Home = () => {
   return (
-    <section className="homeSec">
-      <div className="homeImgs centerADiv">
-        <img src={Welcome} className="homeImg" alt="Welcome" />
-      </div>
-      <div className="homeText">
-        <h2 className="homeTitle">Home Page</h2>
-      </div>
-    </section>
+    <>
+      <Nav />
+      <Hero />
+    </>
   );
 };
 

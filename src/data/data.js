@@ -18,18 +18,41 @@ export const allCategoriesData = [
 
 export const locationData = [
   {
-    id: 0,
+    id: 1,
     value: "ktm",
     name: "Kathmandu",
   },
   {
-    id: 1,
+    id: 2,
     value: "pkh",
     name: "Pokhara",
   },
   {
-    id: 2,
+    id: 3,
     value: "ith",
     name: "Itahari",
+  },
+];
+export const sliderSales = [
+  {
+    id: 1,
+    img: "https://n.nordstrommedia.com/id/sr3/8110a0a0-b80e-487b-bb45-f7c0379f6b72.jpeg?h=365&w=240&dpr=2",
+    title: "Winter Sales",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
+    bg: "42444ba8",
+  },
+  {
+    id: 2,
+    img: "https://www.lulus.com/images/product/xlarge/8149541_682502.jpg?w=345",
+    title: "Summer Sales",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
+    bg: "c29e7aa8",
+  },
+  {
+    id: 3,
+    img: "https://media.istockphoto.com/photos/men-gentlemans-set-of-accessories-picture-id499152920?k=6&m=499152920&s=170667a&w=0&h=cUS0EJyDGcgX-VyQZ19UHA5a6wrGepjiNsex6mQfe98=",
+    title: "Accessories Sales",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
+    bg: "7b4c4ba8",
   },
 ];

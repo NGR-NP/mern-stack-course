@@ -13,7 +13,7 @@ const BrowseAllCategories = () => {
           color="action"
           className="customDropdownIcon"
         />
-        <select defaultValue={"defaultvalue"}>
+        <select className="customDropdownSelect" defaultValue={"defaultvalue"}>
           <option value="defaultvalue" disabled>
             All Categories
           </option>

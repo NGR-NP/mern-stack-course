@@ -7,7 +7,7 @@ import SocialMedia from "../../components/Nav/bottom/SocialMedia";
 import "./css/BottomNavSec.css";
 const BottomNavSec = () => {
   return (
-    <section className="navBottomSec">
+    <section className="navSec">
       <div className="navBottom">
         <BrouseAllCategories />
       </div>

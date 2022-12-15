@@ -14,7 +14,7 @@ const AllCategories = () => {
           color="action"
           className="customDropdownIcon"
         />
-        <select defaultValue={"defaultvalue"}>
+        <select className="customDropdownSelect" defaultValue={"defaultvalue"}>
           <option value="defaultvalue" disabled>All Categories</option>
           {allCategoriesData.map((data) => (
             <option key={data.id} value={data.value}>

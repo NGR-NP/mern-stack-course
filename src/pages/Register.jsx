@@ -36,15 +36,11 @@ const Register = () => {
             />
           </div>
           <div className="centerADiv">
-            {/* <button className="registerResetBtn" type="reset">
-            Reset
-          </button> */}
             <button className="registerBtn">Submit</button>
           </div>
           <div className="infoCont">
             <p>Already have an Account?</p>
             <a href="/">Login</a>
-            {/* <Link to="/login">Login</Link> */}
           </div>
         </div>
       </div>

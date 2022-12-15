@@ -1,4 +1,4 @@
-select {
+.customDropdownSelect {
   box-shadow: var(--boxShadow);
   font-size: 15px;
   padding: 9px 36px 9px 29px;
