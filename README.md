@@ -10,8 +10,8 @@ on this project i used [Material UI Icons](https://mui.com/material-ui/material-
 
 ## image are used from
 
-[nordstrommedia](https://n.nordstrommedia.com)
-[Lulus](https://www.lulus.com
+[nordstrommedia](https://n.nordstrommedia.com),
+[Lulus](https://www.lulus.com),
 [istockphoto](https://media.istockphoto.com)
 
 ## For picking color from image i used this site called
