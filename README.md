@@ -16,7 +16,7 @@ on this project i used [Material UI Icons](https://mui.com/material-ui/material-
 
 ## For picking color from image i used this site called
 
-[image color picker(https://imagecolorpicker.com/en)].
+[image color picker](https://imagecolorpicker.com/en).
 
 ## Learn More
 
