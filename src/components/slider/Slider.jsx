@@ -14,32 +14,38 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
+  background: linear-gradient(${(props) => props.lineGrad});
 `;
 const ImgCont = styled.div`
   flex: 1;
   height: 100%;
   z-index: 1;
-  margin-top: 10%;
+  margin-top: 2.5%;
 `;
 const Image = styled.img`
   mix-blend-mode: multiply;
   width: 100%;
-  height: 85%;
+  height: 95%;
   object-fit: cover;
 `;
 const InfoCont = styled.div`
   flex: 1;
   padding: 50px;
   color: white;
+  font-family: var(--font1);
 `;
 const Title = styled.p`
   font-weight: bold;
   font-size: 70px;
+  font-family: var(--font3);
+  margin: 14px 0 28px 0;
 `;
 const Desc = styled.p`
   font-size: 20px;
   font-weight: 500;
   margin: 50px 0;
+  font-family: var(--fontDesc);
+  margin: 14px 0 28px 0;
 `;
 const Button = styled.button`
   font-size: 20px;
@@ -53,7 +59,7 @@ const Slider = ({ slide }) => {
   return (
     <Main slide={slide}>
       {sliderSales.map((item) => (
-        <Container key={item.id} bg={item.bg}>
+        <Container key={item.id} bg={item.bg} lineGrad={item.lineGrad}>
           <ImgCont>
             <Image src={item.img} alt={item.title} />
           </ImgCont>

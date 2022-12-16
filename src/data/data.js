@@ -40,6 +40,7 @@ export const sliderSales = [
     title: "Winter Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "42444ba8",
+    lineGrad: "180deg,rgb(212 207 207) 0%,rgba(130,127,134,1) 100%",
   },
   {
     id: 2,
@@ -47,12 +48,15 @@ export const sliderSales = [
     title: "Summer Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "c29e7aa8",
+    lineGrad:
+      "7deg,rgba(159,128,98,1) 0%,rgba(185,149,117,1) 72%,#e8cbad 100%",
   },
   {
     id: 3,
     img: "https://media.istockphoto.com/photos/men-gentlemans-set-of-accessories-picture-id499152920?k=6&m=499152920&s=170667a&w=0&h=cUS0EJyDGcgX-VyQZ19UHA5a6wrGepjiNsex6mQfe98=",
     title: "Accessories Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
-    bg: "7b4c4ba8",
+    bg: "7b4b4b",
+    lineGrad: "183deg,rgb(158 101 101) 0%,rgb(108 43 43) 100%",
   },
 ];
