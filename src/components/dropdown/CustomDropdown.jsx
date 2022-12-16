@@ -9,7 +9,7 @@ const CustomDropdown = ({values, names}) => {
       <select>
         <Option values={values} names={names}/>
       </select>
-      <span className="customDropdownArrow"></span>
+      <div className="customDropdownArrow"></div>
     </div>
   );
 };

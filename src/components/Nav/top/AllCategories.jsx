@@ -22,7 +22,7 @@ const AllCategories = () => {
             </option>
           ))}
         </select>
-        <span className="customDropdownArrow"></span>
+        <div className="customDropdownArrow"></div>
       </div>
     </>
   );

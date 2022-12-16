@@ -14,8 +14,13 @@
     cursor: pointer;
     font-size: 15px;
 }
-.navUserCompSec span{
+.navUserCompSec div{
     margin:0 10px 0 3px;
     color: rgb(120 111 111);
     font-family: cursive, 'Courier New', Courier, monospace;
+}
+.navUserCompLink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

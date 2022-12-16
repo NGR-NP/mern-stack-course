@@ -6,7 +6,7 @@ const Nav = () => {
   return (
     <section className="navMain">
       <TopNavSec />
-      <span className="navMainLine"/>
+      <div className="navMainLine"/>
       <BottomNavSec />
     </section>
   );

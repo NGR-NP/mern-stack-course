@@ -1,6 +1,7 @@
 import React from "react";
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import { allCategoriesData } from "../../../data/data";
+import '../../dropdown/customDropdown.css'
 const BrowseAllCategories = () => {
   return (
     <>
@@ -23,7 +24,7 @@ const BrowseAllCategories = () => {
             </option>
           ))}
         </select>
-        <span className="customDropdownArrow"></span>
+        <div className="customDropdownArrow"></div>
       </div>
     </>
   );
