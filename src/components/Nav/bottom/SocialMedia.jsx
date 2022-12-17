@@ -11,28 +11,28 @@ const SocialMedia = () => {
         <FacebookOutlinedIcon
           className="socialMediaIcon"
           titleAccess="Facebook"
-          fontSize="xsmall"
+          fontSize="medium"
           color="action"
         ></FacebookOutlinedIcon>
 
         <InstagramIcon
           className="socialMediaIcon"
           titleAccess="Instagram"
-          fontSize="xsmall"
+          fontSize="medium"
           color="action"
         ></InstagramIcon>
 
         <YouTubeIcon
           className="socialMediaIcon"
           titleAccess="Youtube"
-          fontSize="xsmall"
+          fontSize="medium"
           color="action"
         ></YouTubeIcon>
 
         <WhatsAppIcon
           className="socialMediaIcon"
           titleAccess="What's app"
-          fontSize="xsmall"
+          fontSize="medium"
           color="action"
         ></WhatsAppIcon>
       </div>

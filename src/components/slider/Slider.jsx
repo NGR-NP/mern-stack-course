@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { sliderSales } from "../../data/data";
+// import ImageListTileBar from "@mui/material/ImageListTileBar";
+// import IconButton from "@mui/material/IconButton";
 const Main = styled.div`
   height: 100%;
   display: flex;
@@ -10,7 +12,7 @@ const Main = styled.div`
 const Container = styled.div`
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
@@ -20,17 +22,18 @@ const ImgCont = styled.div`
   flex: 1;
   height: 100%;
   z-index: 1;
-  margin-top: 2.5%;
+  margin-top: ${(props) => props.margins || 4.5}%;
+  mix-blend-mode: ${(props) => props.removebg};
 `;
 const Image = styled.img`
-  mix-blend-mode: multiply;
   width: 100%;
-  height: 95%;
+  height: ${(props) => props.full || 88}%;
   object-fit: cover;
+  -webkit-user-drag: none;
 `;
 const InfoCont = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 20px 50px;
   color: white;
   font-family: var(--font1);
 `;
@@ -53,15 +56,19 @@ const Button = styled.button`
   cursor: pointer;
   color: white;
   background-color: transparent;
+  box-shadow: 8px 9px 20px 0px rgb(91 91 91 / 29%);
 `;
 
 const Slider = ({ slide }) => {
+  setTimeout(() => {
+    
+  }, 1000);
   return (
     <Main slide={slide}>
       {sliderSales.map((item) => (
         <Container key={item.id} bg={item.bg} lineGrad={item.lineGrad}>
-          <ImgCont>
-            <Image src={item.img} alt={item.title} />
+          <ImgCont margins={item.margins} removebg={item.removebg}>
+            <Image full={item.full} src={item.img} alt={item.title} />
           </ImgCont>
           <InfoCont>
             <Title>{item.title}</Title>

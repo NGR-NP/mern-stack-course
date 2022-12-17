@@ -2,11 +2,13 @@
   display: grid;
   place-content: center;
   background: var(--lightBlueBackground);
+  background: var(--bgLineGradBlue);
+
   /* height: 19vh; */
 }
-.navMainLine{
-  content: '';
-  width: 100% ;
+.navMainLine {
+  content: "";
+  width: 100%;
   height: 2px;
   background-color: var(--lightBlue);
 }

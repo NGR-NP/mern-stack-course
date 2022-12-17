@@ -40,6 +40,9 @@ export const sliderSales = [
     title: "Winter Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "42444ba8",
+    removebg: "multiply",
+    margins: "0",
+    full: "auto",
     lineGrad: "180deg,rgb(212 207 207) 0%,rgba(130,127,134,1) 100%",
   },
   {

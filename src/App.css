@@ -9,6 +9,16 @@
   --lightTitle: #6d6d6d;
   --lightBlueBackground: #e4f8ff;
   --lightPinkBackground: #ffeffa;
+  --bgLineGradBlue: linear-gradient(
+    174deg,
+    rgba(227, 248, 255, 1) 0%,
+    rgba(254, 235, 255, 1) 100%
+  );
+  --bgRadiGradPink: radial-gradient(
+    circle,
+    rgba(227, 248, 255, 1) 0%,
+    rgb(251, 213, 253) 100%
+  );
   --boxShadow: 0px 0px 20px 5px rgb(0 0 0 / 13%);
   --font1: "Alegreya", serif;
   --font2: "BioRhyme", serif;
@@ -16,6 +26,7 @@
   --font4: "Goblin One", cursive;
   --font5: "Inknut Antiqua", serif;
   --font6: "Rakkas", cursive;
+  --font7: "Arvo", serif;
   --fontDesc: "Lora", serif;
 }
 .centerADiv {

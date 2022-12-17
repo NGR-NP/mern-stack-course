@@ -5,7 +5,7 @@ const ContactNumber = () => {
   return (
     <div className="contactNumberMain centerADiv">
       <div className="contactNumberIcon">
-        <CallTwoToneIcon color="action" fontSize="xsmall" />
+        <CallTwoToneIcon color="action" fontSize="medium" />
       </div>
       <div className="contactNumberInfo">
         <div>

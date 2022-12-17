@@ -38,12 +38,14 @@ const Hero = () => {
     if (direction === "left") {
       setSlide(slide > 0 ? slide - 1 : 2);
       console.log(slide);
-    }
-    else {
+    } else {
       setSlide(slide < 2 ? slide + 1 : 0);
       console.log(slide);
     }
+    
   };
+
+
   return (
     <Section>
       <Arrow direction="left" onClick={() => handleClick("left")}>

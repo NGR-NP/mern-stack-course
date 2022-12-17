@@ -11,7 +11,7 @@ const NavUserComp = () => {
         <div className="navUserCompSec">
           <FavoriteBorderIcon
             color="action"
-            fontSize="small"
+            fontSize="medium"
             titleAccess="Your Wishlist"
           />
           <div>Wishlist</div>
@@ -19,7 +19,7 @@ const NavUserComp = () => {
         <div className="navUserCompSec">
           <ShoppingCartOutlinedIcon
             color="action"
-            fontSize="small"
+            fontSize="medium"
             titleAccess="Shopping Cart"
           />
           <div>Cart</div>
@@ -28,7 +28,7 @@ const NavUserComp = () => {
           <Link to="/login" className="navUserCompLink" >
             <Person3OutlinedIcon
               color="action"
-              fontSize="small"
+              fontSize="medium"
               titleAccess="Account"
             />
             <div>Account</div>

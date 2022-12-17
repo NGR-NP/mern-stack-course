@@ -1,7 +1,7 @@
 .navSec {
   display: flex;
   max-width: 1200px;
-  width: 100vw;
+  width: 95vw;
   flex-wrap: wrap;
 }
 
