@@ -36,12 +36,12 @@ export const locationData = [
 export const sliderSales = [
   {
     id: 1,
-    img: "./images/sales/winter1.png",
+    img: "./images/sales/winter.png",
     title: "Winter Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "42444ba8",
     shadow: "ffffff82",
-
+    arrow: "65646470",
     lineGrad: "180deg,rgb(212 207 207) 0%,rgba(130,127,134,1) 100%",
   },
   {
@@ -51,8 +51,8 @@ export const sliderSales = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "c29e7aa8",
     shadow: "ffbe82",
-    lineGrad:
-      "7deg,rgba(159,128,98,1) 0%,rgba(185,149,117,1) 72%,#e8cbad 100%",
+    arrow: "e8cbad70",
+    lineGrad: "7deg,rgba(159,128,98,1) 0%,rgba(185,149,117,1) 72%,#e8cbad 100%",
   },
   {
     id: 3,
@@ -61,6 +61,7 @@ export const sliderSales = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "7b4b4b",
     shadow: "d05858",
+    arrow: "b1707070",
     lineGrad: "183deg,rgb(158 101 101) 0%,rgb(108 43 43) 100%",
   },
 ];

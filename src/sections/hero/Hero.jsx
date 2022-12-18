@@ -17,7 +17,8 @@ const Arrow = styled.div`
   height: 50px;
   margin: auto;
   border-radius: 50%;
-  background-color: var(--lightBlue);
+  background-color: transparent;
+  box-shadow: 0px 1px 20px 0px #f4f0f06c;
   opacity: 0.4;
   cursor: pointer;
   display: flex;
@@ -29,6 +30,7 @@ const Arrow = styled.div`
   z-index: 111;
   :hover {
     opacity: 1;
+    box-shadow: 0px 1px 20px 0px #f4f0f03b;
   }
 `;
 
@@ -42,17 +44,21 @@ const Hero = () => {
       setSlide(slide < 2 ? slide + 1 : 0);
       console.log(slide);
     }
-    
   };
-
 
   return (
     <Section>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
+      <Arrow
+        className="arrow"
+        direction="left"
+        onClick={() => handleClick("left")}
+      >
         <ArrowLeftOutlined fontSize="large" />
       </Arrow>
+
       <Slider slide={slide} />
-      <Arrow direction="right">
+
+      <Arrow className="arrow" direction="right">
         <ArrowRightOutlined
           fontSize="large"
           onClick={() => handleClick("right")}

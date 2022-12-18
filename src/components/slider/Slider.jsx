@@ -29,7 +29,6 @@ const Image = styled.img`
   height: 88%;
   object-fit: cover;
   -webkit-user-drag: none;
-  box-shadow: 0px 0px 20px 9px #ffbe82; // winter ffffff82  summer ffbe82 acc d05858
   box-shadow: 0px 0px 20px 9px #${(props) => props.shadow || "ffffff4f"};
   border-radius: 0 22px 22px 0;
 `;
