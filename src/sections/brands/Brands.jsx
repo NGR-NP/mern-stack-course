@@ -24,6 +24,7 @@ const Lists = styled.div`
   align-items: center;
   overflow: scroll;
   scroll-behavior: smooth;
+  transition: all 1.5s ease;
   ::-webkit-scrollbar {
     display: none;
   }

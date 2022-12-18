@@ -29,7 +29,7 @@ const Image = styled.img`
   height: 88%;
   object-fit: cover;
   -webkit-user-drag: none;
-  box-shadow: 0px 0px 20px 9px #${(props) => props.shadow || "ffffff4f"};
+  box-shadow: 3px 1px 20px 9px #${(props) => props.shadow || "ffffff4f"};
   border-radius: 0 22px 22px 0;
 `;
 const InfoCont = styled.div`
