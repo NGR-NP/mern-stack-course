@@ -7,7 +7,7 @@ const Section = styled.section`
     rgb(249 217 250) 100%
   );
   display: flex;
-  padding: 5vw;
+  padding: 3vw;
 `;
 const Container = styled.div`
   max-width: 1200px;
@@ -28,6 +28,8 @@ const Lists = styled.div`
     display: none;
   }
   height: calc(5vw / 1);
+  gap: 3rem;
+  margin: 0 1.5rem;
 `;
 
 const Brands = () => {

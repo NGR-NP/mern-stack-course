@@ -20,24 +20,36 @@ import styled from "styled-components";
 const List = styled.img`
   height: inherit;
   object-fit: contain;
-  margin:0 1.5rem;
   mix-blend-mode: multiply;
   -webkit-user-drag: none;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0, -0.04, 0.27, 0.43);
-  &:hover{
+  &:hover {
     transform: scale(1.05);
   }
-  
 `;
 const BrandsLists = () => {
   return (
     <>
       <List src={Chanel} title="Chanel" alt="img" />
+      <List src={gucci} title="GUCCi" alt="img" />
+      <List src={tommy} title="TOMMY HILFIGER" alt="img" />
+      <List src={adidas} title="adidas" alt="img" />
       <List src={puma} title="PUMA" alt="img" />
+      <List src={tommy} title="TOMMY HILFIGER" alt="img" />
+      <List src={gucci} title="GUCCi" alt="img" />
+      <List src={adidas} title="adidas" alt="img" />
+      <List src={puma} title="PUMA" alt="img" />
+      <List src={adidas} title="adidas" alt="img" />
+      <List src={gucci} title="GUCCi" alt="img" />
+      <List src={tommy} title="TOMMY HILFIGER" alt="img" />
+      <List src={puma} title="PUMA" alt="img" />
+      <List src={Chanel} title="Chanel" alt="img" />
       <List src={adidas} title="adidas" alt="img" />
       <List src={tommy} title="TOMMY HILFIGER" alt="img" />
       <List src={gucci} title="GUCCi" alt="img" />
+      <List src={puma} title="PUMA" alt="img" />
+      <List src={Chanel} title="Chanel" alt="img" />
     </>
   );
 };

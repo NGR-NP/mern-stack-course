@@ -36,13 +36,12 @@ export const locationData = [
 export const sliderSales = [
   {
     id: 1,
-    img: "https://n.nordstrommedia.com/id/sr3/8110a0a0-b80e-487b-bb45-f7c0379f6b72.jpeg?h=365&w=240&dpr=2",
+    img: "./images/sales/winter1.png",
     title: "Winter Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "42444ba8",
-    removebg: "multiply",
-    margins: "0",
-    full: "auto",
+    shadow: "ffffff82",
+
     lineGrad: "180deg,rgb(212 207 207) 0%,rgba(130,127,134,1) 100%",
   },
   {
@@ -51,6 +50,7 @@ export const sliderSales = [
     title: "Summer Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "c29e7aa8",
+    shadow: "ffbe82",
     lineGrad:
       "7deg,rgba(159,128,98,1) 0%,rgba(185,149,117,1) 72%,#e8cbad 100%",
   },
@@ -60,6 +60,7 @@ export const sliderSales = [
     title: "Accessories Sales",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odi placeat doloremque voluptatum provident asperiores sapient",
     bg: "7b4b4b",
+    shadow: "d05858",
     lineGrad: "183deg,rgb(158 101 101) 0%,rgb(108 43 43) 100%",
   },
 ];
