@@ -1,7 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { sliderSales } from "../../data/data";
 
+const move = keyframes`
+0%{transform: translateY(-5px);}
+50%{transform: translateY(-10px);}
+100%{transform: translateY(-5px);}
+`;
 const Main = styled.div`
   height: 100%;
   display: flex;
@@ -14,6 +19,7 @@ const Container = styled.div`
   height: 60vh;
   display: flex;
   align-items: center;
+  position: relative;
   background-color: #${(props) => props.bg};
   background: linear-gradient(${(props) => props.lineGrad});
 `;
@@ -23,7 +29,17 @@ const ImgCont = styled.div`
   z-index: 1;
   display: flex;
   align-items: center;
+  /* position: relative; */
 `;
+// const Icon = styled.img`
+//   position: absolute;
+//   top: ${(props) => (props.place === "top" && props.top)};
+//   bottom: ${(props) => (props.place === "bottom" && props.bottom)  || "0px" };
+//   width: 12vmin;
+//   right: -22px;
+//   -webkit-user-drag: none;
+//   animation: ${move} 2.5s infinite;
+// `;
 const Image = styled.img`
   width: 100%;
   height: 88%;
@@ -37,12 +53,23 @@ const InfoCont = styled.div`
   padding: 20px 50px;
   color: white;
   font-family: var(--font1);
+  z-index: 11;
+  backdrop-filter: blur(1px);
+`;
+const Icon = styled.img`
+  position: absolute;
+  right: 23px;
+  top: 13%;
+  width: 16vmin;
+  -webkit-user-drag: none;
+  animation: ${move} 2.5s infinite;
 `;
 const Title = styled.p`
   font-weight: bold;
   font-size: 70px;
   font-family: var(--font3);
   margin: 14px 0 28px 0;
+  line-height: 1;
 `;
 const Desc = styled.p`
   font-size: 20px;
@@ -66,6 +93,12 @@ const Slider = ({ slide }) => {
     <Main slide={slide}>
       {sliderSales.map((item) => (
         <Container key={item.id} bg={item.bg} lineGrad={item.lineGrad}>
+          <Icon
+            place={item.place}
+            top={item.top}
+            bottom={item.bottom}
+            src={item.icon}
+          />
           <ImgCont>
             <Image shadow={item.shadow} src={item.img} alt={item.title} />
           </ImgCont>

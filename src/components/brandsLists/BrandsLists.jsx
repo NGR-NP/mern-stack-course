@@ -27,6 +27,7 @@ const List = styled.img`
   &:hover {
     transform: scale(1.05);
   }
+  aspect-ratio: 4/3;
 `;
 const BrandsLists = () => {
   return (

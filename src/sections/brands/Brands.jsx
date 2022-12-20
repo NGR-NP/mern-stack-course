@@ -30,7 +30,7 @@ const Lists = styled.div`
   }
   height: calc(5vw / 1);
   gap: 3rem;
-  margin: 0 1.5rem;
+  
 `;
 
 const Brands = () => {

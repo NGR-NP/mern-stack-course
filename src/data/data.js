@@ -42,6 +42,9 @@ export const sliderSales = [
     bg: "42444ba8",
     shadow: "ffffff54",
     arrow: "65646470",
+    icon: "./images/winter.png",
+    place: "bottom",
+    bottom: "4px",
     lineGrad: "180deg,rgb(212 207 207) 0%,rgba(130,127,134,1) 100%",
   },
   {
@@ -52,6 +55,9 @@ export const sliderSales = [
     bg: "c29e7aa8",
     shadow: "d7a578",
     arrow: "e8cbad70",
+    icon: "./images/summer.png",
+    place: "top",
+    top: "0px",
     lineGrad: "7deg,rgba(159,128,98,1) 0%,rgba(185,149,117,1) 72%,#e8cbad 100%",
   },
   {
@@ -62,6 +68,9 @@ export const sliderSales = [
     bg: "7b4b4b",
     shadow: "c35959",
     arrow: "b1707070",
+    icon:"./images/sunglass1.png",
+    place: "bottom",
+    bottom: "4px",
     lineGrad: "183deg,rgb(158 101 101) 0%,rgb(108 43 43) 100%",
   },
 ];
