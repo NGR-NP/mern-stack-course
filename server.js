@@ -1,7 +1,11 @@
 const app = require("./src/config/Express");
-const PORT = 8000;
-const API_URL = "https://localhost:";
+const { PORT } = require("./src/config/secrets");
 
-app.listen(PORT || 8080, () => {
-  console.log("express Running at " + API_URL + PORT + " 👂");
-});
+// comment this before pushing
+// const consoleMessage = require("./src/clg");
+// app.listen(PORT || 8000, () => {
+//   consoleMessage();
+// });
+//
+
+app.listen(PORT || 8000)
