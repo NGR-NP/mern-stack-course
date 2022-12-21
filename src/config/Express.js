@@ -1,11 +1,18 @@
 const express = require("express");
 const Routes = require("../../src/routes/routes");
-
+const cors = require("cors");
 const app = express();
+app.use(
+  cors({
+    origin: ["https://vrit-tech-mernstack-project-by-roll-1.netlify.app"],
+  })
+);
 
 app.use(express.json());
-app.use("/api", Routes);
 app.use(express.json());
+
+//api route
+app.use("/api", Routes);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
