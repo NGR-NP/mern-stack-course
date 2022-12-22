@@ -23,6 +23,10 @@ on slider i [picked color](https://imagecolorpicker.com/en) from image and add t
 
 
 ![gif](./src/images/laptop.gif)
+
+#upper demo image and gif was created using 
+[Mobile simulator - responsive testing tool extensions](https://chrome.google.com/webstore/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk)
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
