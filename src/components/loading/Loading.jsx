@@ -1,18 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { sliderSales } from "../../data/data";
+import styled from "styled-components";
 
-const move = keyframes`
-0%{transform: translateY(-5px);}
-50%{transform: translateY(-10px);}
-100%{transform: translateY(-5px);}
-`;
-const Main = styled.div`
-  height: 100%;
-  display: flex;
-  transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slide * -100}vw);
-`;
 const Container = styled.div`
   overflow: hidden;
   width: 100vw;
@@ -86,30 +73,24 @@ const Button = styled.button`
   background-color: transparent;
   box-shadow: 8px 9px 20px 0px rgb(91 91 91 / 29%);
 `;
-
-const Slider = ({ slide }) => {
-  return (
-    <Main slide={slide}>
-      {sliderSales.map((item) => (
-        <Container key={item.id} bg={item.bg} lineGrad={item.lineGrad}>
-          <Icon
-            place={item.place}
-            top={item.top}
-            bottom={item.bottom}
-            src={item.icon}
-          />
-          <ImgCont>
-            <Image shadow={item.shadow} src={item.img} alt={item.title} />
-          </ImgCont>
-          <InfoCont>
-            <Title>{item.title}</Title>
-            <Desc>{item.desc}</Desc>
-            <Button>Buy Now</Button>
-          </InfoCont>
-        </Container>
-      ))}
-    </Main>
+export default function Loading() {
+  const SlideLoading = () => (
+    <Container key={item.id} bg={item.bg} lineGrad={item.lineGrad}>
+      <Icon
+        place={item.place}
+        top={item.top}
+        bottom={item.bottom}
+        src={item.icon}
+      />
+      <ImgCont>
+        <Image shadow={item.shadow} src={item.img} alt={item.title} />
+      </ImgCont>
+      <InfoCont>
+        <Title>{item.title}</Title>
+        <Desc>{item.desc}</Desc>
+        <Button>Buy Now</Button>
+      </InfoCont>
+    </Container>
   );
-};
-
-export default Slider;
+  return SlideLoading;
+}
