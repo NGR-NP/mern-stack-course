@@ -20,6 +20,9 @@ on slider i [picked color](https://imagecolorpicker.com/en) from image and add t
 [image color picker](https://imagecolorpicker.com/en).
 [Generate linear gradient cssgradient](https://cssgradient.io/)
 
+
+
+![gif](./src/images/laptop.gif)
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
