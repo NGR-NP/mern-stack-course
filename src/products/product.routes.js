@@ -1,60 +1,21 @@
+const {
+  createProduct,
+  pullProductById,
+  pullProducts,
+  updateProductById,
+  deleteProductById,
+} = require("./product.controllers");
+
 const productRoutes = require("express").Router();
-const Product = require("../models/Product");
 
-// #CRUD
-//create #C
-productRoutes.post("/", async (req, res, next) => {
-  const newProduct = new Product(req.body);
-  try {
-    const saveProduct = await newProduct.save();
-    res.status(200).json(saveProduct);
-  } catch (err) {
-    next(err);
-  }
-});
+productRoutes.post("/", createProduct);
 
-//get by id / read #R
-productRoutes.get("/:id", async (req, res, next) => {
-  try {
-    const product = await Product.findById(req.params.id);
+productRoutes.get("/:id", pullProductById);
 
-    res.status(200).json(product);
-  } catch (err) {
-    next(err);
-  }
-});
+productRoutes.get("/", pullProducts);
 
-//get all / read #R
-productRoutes.get("/", async (req, res, next) => {
-  try {
-    const products = await Product.find();
-    res.status(200).json(products);
-  } catch (err) {
-    next(err);
-  }
-});
+productRoutes.put("/:id", updateProductById);
 
-// update #U
-productRoutes.put("/:id", async (req, res, next) => {
-  try {
-    const updateProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true }
-    );
-    res.status(200).json(updateProduct);
-  } catch (err) {
-    next(err);
-  }
-});
-//Delete #D
-productRoutes.delete("/:id", async (req, res, next) => {
-  try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json("Product has been deleted");
-  } catch (err) {
-    next(err);
-  }
-});
+productRoutes.delete("/:id", deleteProductById);
 
 module.exports = productRoutes;
