@@ -1,8 +1,8 @@
 const route = require("express").Router();
 const authRoute = require("./authRoutes");
-const productRoute = require("./products");
+const productRoutes = require("../products/product.routes");
 
 route.use("/users", authRoute);
-route.use("/products", productRoute);
+route.use("/products", productRoutes);
 
 module.exports = route;

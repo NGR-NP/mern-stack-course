@@ -4,17 +4,17 @@ const UserSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
-      required: true,
+      required: "User Name is required",
       unique: true,
     },
     email: {
       type: String,
-      required: true,
+      required: "please enter your email",
       unique: true,
     },
     password: {
       type: String,
-      required: true,
+      required: "password is required",
     },
     isAdmin: {
       type: Boolean,

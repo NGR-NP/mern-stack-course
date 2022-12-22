@@ -4,31 +4,38 @@ const ProductSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: "please give your Product Titile",
     },
     desc: {
       type: String,
-      required: true,
+      required: "please give your Product Description",
     },
     img: {
       type: String,
-      required: true,
+      required: "please upload you Image Link",
     },
-    categories: {
-      type: Array,
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "category",
     },
     color: {
-      type: String,
+      type: Array,
     },
     size: {
-      Type: String,
+      Type: Array,
+    },
+    qty: {
+      type: Number,
+      required: "please enter your Product Quantity"
     },
     price: {
       type: Number,
-      required: true,
+      required: "please enter you Product Price",
     },
   },
-  { timeseries: true }
+  {
+    timestamps: true,
+  }
 );
 
 module.exports = mongoose.model("product", ProductSchema);

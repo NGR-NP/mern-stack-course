@@ -1,9 +1,9 @@
-const route = require("express").Router();
+const productRoutes = require("express").Router();
 const Product = require("../models/Product");
 
 // #CRUD
 //create #C
-route.post("/", async (req, res, next) => {
+productRoutes.post("/", async (req, res, next) => {
   const newProduct = new Product(req.body);
   try {
     const saveProduct = await newProduct.save();
@@ -14,7 +14,7 @@ route.post("/", async (req, res, next) => {
 });
 
 //get by id / read #R
-route.get("/:id", async (req, res, next) => {
+productRoutes.get("/:id", async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
 
@@ -25,7 +25,7 @@ route.get("/:id", async (req, res, next) => {
 });
 
 //get all / read #R
-route.get("/", async (req, res, next) => {
+productRoutes.get("/", async (req, res, next) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);
@@ -35,7 +35,7 @@ route.get("/", async (req, res, next) => {
 });
 
 // update #U
-route.put("/:id", async (req, res, next) => {
+productRoutes.put("/:id", async (req, res, next) => {
   try {
     const updateProduct = await Product.findByIdAndUpdate(
       req.params.id,
@@ -48,7 +48,7 @@ route.put("/:id", async (req, res, next) => {
   }
 });
 //Delete #D
-route.delete("/:id", async (req, res, next) => {
+productRoutes.delete("/:id", async (req, res, next) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted");
@@ -57,4 +57,4 @@ route.delete("/:id", async (req, res, next) => {
   }
 });
 
-module.exports = route;
+module.exports = productRoutes;
