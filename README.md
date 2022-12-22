@@ -24,7 +24,7 @@ on slider i [picked color](https://imagecolorpicker.com/en) from image and add t
 
 ![gif](./src/images/laptop.gif)
 
-#upper demo image and gif was created using 
+## upper demo image and gif was created using 
 [Mobile simulator - responsive testing tool extensions](https://chrome.google.com/webstore/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk)
 
 ## Learn More
