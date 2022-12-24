@@ -5,4 +5,5 @@ module.exports = {
   API_URL: process.env.API_URL,
   JWT: process.env.JWT,
   EXPIREIN: process.env.EXPIREIN,
+  ALLOWED_DOMAIN: process.env.ALLOWED_DOMAIN,
 };

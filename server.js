@@ -1,11 +1,8 @@
 const app = require("./src/config/Express");
 const { PORT } = require("./src/config/secrets");
 
-// comment this before pushing
-const consoleMessage = require("./src/clg");
-app.listen(PORT, () => {
-  consoleMessage();
-});
-//
+/* reminder uncomment this line on production this is only use on development
+require("./src/utils/clg");
+ */ //reminder uncomment this line on production this is only use on development
 
-// app.listen(PORT)
+app.listen(PORT);

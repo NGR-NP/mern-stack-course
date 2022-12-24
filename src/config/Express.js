@@ -1,34 +1,23 @@
 const express = require("express");
 const Routes = require("../../src/routes/routes");
 const cors = require("cors");
+const errorHandler = require("../middleware/errorhandler");
+const routenotavailable = require("../routes/routenotavailable");
+const corsOptions = require("../utils/whitelist");
 const app = express();
-app.use(
-  cors({
-    origin: ["https://vrit-tech-mernstack-project-by-roll-1.netlify.app"],
-  })
-);
 
-app.use(express.json());
+// middleware to handel urlencoded data, content-type: application/x-www-from-urlencoded
+https://www.geeksforgeeks.org/express-js-express-urlencoded-function/
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//api route
+app.use(cors(corsOptions));
+
+// api first path
 app.use("/api", Routes);
 
-app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "something went wrong ❔";
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack,
-  });
-});
+app.use(errorHandler);
 
-app.use("*", (_, res) => {
-  res.status(404).json({
-    error: "Current path is not available ⛔",
-  });
-});
+app.use("*", routenotavailable);
 
 module.exports = app;
