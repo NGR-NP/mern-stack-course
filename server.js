@@ -1,3 +1,4 @@
+const connectMongoDB = require("./src/config/database");
 const app = require("./src/config/Express");
 const { PORT } = require("./src/config/secrets");
 
@@ -5,6 +6,6 @@ const { PORT } = require("./src/config/secrets");
 require("./src/utils/clg");
  */ //reminder uncomment this line on production this is only use on development
 
-app.listen(PORT, () => {
+app.listen(PORT, ()=> {
   connectMongoDB();
 });
