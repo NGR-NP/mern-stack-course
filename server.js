@@ -5,4 +5,4 @@ const { PORT } = require("./src/config/secrets");
 require("./src/utils/clg");
  */ //reminder uncomment this line on production this is only use on development
 
-app.listen(PORT);
+app.listen(PORT, connectMongoDB());
