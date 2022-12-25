@@ -7,7 +7,7 @@ const corsOptions = require("../utils/whitelist");
 const app = express();
 
 // middleware to handel urlencoded data, content-type: application/x-www-from-urlencoded
-https://www.geeksforgeeks.org/express-js-express-urlencoded-function/
+// https://www.geeksforgeeks.org/express-js-express-urlencoded-function/
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
