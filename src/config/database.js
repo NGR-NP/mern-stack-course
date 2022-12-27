@@ -6,7 +6,7 @@ mongoose.set("strictQuery", false);
 const connectMongoDB = () => {
   try {
     mongoose.connect(MONGO_URI);
-    console.log("\n Waiting ⏰ MongoDB Connections 😴 😴");
+    console.log("\n ⏰ Waiting MongoDB Connections 😴 😴");
   } catch (error) {
     throw error;
   }

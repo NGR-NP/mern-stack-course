@@ -12,7 +12,7 @@ const ProductSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      required: "please upload you Image Link",
+      required: "please upload your Image Link",
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,

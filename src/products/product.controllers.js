@@ -13,7 +13,7 @@ const createProduct = async (req, res, next) => {
   }
 };
 // #R
-const pullProducts = async (req, res, next) => {
+const pullProducts = async (_req, res, next) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);
