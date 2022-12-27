@@ -6,3 +6,4 @@ authRoute.post("/register", register);
 authRoute.post("/login", login);
 
 module.exports = authRoute;
+ 
