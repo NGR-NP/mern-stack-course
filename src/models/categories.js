@@ -4,7 +4,7 @@ const CategorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: "please enter your Product Category name",
+      required: "please enter Category name",
     },
   },
   {

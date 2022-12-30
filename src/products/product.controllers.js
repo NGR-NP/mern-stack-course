@@ -6,14 +6,14 @@ const Product = require("../models/Product");
 const createProduct = async (req, res, next) => {
   const newProduct = new Product(req.body);
   try {
-    const saveProduct = await newProduct.save();
-    res.status(200).json(saveProduct);
+    const savedProduct = await newProduct.save();
+    res.status(200).json(savedProduct);
   } catch (err) {
     next(err);
   }
 };
 // #R
-const pullProducts = async (_req, res, next) => {
+const getProducts = async (req, res, next) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);
@@ -22,7 +22,7 @@ const pullProducts = async (_req, res, next) => {
   }
 };
 // #R (id)
-const pullProductById = async (req, res, next) => {
+const getProductById = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
     res.status(200).json(product);
@@ -31,20 +31,20 @@ const pullProductById = async (req, res, next) => {
   }
 };
 // #U
-const updateProductById = async (req, res, next) => {
+const updateProduct = async (req, res, next) => {
   try {
-    const updateProduct = await Product.findByIdAndUpdate(
+    const updateProductById = await Product.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json(updateProduct);
+    res.status(200).json(updateProductById);
   } catch (err) {
     next(err);
   }
 };
 //  #D
-const deleteProductById = async (req, res, next) => {
+const deleteProduct = async (req, res, next) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("product has been deleted successfully");
@@ -54,8 +54,8 @@ const deleteProductById = async (req, res, next) => {
 };
 module.exports = {
   createProduct,
-  pullProductById,
-  pullProducts,
-  updateProductById,
-  deleteProductById,
+  getProductById,
+  getProducts,
+  updateProduct,
+  deleteProduct,
 };

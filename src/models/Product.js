@@ -4,33 +4,33 @@ const ProductSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: "please give your Product Titile",
+      required: "title is required",
     },
     desc: {
       type: String,
-      required: "please give your Product Description",
+      required: "description is required",
     },
     img: {
       type: String,
-      required: "please upload your Image Link",
+      required: "image is required",
     },
     category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "category",
+      type: Array,
+      required: "category is required",
     },
     color: {
       type: Array,
     },
     size: {
-      Type: Array,
+      type: Array,
     },
     qty: {
       type: Number,
-      required: "please enter your Product Quantity"
+      required: "quantity is required",
     },
     price: {
       type: Number,
-      required: "please enter you Product Price",
+      required: "price is required",
     },
   },
   {

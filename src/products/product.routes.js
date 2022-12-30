@@ -1,21 +1,22 @@
+const { verifyAdmin } = require("../utils/verifytoken");
 const {
   createProduct,
-  pullProductById,
-  pullProducts,
-  updateProductById,
-  deleteProductById,
+  getProductById,
+  getProducts,
+  updateProduct,
+  deleteProduct,
 } = require("./product.controllers");
 
 const productRoutes = require("express").Router();
 
-productRoutes.post("/", createProduct);
+productRoutes.post("/", verifyAdmin, createProduct);
 
-productRoutes.get("/:id", pullProductById);
+productRoutes.get("/:id", getProductById);
 
-productRoutes.get("/", pullProducts);
+productRoutes.get("/", getProducts);
 
-productRoutes.put("/:id", updateProductById);
+productRoutes.put("/:id", verifyAdmin, updateProduct);
 
-productRoutes.delete("/:id", deleteProductById);
+productRoutes.delete("/:id", verifyAdmin, deleteProduct);
 
 module.exports = productRoutes;

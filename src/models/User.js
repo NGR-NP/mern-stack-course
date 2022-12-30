@@ -4,17 +4,21 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: "User Name is required",
+      required: "username is required",
       unique: true,
     },
     email: {
       type: String,
-      required: "please enter your email",
+      required: "E-mail is required",
       unique: true,
+      match: [
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+        "please enter valid E-mail address",
+      ],
     },
     password: {
       type: String,
-      required: "password is required",
+      required: "passowrd is required",
     },
     isAdmin: {
       type: Boolean,
