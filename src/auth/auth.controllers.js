@@ -23,6 +23,7 @@ const register = async (req, res, next) => {
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
+      // role: "ADMIN",
       password: hash,
     });
     await newUser.save();
@@ -59,14 +60,21 @@ const login = async (req, res, next) => {
       return next(err);
     }
 
-    const accessToken = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, JWT, {
-      expiresIn: "1h",
+    const accessToken = jwt.sign({ id: user._id, role: user.role }, JWT, {
+      expiresIn: "30s",
     });
-    const { password, isAdmin, ...otherDetails } = user._doc;
+    const refreshToken = jwt.sign(
+      { id: user._id, role: user.role, type: "refresh" },
+      JWT,
+      {
+        expiresIn: "2m",
+      }
+    );
+    const { password, role, ...otherDetails } = user._doc;
     res
       // .cookie("access_token", accessToken, { httpOnly: true })
       .status(200)
-      .json({ ...otherDetails, accessToken });
+      .json({ ...otherDetails, accessToken, refreshToken });
   } catch (err) {
     next(err);
   }
