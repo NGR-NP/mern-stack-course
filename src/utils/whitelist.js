@@ -20,11 +20,10 @@ const whitelist = [ALLOWED_DOMAIN];
 const corsOptions = {
   origin: (origin, callback) => {
     if (
-      whitelist.indexOf(origin) !== -1 ||
-      // /* reminder uncomment this line `|| !origin` on production this is only use on development
-      //  or `||` may be moved to top while fromat
-      !origin
-      // */ //reminder uncomment this line
+      whitelist.indexOf(origin) !== -1
+      // /* reminder comment origin on production
+      // || !origin
+      // */ //reminder
     ) {
       callback(null, true);
     } else {
