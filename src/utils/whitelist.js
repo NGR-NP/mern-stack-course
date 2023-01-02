@@ -15,8 +15,8 @@
 // module.exports = corsOptions;
 
 const { ALLOWED_DOMAIN } = require("../config/secrets");
-const ERROR  = require("./error");
-const whitelist = [ALLOWED_DOMAIN];
+const ERROR = require("./error");
+const whitelist = [ALLOWED_DOMAIN, "http://localhost:3000"];
 const corsOptions = {
   origin: (origin, callback) => {
     if (
