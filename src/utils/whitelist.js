@@ -14,32 +14,21 @@
 // };
 // module.exports = corsOptions;
 
-
-
-
-
-
-
 const { ALLOWED_DOMAIN } = require("../config/secrets");
-
-const whitelist = [
-  ALLOWED_DOMAIN,
-  // /* reminder uncomment this line on production this is only use on development
-   "https://www.google.com", "http://localhost:8080",
-  // */ //reminder uncomment this line on production this is only use on development
-];
+const { ERROR } = require("./error");
+const whitelist = [ALLOWED_DOMAIN];
 const corsOptions = {
   origin: (origin, callback) => {
     if (
-      whitelist.indexOf(origin) !== -1
+      whitelist.indexOf(origin) !== -1 ||
       // /* reminder uncomment this line `|| !origin` on production this is only use on development
       //  or `||` may be moved to top while fromat
-      || !origin
+      !origin
       // */ //reminder uncomment this line
     ) {
       callback(null, true);
     } else {
-      callback(Error("not allowed by Cors"));
+      callback(ERROR(401, "not allowed by Cors"));
     }
   },
 };

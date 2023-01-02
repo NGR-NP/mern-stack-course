@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const { ADMIN, USER } = require("../constants/roles");
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -9,11 +9,11 @@ const UserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: "E-mail is required",
+      required: "email is required",
       unique: true,
       match: [
-        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-        "please enter valid E-mail address",
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        "inValid Email address",
       ],
     },
     password: {
@@ -21,11 +21,13 @@ const UserSchema = new mongoose.Schema(
       required: "passowrd is required",
     },
     role: {
-      type: String,
-      enum: ["ADMIN", "USER"],
-      default: "USER",
-      required: "Role is Required",
+      User: {
+        type: Number,
+        default: 100,
+      },
+      Admin: Number,
     },
+    refreshTokenDB: String,
   },
   { timestamps: true }
 );

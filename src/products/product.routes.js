@@ -1,4 +1,6 @@
-const { verifyAdmin } = require("../utils/verifytoken");
+const productRoutes = require("express").Router();
+const { verifyRole, verifyJwt } = require("../auth/auth.middleware");
+const rolesList = require("../constants/roles");
 const {
   createProduct,
   getProductById,
@@ -7,16 +9,11 @@ const {
   deleteProduct,
 } = require("./product.controllers");
 
-const productRoutes = require("express").Router();
-
-productRoutes.post("/", verifyAdmin, createProduct);
-
-productRoutes.get("/:id", getProductById);
-
 productRoutes.get("/", getProducts);
-
-productRoutes.put("/:id", verifyAdmin, updateProduct);
-
-productRoutes.delete("/:id", verifyAdmin, deleteProduct);
+productRoutes.get("/:id", getProductById);
+productRoutes.use(verifyJwt);
+productRoutes.post("/", verifyRole(rolesList.Admin), createProduct);
+productRoutes.put("/:id", verifyRole(rolesList.Admin), updateProduct);
+productRoutes.delete("/:id", verifyRole(rolesList.Admin), deleteProduct);
 
 module.exports = productRoutes;

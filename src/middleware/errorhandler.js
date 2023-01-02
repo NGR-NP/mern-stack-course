@@ -3,8 +3,8 @@ const errorHandler = (err, req, res, next) => {
   const errorMessage = err.message || "something went worng!";
   return res.status(errorStatus).json({
     success: false,
-    errorStatus: errorStatus,
-    errorMessage: errorMessage,
+    status: errorStatus,
+    message: errorMessage,
     stack: err.stack,
   });
 };
