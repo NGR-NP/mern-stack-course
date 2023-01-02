@@ -15,7 +15,7 @@
 // module.exports = corsOptions;
 
 const { ALLOWED_DOMAIN } = require("../config/secrets");
-const { ERROR } = require("./error");
+const ERROR  = require("./error");
 const whitelist = [ALLOWED_DOMAIN];
 const corsOptions = {
   origin: (origin, callback) => {
