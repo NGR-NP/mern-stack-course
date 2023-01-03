@@ -1,12 +1,12 @@
 import Brands from "../sections/brands/Brands";
 import Hero from "../sections/hero/Hero";
-import ProductsCategories from '../sections/productsCategories/ProductsCategories.jsx'
+import Products from "../sections/Products/Products";
 const Home = () => {
   return (
     <>
       <Hero />
-      <Brands/>
-      <ProductsCategories/>
+      <Brands />
+      <Products />
     </>
   );
 };
