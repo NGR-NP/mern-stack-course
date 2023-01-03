@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ApiUrl } from "../../App";
 import Product from "./Product";
 
 const Container = styled.div`
@@ -17,11 +18,11 @@ const FetchProducts = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await axios.get(
-          "https://vrit-tech-mernstack-project-by-roll-1.up.railway.app/api/products"
-        );
+        const res = await axios.get(`${ApiUrl}/products`);
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     getProduct();
   });

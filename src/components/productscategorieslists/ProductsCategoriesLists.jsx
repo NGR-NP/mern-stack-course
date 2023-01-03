@@ -1,15 +1,17 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 const List = styled.div`
-background-color: red;
-padding: 1rem;
+  background-color: red;
+  padding: 1rem;
 `;
 const ProductsCategoriesLists = () => {
   return (
-    <>
-    <List>list</List>
-    </>
-  )
-}
+    <List>
+      <Cont>Mens</Cont>
+      <Cont>Womens</Cont>
+      <Cont>Accossories</Cont>
+    </List>
+  );
+};
 
-export default ProductsCategoriesLists
+export default ProductsCategoriesLists;
