@@ -37,17 +37,17 @@ const scletion = keyframes`
     background:repeating-linear-gradient(135deg,transparent,#f9f9f9 76px);
   } */
   0%{
-    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 80px);
+    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 100px);
   }
-  25%{
-    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 82px);
+  /* 25%{
+    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 81px);
   }50%{
-    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 84px);
+    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 82px);
   }75%{
     background:repeating-linear-gradient(135deg,transparent,#f9f9f9 82px);
-  }
+  } */
   100%{
-    background:repeating-linear-gradient(135deg,transparent,#f9f9f9 80px);
+    background:repeating-linear-gradient(315deg,#f9f9f9,transparent 127px);
   } 
 `;
 const Container = styled.div`
@@ -74,7 +74,7 @@ const Loading = styled.div`
   position: absolute;
   height: 91%;
   background: repeating-linear-gradient(320deg, #f9f9f9, transparent 100px);
-  animation: ${scletion} 1s linear infinite alternate;
+  animation: ${scletion} 0.3s linear infinite alternate;
 `;
 const Img = styled.img`
   width: 100%;
@@ -140,20 +140,28 @@ const Price = styled.p`
   cursor: pointer;
   z-index: 1;
   opacity: 0;
-  background-color: ${(props) => props.color};
+  background-color: #ffffff8d;
+  box-shadow: 0px 0px 6px 0px rgb(220 220 220);
   backdrop-filter: blur(10px);
   border-radius: 4px;
   padding: 7px;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
-  color: ${(props) =>
-    (props.color === "white" && "rosybrown") ||
-    (props.color === "green" && "white") ||
-    (props.color === "gray" && "white") ||
-    (props.color === ",,purple" && "white") ||
-    (props.color === "sky blue" && "black") ||
-    (props.color === "red" && "white")};
-  ${Container} + ${Img}+ ${FavIcon} + ${AddToShoppingBag} +  & {
+  /* color: ${(props) =>
+    props.color === "white"
+      ? "rosybrown"
+      : "white" || props.color === "green"
+      ? "white"
+      : "black" || props.color === "gray"
+      ? "white"
+      : "black" || props.color === ",,purple"
+      ? "white"
+      : "black" || props.color === "sky blue"
+      ? "black"
+      : "black" || props.color === "red"
+      ? "white"
+      : "black"}; */
+  ${Container} + ${Img}+ ${FavIcon} + ${AddToShoppingBag} + & {
     bottom: -1%;
     opacity: 1;
   }
