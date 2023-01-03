@@ -147,12 +147,12 @@ const Price = styled.p`
   transition: all 0.3s ease-in-out;
   font-weight: bold;
   color: ${(props) =>
-    (props.color == "white" && "rosybrown") ||
-    (props.color == "green" && "white") ||
-    (props.color == "gray" && "white") ||
-    (props.color == ",,purple" && "white") ||
-    (props.color == "sky blue" && "black") ||
-    (props.color == "red" && "white")};
+    (props.color === "white" && "rosybrown") ||
+    (props.color === "green" && "white") ||
+    (props.color === "gray" && "white") ||
+    (props.color === ",,purple" && "white") ||
+    (props.color === "sky blue" && "black") ||
+    (props.color === "red" && "white")};
   ${Container} + ${Img}+ ${FavIcon} + ${AddToShoppingBag} +  & {
     bottom: -1%;
     opacity: 1;
