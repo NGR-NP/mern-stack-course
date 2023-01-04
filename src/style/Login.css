@@ -7,11 +7,7 @@
 }
 .loginSec {
   border-radius: 765px 86px;
-  background: linear-gradient(
-    5deg,
-    rgb(142 218 243) 0%,
-    rgb(249 160 252) 100%
-  );
+  background: linear-gradient(5deg, rgb(142 218 243) 0%, rgb(249 160 252) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +24,7 @@
   margin: 5rem 0;
 }
 .loginTitle {
-  color: var(--lightTitle);
+  color: rgb(118 0 122);
   text-align: center;
   margin: 0 0 18px;
   font-size: 57px;
@@ -120,6 +116,7 @@
 .loginInputCont label {
   padding-left: 10px;
   cursor: pointer;
+  color: rgb(69 40 40);
 }
 .infoCont {
   display: flex;
@@ -128,12 +125,12 @@
   margin-top: 1rem;
 }
 .infoCont a {
-  color: black;
+  color: #d6249f;
   text-decoration: none;
 }
 .infoCont p {
   margin: 0;
   padding: 4px;
   font-size: 12px;
-  color: #ffffff;
+  color: #3c3c3c;
 }
