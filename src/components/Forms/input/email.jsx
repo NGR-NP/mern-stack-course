@@ -9,8 +9,6 @@ const EmailComp = ({
 }) => {
   return (
     <div
-      email={email}
-      validemail={validEmail}
       className="registerInputCont inputCont "
     >
       <label htmlFor="email">Email</label>

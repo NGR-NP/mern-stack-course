@@ -1,18 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import "../../../style/Register.css";
 import UsernameComp from "../input/username";
 import EmailComp from "../input/email";
 import PasswordComp from "../input/password";
-import ErrMsg from "./ErrMsg";
+import ErrMsg from "../ErrMsg";
 import Info from "../Info";
+import Button from "../Button";
+import CustomToast from "../../Tost/CustomToast";
+import axios from "../../../api/axios";
 
 const isValidUsername = /^[A-z][A-z0-9-_]{2,15}$/;
 const isValidEmail =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const isValidPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
+const REGISTER_URL = "/auth/register";
 const RegisterComp = () => {
   const errRef = useRef();
+  const formRef = useRef();
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
@@ -22,13 +26,17 @@ const RegisterComp = () => {
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [pwd, setPwd] = useState("");
+  const [password, setPassword] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [matchPwd, setMatchPwd] = useState("");
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
     setValidUsername(isValidUsername.test(username));
@@ -39,22 +47,67 @@ const RegisterComp = () => {
   }, [email]);
 
   useEffect(() => {
-    setValidPwd(isValidPwd.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
-
-  const [errMsg, setErrMsg] = useState("");
-  // const [success, setSuccess] = useState(false);
+    setValidPwd(isValidPwd.test(password));
+    setValidMatch(password === matchPwd);
+  }, [password, matchPwd]);
 
   useEffect(() => {
     setErrMsg("");
   }, [username]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const nameI = isValidUsername.test(username);
+    const emailI = isValidEmail.test(email);
+    const passwordI = isValidPwd.test(password);
+    if (!nameI || !emailI || !passwordI) {
+      setErrMsg("Nice try");
+      return;
+    }
+    try {
+      const res = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ username, email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      setSuccess(true);
+      formRef.current.reset();
+
+      setToastMessage(res.data.message);
+    } catch (err) {
+      console.log(err.response);
+      if (!err?.response) {
+        setErrMsg("Something went wrong!");
+      } else if (err.response.data.status === 400) {
+        setErrMsg(err.response.data.message);
+      } else {
+        setErrMsg(err.response.data.message);
+      }
+    }
+  };
+
   return (
     <>
-      <ErrMsg errMsg={errMsg} errRef={errRef} />
-      <form className="registerForm">
+      {success ? (
+        <CustomToast
+          bgcolor={"5eda2fcf"}
+          toastmessage={toastMessage || "Sucess"}
+        />
+      ) : (
+        <></>
+      )}
+
+      {errMsg ? <ErrMsg errMsg={errMsg} errRef={errRef} /> : <></>}
+
+      <form ref={formRef} onSubmit={handleSubmit} className="registerForm">
         <div className="registerTitle title">Register</div>
+        <Info
+          message={"Alredy have an Account"}
+          where={"Login"}
+          whereto={"/login"}
+        />
         <UsernameComp
           username={username}
           validUsername={validUsername}
@@ -70,8 +123,8 @@ const RegisterComp = () => {
           setEmailFocus={setEmailFocus}
         />
         <PasswordComp
-          pwd={pwd}
-          setPwd={setPwd}
+          password={password}
+          setPassword={setPassword}
           validPwd={validPwd}
           pwdFocus={pwdFocus}
           setPwdFocus={setPwdFocus}
@@ -81,22 +134,15 @@ const RegisterComp = () => {
           matchFocus={matchFocus}
           setMatchFocus={setMatchFocus}
         />
-        <div className="centerADiv">
-          <button
-            disabled={
-              !validUsername || !validEmail || !validPwd || !validMatch
-                ? true
-                : false
-            }
-            className="registerBtn"
-          >
-            Submit
-          </button>
-        </div>
-        <Info message={"Alredy have an Account"} where={"login"} />
+        <Button
+          lets={"Register"}
+          validUsername={validUsername}
+          validEmail={validEmail}
+          validPwd={validPwd}
+          validMatch={validMatch}
+        />
       </form>
     </>
   );
 };
-
 export default RegisterComp;

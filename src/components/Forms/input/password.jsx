@@ -1,8 +1,8 @@
 import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
 
 const PasswordComp = ({
-  pwd,
-  setPwd,
+  password,
+  setPassword,
   validPwd,
   pwdFocus,
   setPwdFocus,
@@ -20,7 +20,7 @@ const PasswordComp = ({
           <div className={validPwd ? "valid" : "hide"}>
             <Check />
           </div>
-          <div className={validPwd || !pwd ? "hide" : "invalid"}>
+          <div className={validPwd || !password ? "hide" : "invalid"}>
             <Dangerous />
           </div>
 
@@ -32,7 +32,7 @@ const PasswordComp = ({
             placeholder="Set Password"
             aria-invalid={validPwd ? "false" : "true"}
             aria-describedby="pwdnote"
-            onChange={(e) => setPwd(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             onFocus={() => setPwdFocus(false)}
             onBlur={() => setPwdFocus(true)}
           />

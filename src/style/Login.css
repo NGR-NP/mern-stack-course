@@ -20,7 +20,7 @@
   margin: 5rem 0;
 }
 .loginTitle {
-  color: rgb(118 0 122);
+  color: rgb(133 2 155);
   text-align: center;
   margin: 0 0 18px;
   font-size: 57px;
@@ -118,11 +118,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin: 1rem;
 }
 .infoCont a {
-  color: #d6249f;
+  color: rgb(127, 0, 134);
   text-decoration: none;
+  background-color: rgb(255 255 255 / 26%);
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin: 0 5px;
+  font-size: 13px;
+  font-weight: bold;
 }
 .infoCont p {
   margin: 0;

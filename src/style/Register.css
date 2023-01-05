@@ -77,7 +77,7 @@
   border-radius: 0 0 8px 8px;
 }
 
-.registerBtn {
+.RLbtn {
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -90,13 +90,15 @@
   border: none;
   color: #f6f0f0;
   border-radius: 8px;
-  margin: 15px 9px;
+  margin: 30px 9px 15px;
   font-family: cursive, ui-monospace;
   box-shadow: 0px 3px 9px 3px #1f1f1f21;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
-
+.RLbtn:disabled{
+  cursor: not-allowed;
+}
 .registerBtn:after {
   content: "";
   position: absolute;

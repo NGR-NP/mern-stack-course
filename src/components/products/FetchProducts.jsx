@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ApiUrl } from "../../App";
 import Product from "./Product";
+import axios from "../../api/axios";
+
+const PRODUCTS_URL = "/products";
 
 const Container = styled.div`
   max-width: 1300px;
@@ -18,10 +19,12 @@ const FetchProducts = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await axios.get(`${ApiUrl}/products`);
+        const res = await axios.get(PRODUCTS_URL, {
+          headers: { "Content-Type": "application/json" },
+        });
         setProducts(res.data);
       } catch (err) {
-        console.log(err);
+        setProducts(err.response)
       }
     };
     getProduct();
