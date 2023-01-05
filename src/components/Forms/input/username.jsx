@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
 import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
 
-const isValidUsername = /^[A-z][A-z0-9-_]{2,15}$/;
-
-const UsernameComp = () => {
-
-  const [username, setUsername] = useState("");
-  const [validUsername, setValidUsername] = useState(false);
-  const [usernameFocus, setUsernameFocus] = useState(false);
-
-
-  useEffect(() => {
-    setValidUsername(isValidUsername.test(username));
-  }, [username]);
-
+const UsernameComp = ({
+  username,
+  validUsername,
+  setUsername,
+  usernameFocus,
+  setUsernameFocus,
+}) => {
   return (
-    <div
-      usernameProps={username}
-      className="registerInputCont inputCont bdrTop"
-    >
+    <div className="registerInputCont inputCont bdrTop">
       <label htmlFor="userName" className="regLable">
         username
       </label>

@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from "react";
 import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
 
-const isValidPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
-const PasswordComp = () => {
-  const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-
-  useEffect(() => {
-    setValidPwd(isValidPwd.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
-
+const PasswordComp = ({
+  pwd,
+  setPwd,
+  validPwd,
+  pwdFocus,
+  setPwdFocus,
+  matchPwd,
+  setMatchPwd,
+  validMatch,
+  matchFocus,
+  setMatchFocus,
+}) => {
   return (
     <>
-      <div usernameProps={pwd} className="registerInputCont inputCont ">
+      <div className="registerInputCont inputCont ">
         <label htmlFor="password">Password:</label>
         <div className="inputContM">
           <div className={validPwd ? "valid" : "hide"}>
@@ -53,10 +48,7 @@ const PasswordComp = () => {
           character: ! @ # $ %
         </p>
       </div>
-      <div
-        usernameProps={matchPwd}
-        className="registerInputCont inputCont bdrBottom"
-      >
+      <div className="registerInputCont inputCont bdrBottom">
         <label htmlFor="cnfpassword">Conform Password:</label>
         <div className="inputContM">
           <div className={validMatch && matchPwd ? "valid" : "hide"}>

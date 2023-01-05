@@ -39,10 +39,8 @@ const Hero = () => {
   const handleClick = (direction) => {
     if (direction === "left") {
       setSlide(slide > 0 ? slide - 1 : 2);
-      console.log(slide);
     } else {
       setSlide(slide < 2 ? slide + 1 : 0);
-      console.log(slide);
     }
   };
 

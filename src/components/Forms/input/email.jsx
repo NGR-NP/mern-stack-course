@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
 import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
-const isValidEmail =
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const EmailComp = () => {
-  const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-
-  useEffect(() => {
-    setValidEmail(isValidEmail.test(email));
-  }, [email]);
-
+const EmailComp = ({
+  email,
+  setEmail,
+  validEmail,
+  emailFocus,
+  setEmailFocus,
+}) => {
   return (
-    <div usernameProps={email} className="registerInputCont inputCont ">
+    <div
+      email={email}
+      validemail={validEmail}
+      className="registerInputCont inputCont "
+    >
       <label htmlFor="email">Email</label>
       <div className="inputContM">
         <div className={validEmail ? "valid" : "hide"}>
