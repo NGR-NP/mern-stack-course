@@ -1,18 +1,14 @@
 /* *{
   border: 1px solid red;
 } */
-.loginCont {
-  /* height: 100vh; */
-  background-color: #a8e5ff82;
-}
+
 .loginSec {
   border-radius: 765px 86px;
   background: linear-gradient(5deg, rgb(142 218 243) 0%, rgb(249 160 252) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  height: 100%;
+  height: 100vh;
 }
 .loginMain {
   max-width: 560px;

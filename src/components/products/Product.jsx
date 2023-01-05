@@ -124,12 +124,12 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
   ${Img}:hover + ${FavIcon} + & {
-    bottom: 5%;
-    right: 6%;
+    /* bottom: 5%;
+    right: 6%; */
     transition: all 0.3s ease-in-out;
   }
   &:hover {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     font-size: 40px;
   }
 `;
