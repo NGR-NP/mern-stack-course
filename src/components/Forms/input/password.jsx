@@ -38,8 +38,8 @@ const PasswordComp = () => {
             aria-invalid={validPwd ? "false" : "true"}
             aria-describedby="pwdnote"
             onChange={(e) => setPwd(e.target.value)}
-            onFocus={() => setPwdFocus(true)}
-            onBlur={() => setPwdFocus(false)}
+            onFocus={() => setPwdFocus(false)}
+            onBlur={() => setPwdFocus(true)}
           />
         </div>
         <p
