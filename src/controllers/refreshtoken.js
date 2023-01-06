@@ -11,7 +11,7 @@ const genRefreshToken = async (req, res) => {
   jwt.verify(refreshTokenDB, REFRESH_JWT, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
       return res.sendStatus(403);
-    const role = Object.values(foundUser.role);
+    const role = Object.values(foundUser.role).filter(Boolean);
     const accessToken = jwt.sign(
       {
           username: decoded.username,
