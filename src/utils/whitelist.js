@@ -14,15 +14,19 @@
 // };
 // module.exports = corsOptions;
 
-const { ALLOWED_DOMAIN } = require("../config/secrets");
+// const { ALLOWED_DOMAIN } = require("../config/secrets");
 const ERROR = require("./error");
-const whitelist = [ALLOWED_DOMAIN, "http://localhost:3000","http://127.0.0.1:3000"];
+const whitelist = [
+  "https://vrit-tech-mernstack-project-by-roll-1.netlify.app",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+];
 const corsOptions = {
   origin: (origin, callback) => {
     if (
       whitelist.indexOf(origin) !== -1
       // /* reminder comment origin on production
-      // || !origin
+      || !origin
       // */ //reminder
     ) {
       callback(null, true);
