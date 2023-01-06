@@ -113,7 +113,7 @@ const login = async (req, res, next) => {
         username: foundUser.username,
         role: role,
       },
-      JWT,
+      "jfjfjldkdk",
       {
         expiresIn: "30s",
       }
@@ -124,7 +124,7 @@ const login = async (req, res, next) => {
         username: foundUser.username,
         role: role,
       },
-      REFRESH_JWT,
+      "jfjfjf",
       { expiresIn: "1m" }
     );
 
