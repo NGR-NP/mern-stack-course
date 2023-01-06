@@ -32,7 +32,7 @@ const LoginComp = () => {
       console.log(res?.data);
       const accessToken = res?.data?.accessToken;
       const role = res?.data?.role;
-      setAuth({ username, pwd, role, accessToken });
+      setAuth({ username, password, role, accessToken });
       setSuccess(true);
       setUsername("");
       setPassword("");
