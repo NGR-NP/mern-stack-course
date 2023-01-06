@@ -27,7 +27,6 @@ const LoginComp = () => {
         JSON.stringify({ username, password }),
         {
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true,
         }
       );
       console.log(res?.data);
