@@ -11,15 +11,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "*",
-    //  [
-    //   "http:/localhost:3000",
-    //   "https://vrit-tech-mernstack-project-by-roll-1.netlify.app",
-    // ],
-  })
-);
+app.use(cors(corsOptions));
 
 app.use("/api", Routes);
 
