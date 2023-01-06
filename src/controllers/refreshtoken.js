@@ -14,8 +14,9 @@ const genRefreshToken = async (req, res) => {
     const role = Object.values(foundUser.role).filter(Boolean);
     const accessToken = jwt.sign(
       {
-          username: decoded.username,
-          role: role,
+        id: decoded.id,
+        username: decoded.username,
+        role: role,
       },
       JWT,
       {
