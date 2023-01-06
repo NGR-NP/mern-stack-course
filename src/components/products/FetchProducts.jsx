@@ -55,21 +55,21 @@ const FetchProducts = () => {
   const [errMsg, setErrMsg] = useState("");
   const [isloading, setIsloading] = useState(true);
   useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const res = await axios.get(PRODUCTS_URL);
-        setProducts(res.data);
-        setIsloading(false);
-      } catch (err) {
-        if (!err?.response) {
-          setErrMsg("Server is not responding");
-        } else {
-          setErrMsg(err.response.data.message);
-        }
-      }
-    };
     getProduct();
-  });
+  }, []);
+  const getProduct = async () => {
+    try {
+      const res = await axios.get(PRODUCTS_URL);
+      setProducts(res.data);
+      setIsloading(false);
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("Server is not responding");
+      } else {
+        setErrMsg(err.response.data.message);
+      }
+    }
+  };
   return (
     <>
       <Container>

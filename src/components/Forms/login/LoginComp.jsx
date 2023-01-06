@@ -22,13 +22,7 @@ const LoginComp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ username, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const res = await axios.post(LOGIN_URL, {username, password});
       console.log(res?.data);
       const accessToken = res?.data?.accessToken;
       const role = res?.data?.role;
@@ -38,7 +32,7 @@ const LoginComp = () => {
       setPassword("");
       setToastMessage(res.data.message);
     } catch (err) {
-       if (err.response?.data?.status === 400) {
+      if (err.response?.data?.status === 400) {
         setErrMsg(err.response?.data?.message);
       } else if (err.response?.data?.status === 401) {
         setErrMsg(err.response?.data?.message);
