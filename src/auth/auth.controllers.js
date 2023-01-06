@@ -90,23 +90,26 @@ const register = async (req, res, next) => {
   }
 };
 const login = async (req, res, next) => {
-  const { username, password } = req.body;
-  const reqPassword = password;
-  if (!username) return next(ERROR(400, "enter your Username"));
-  if (!reqPassword) return next(ERROR(400, "enter your Password"));
+  if (!req.body.username) return next(ERROR(400, "enter your Username"));
+  if (!req.body.password) return next(ERROR(400, "enter your Password"));
 
-  const wrgMsg = ERROR(400, "Wrong credentials!");
-  const foundUser = await User.findOne({ username });
-  if (!foundUser) return next(wrgMsg);
+  try {
+    const foundUser = await User.findOne({ username: req.body.username });
+    if (!foundUser) {
+      return next(ERROR(400, "Wrong credentials!"));
+    }
 
-  const isPasswordCorrect = bcrypt.compare(reqPassword, foundUser.password);
-  if (!isPasswordCorrect) {
-    return next(wrgMsg);
-  }
-  if (isPasswordCorrect) {
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      foundUser.password
+    );
+    if (!isPasswordCorrect) {
+      return next(ERROR(400, "Wrong credentials!!"));
+    }
     const role = Object.values(foundUser.role).filter(Boolean);
     const accessToken = jwt.sign(
       {
+        id: foundUser._id,
         username: foundUser.username,
         role: role,
       },
@@ -117,11 +120,12 @@ const login = async (req, res, next) => {
     );
     const refreshToken = jwt.sign(
       {
+        id: foundUser._id,
         username: foundUser.username,
         role: role,
       },
       REFRESH_JWT,
-      { expiresIn: "2m" }
+      { expiresIn: "1m" }
     );
 
     foundUser.refreshTokenDB = refreshToken;
@@ -130,13 +134,13 @@ const login = async (req, res, next) => {
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
     });
-    res.json({
+    res.status(200).json({
       message: `Welcome Back ${result.username}`,
       ...otherDetails,
       accessToken,
     });
-  } else {
-    res.sendStatus(401);
+  } catch (err) {
+    next(err);
   }
 };
 module.exports = { register, login };

@@ -1,19 +1,20 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const { REFRESH_JWT, JWT } = require("../config/secrets");
+const ERROR = require("../utils/error");
 
-const genRefreshToken = async (req, res) => {
+const genRefreshToken = async (req, res, next) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(401);
-  const refreshTokenDB = cookies.jwt;
-  const foundUser = await User.findOne({ refreshTokenDB });
-  if (!foundUser) return res.sendStatus(403);
-  jwt.verify(refreshTokenDB, REFRESH_JWT, (err, decoded) => {
+  if (!cookies?.jwt) return next(ERROR(401, "cookie not avaliable"));
+  const foundUser = await User.findOne({ refreshTokenDB: cookies.jwt });
+  if (!foundUser) return next(ERROR(403, "token expire"));
+  jwt.verify(foundUser, REFRESH_JWT, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
-      return res.sendStatus(403);
+      return next(ERROR(403, "invalid token"));
     const role = Object.values(foundUser.role).filter(Boolean);
     const accessToken = jwt.sign(
       {
+        id: decoded._id,
         username: decoded.username,
         role: role,
       },
