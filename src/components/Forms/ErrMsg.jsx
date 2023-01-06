@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 const MSG = styled.div`
   position: fixed;
-  top: 10px;
+  top: 20px;
   right: 5px;
   padding: 15px;
   background-color: #dd0d0d;
@@ -17,11 +17,7 @@ const MSG = styled.div`
 `;
 const ErrMsg = ({ errRef, errMsg }) => {
   return (
-    <MSG
-      ref={errRef}
-      className={errMsg ? "errmsg" : "offscreen"}
-      aria-live="assertive"
-    >
+    <MSG ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
       <Dangerous /> {errMsg}
     </MSG>
   );

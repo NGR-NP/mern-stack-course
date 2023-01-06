@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import UsernameComp from "../input/username";
-import EmailComp from "../input/email";
-import PasswordComp from "../input/password";
+import UsernameComp from "./input/username";
+import EmailComp from "./input/email";
+import PasswordComp from "./input/password";
 import ErrMsg from "../ErrMsg";
 import Info from "../Info";
 import Button from "../Button";
@@ -16,7 +16,6 @@ const isValidPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/auth/register";
 const RegisterComp = () => {
   const errRef = useRef();
-  const formRef = useRef();
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
@@ -65,16 +64,12 @@ const RegisterComp = () => {
       return;
     }
     try {
-      const res = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ username, email, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const res = await axios.post(REGISTER_URL, { username, email, password });
       setSuccess(true);
-      formRef.current.reset();
-
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setMatchPwd("");
       setToastMessage(res.data.message);
     } catch (err) {
       console.log(err.response);
@@ -101,12 +96,12 @@ const RegisterComp = () => {
 
       {errMsg ? <ErrMsg errMsg={errMsg} errRef={errRef} /> : <></>}
 
-      <form ref={formRef} onSubmit={handleSubmit} className="registerForm">
+      <form onSubmit={handleSubmit} className="registerForm">
         <div className="registerTitle title">Register</div>
         <Info
           message={"Alredy have an Account"}
-          where={"Login"}
-          whereto={"/login"}
+          what={"Login"}
+          where={"/login"}
         />
         <UsernameComp
           username={username}

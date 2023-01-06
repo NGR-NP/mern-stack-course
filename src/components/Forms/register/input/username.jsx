@@ -1,4 +1,4 @@
-import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
+import { Dangerous, InfoOutlined } from "@mui/icons-material";
 
 const UsernameComp = ({
   username,
@@ -9,13 +9,10 @@ const UsernameComp = ({
 }) => {
   return (
     <div className="registerInputCont inputCont bdrTop">
-      <label htmlFor="userName" className="regLable">
+      <label htmlFor="userName" className="regLable"> 
         username
       </label>
       <div className="inputContM">
-        <div className={validUsername ? "valid" : "hide"}>
-          <Check />
-        </div>
         <div className={validUsername || !username ? "hide" : "invalid"}>
           <Dangerous />
         </div>
@@ -31,6 +28,7 @@ const UsernameComp = ({
           aria-describedby="uidnote"
           onFocus={() => setUsernameFocus(false)}
           onBlur={() => setUsernameFocus(true)}
+          value={username}
         />
       </div>
       <p

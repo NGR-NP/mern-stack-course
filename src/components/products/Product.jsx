@@ -55,8 +55,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width: 280px; //note for small screen 200px 
-  /* height: 350px; */
+  min-width: 280px; //note for small screen 200px
+  height: ${(props) => props.height}px;
+  height: 350px;
   margin: 5px;
   padding: 12px;
   overflow: hidden;
@@ -189,10 +190,10 @@ const Price = styled.p`
     opacity: 1;
   }
 `;
-const Product = ({ product }) => {
+const Product = ({ product, height }) => {
   return (
-    <Container>
-      <Loading />
+    <Container height={height}>
+      <Loading /> 
       <Img src={product.img} alt={product.title} />
       <FavIcon sx={{ fontSize: 30 }} />
       <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />

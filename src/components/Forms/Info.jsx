@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Info = ({ message, where, whereto }) => {
+const Info = ({ message, what, where }) => {
   return (
     <div className="infoCont">
       <p>{message}</p>
-      <Link to={whereto}>{where}</Link>
+      <Link to={where}>{what}</Link>
     </div>
   );
 };

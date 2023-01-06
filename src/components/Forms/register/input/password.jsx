@@ -1,4 +1,4 @@
-import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
+import { Dangerous, InfoOutlined } from "@mui/icons-material";
 
 const PasswordComp = ({
   password,
@@ -17,9 +17,6 @@ const PasswordComp = ({
       <div className="registerInputCont inputCont ">
         <label htmlFor="password">Password:</label>
         <div className="inputContM">
-          <div className={validPwd ? "valid" : "hide"}>
-            <Check />
-          </div>
           <div className={validPwd || !password ? "hide" : "invalid"}>
             <Dangerous />
           </div>
@@ -29,12 +26,13 @@ const PasswordComp = ({
             type="password"
             name="password"
             id="password"
+            value={password}
             placeholder="Set Password"
             aria-invalid={validPwd ? "false" : "true"}
             aria-describedby="pwdnote"
             onChange={(e) => setPassword(e.target.value)}
-            onFocus={() => setPwdFocus(false)}
-            onBlur={() => setPwdFocus(true)}
+            onFocus={() => setPwdFocus(true)}
+            onBlur={() => setPwdFocus(false)}
           />
         </div>
         <p
@@ -51,9 +49,6 @@ const PasswordComp = ({
       <div className="registerInputCont inputCont bdrBottom">
         <label htmlFor="cnfpassword">Conform Password:</label>
         <div className="inputContM">
-          <div className={validMatch && matchPwd ? "valid" : "hide"}>
-            <Check />
-          </div>
           <div className={validMatch || !matchPwd ? "hide" : "invalid"}>
             <Dangerous />
           </div>
@@ -62,12 +57,13 @@ const PasswordComp = ({
             className="registerInput"
             type="password"
             id="cnfpassword"
+            value={matchPwd}
             placeholder="Reinter your Password"
             aria-invalid={validMatch ? "false" : "true"}
             aria-describedby="cnfnote"
             onChange={(e) => setMatchPwd(e.target.value)}
-            onFocus={() => setMatchFocus(false)}
-            onBlur={() => setMatchFocus(true)}
+            onFocus={() => setMatchFocus(true)}
+            onBlur={() => setMatchFocus(false)}
           />
         </div>
         <p

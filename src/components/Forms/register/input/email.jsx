@@ -1,4 +1,4 @@
-import { Check, Dangerous, InfoOutlined } from "@mui/icons-material";
+import { Dangerous, InfoOutlined } from "@mui/icons-material";
 
 const EmailComp = ({
   email,
@@ -8,14 +8,9 @@ const EmailComp = ({
   setEmailFocus,
 }) => {
   return (
-    <div
-      className="registerInputCont inputCont "
-    >
+    <div className="registerInputCont inputCont ">
       <label htmlFor="email">Email</label>
       <div className="inputContM">
-        <div className={validEmail ? "valid" : "hide"}>
-          <Check />
-        </div>
         <div className={validEmail || !email ? "hide" : "invalid"}>
           <Dangerous />
         </div>
@@ -24,6 +19,7 @@ const EmailComp = ({
           type="email"
           name="email"
           id="email"
+          value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={validEmail ? "false" : "true"}

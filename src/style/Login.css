@@ -123,10 +123,13 @@
 .infoCont a {
   color: rgb(127, 0, 134);
   text-decoration: none;
-  background-color: rgb(255 255 255 / 26%);
+  background-color:rgb(255 255 255 / 17%);
+  backdrop-filter: blur(10px);
   padding: 4px 12px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 5px;
+  box-shadow: 8px 9px 20px 0px rgb(91 91 91 / 15%);
+
   font-size: 13px;
   font-weight: bold;
 }
