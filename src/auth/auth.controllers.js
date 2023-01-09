@@ -122,6 +122,7 @@ const login = async (req, res, next) => {
         {
           "id": foundUser._id,
           "username": foundUser.username,
+          
           "role": foundUser.role,
         },
         REFRESH_JWT,
