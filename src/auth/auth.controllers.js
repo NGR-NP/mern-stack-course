@@ -109,9 +109,9 @@ const login = async (req, res, next) => {
       const role = Object.values(foundUser.role).filter(Boolean);
       const accessToken = jwt.sign(
         {
-          id: foundUser._id,
-          username: foundUser.username,
-          role: role,
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": role,
         },
         JWT,
         {
@@ -120,9 +120,9 @@ const login = async (req, res, next) => {
       );
       const refreshToken = jwt.sign(
         {
-          id: foundUser._id,
-          username: foundUser.username,
-          role: role,
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": role,
         },
         REFRESH_JWT,
         { expiresIn: "1m" }
