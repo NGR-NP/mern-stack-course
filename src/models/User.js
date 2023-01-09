@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { ADMIN, USER } = require("../constants/roles");
+const { User, Admin } = require("../constants/roles");
+// const { ADMIN, USER } = require("../constants/roles");
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -20,12 +21,18 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: "passowrd is required",
     },
+    // role: {
+    //   User: {
+    //     type: Number,
+    //     default: 100,
+    //   },
+    //   Admin: Number,
+    // },
     role: {
-      User: {
-        type: Number,
-        default: 100,
-      },
-      Admin: Number,
+      type: String,
+      enum: [Admin, User],
+      default: User,
+      required: "Role is required",
     },
     refreshTokenDB: String,
   },
