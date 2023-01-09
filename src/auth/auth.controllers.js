@@ -122,7 +122,7 @@ const login = async (req, res, next) => {
         {
           "id": foundUser._id,
           "username": foundUser.username,
-          "role": role,
+          "role": foundUser.role,
         },
         REFRESH_JWT,
         { expiresIn: "1m" }
@@ -135,7 +135,7 @@ const login = async (req, res, next) => {
       });
       res.status(200).json({
         message: `Welcome Back ${result.username}`,
-        resunt,
+        result,
         accessToken,
       });
     }
