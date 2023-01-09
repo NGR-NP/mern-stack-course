@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema(
     role: {
       type: [Number],
       enum: [Admin, User],
-      default: [User, Admin],
+      default: User,
       required: "Role is required",
     },
     refreshTokenDB: String,
