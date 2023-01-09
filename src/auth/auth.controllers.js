@@ -135,7 +135,7 @@ const login = async (req, res, next) => {
         httpOnly: true,
       });
       res.status(200).json({
-        message: `Welcome Back ${result.username}`,
+//        message: `Welcome Back ${result.username}`,
         // ...otherDetails,
         role,
         accessToken,
