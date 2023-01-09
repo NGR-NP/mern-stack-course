@@ -106,12 +106,12 @@ const login = async (req, res, next) => {
       return next(ERROR(400, "Wrong credentials!!"));
     }
     if (isPasswordCorrect) {
-      // const role = Object.values(foundUser.role).filter(Boolean);
+      const role = Object.values(foundUser.role).filter(Boolean);
       const accessToken = jwt.sign(
         {
           "id": foundUser._id,
           "username": foundUser.username,
-          "role": foundUser.role,
+          "role": role,
         },
         JWT,
         {
@@ -122,8 +122,7 @@ const login = async (req, res, next) => {
         {
           "id": foundUser._id,
           "username": foundUser.username,
-          
-          "role": foundUser.role,
+          "role": role,
         },
         REFRESH_JWT,
         { expiresIn: "1m" }
@@ -136,7 +135,7 @@ const login = async (req, res, next) => {
       });
       res.status(200).json({
         message: `Welcome Back ${result.username}`,
-        result,
+        role,
         accessToken,
       });
     }
