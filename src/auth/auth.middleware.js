@@ -30,9 +30,8 @@ const verifyRole = (...isAllowed) => {
     const roleArray = [...isAllowed];
     console.log(req.role);
     console.log(roleArray);
-    const result = req.role
-      .map((role) => roleArray.includes(role))
-      .find((val) => val === true);
+      const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
+
     if (!result)
       return next(ERROR(401, "unauthorized! only permited user can do that"));
     next();
