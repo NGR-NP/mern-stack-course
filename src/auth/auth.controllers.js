@@ -130,14 +130,14 @@ const login = async (req, res, next) => {
 
       foundUser.refreshTokenDB = refreshToken;
       const result = await foundUser.save();
-      const { password,refreshTokenDB, ...otherDetails } = result._doc;
+      const { password,role,refreshTokenDB, ...otherDetails } = result._doc;
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
       });
       res.status(200).json({
         message: `Welcome Back ${result.username}`,
          ...otherDetails,
-        
+        role,
         accessToken,
       });
     }
