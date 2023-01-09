@@ -10,7 +10,7 @@ const verifyJwt = (req, res, next) => {
   jwt.verify(token, JWT, (err, decoded) => {
     if (err) return next(ERROR(403, "invalid token"));
     req.id = decoded.id;
-    req.user = decoded.username;
+    req.username = decoded.username;
     req.role = decoded.role;
     next();
   });
@@ -24,17 +24,17 @@ const verifyCurrentUser = (req, res, next) => {
     }
   });
 };
-const verifyRole = (...allowedRole) => {
+const verifyRole = (...isAllowed) => {
   return (req, res, next) => {
-    const { role } = req;
-    if (!role) return next(ERROR(401, "you are not authorize no role"));
-    const roleArray = [...allowedRole];
-    console.log(role);
+    if (!req?.role) return next(ERROR(401, "you are not authorize no role"));
+    const roleArray = [...isAllowed];
+    console.log(req.role);
     console.log(roleArray);
-    const result = role
+    const result = req.role
       .map((role) => roleArray.includes(role))
       .find((val) => val === true);
-    if (!result) return next(ERROR(401, "you are not authorize to do that"));
+    if (!result)
+      return next(ERROR(401, "unauthorized! only permited user can do that"));
     next();
   };
 };

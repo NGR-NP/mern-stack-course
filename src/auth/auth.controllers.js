@@ -71,19 +71,18 @@ const register = async (req, res, next) => {
     const emailExist = await User.findOne({ email: email });
     const usernameExist = await User.findOne({ username: username });
     if (usernameExist) {
-      return next(ERROR(400, "username is already taken"));
+      return next(ERROR(409, "username is already taken"));
     }
-    if (emailExist) return next(ERROR(400, "Email is already registered"));
+    if (emailExist) return next(ERROR(409, "Email is already registered"));
     const salt = bcrypt.genSaltSync(5);
     const hash = bcrypt.hashSync(req.body.password, salt);
-    const newUser = new User({
+    await User.create({
       username: username,
       email: email,
       password: hash,
     });
-    await newUser.save();
-    res.status(200).json({
-      message: `${newUser.username} your Account is Created Successfully`,
+    res.status(201).json({
+      message: `${username} Your account has been successfully created.`,
     });
   } catch (err) {
     next(err);
@@ -106,39 +105,41 @@ const login = async (req, res, next) => {
     if (!isPasswordCorrect) {
       return next(ERROR(400, "Wrong credentials!!"));
     }
-    const role = Object.values(foundUser.role).filter(Boolean);
-    const accessToken = jwt.sign(
-      {
-        id: foundUser._id,
-        username: foundUser.username,
-        role: role,
-      },
-      "jfjfjldkdk",
-      {
-        expiresIn: "30s",
-      }
-    );
-    const refreshToken = jwt.sign(
-      {
-        id: foundUser._id,
-        username: foundUser.username,
-        role: role,
-      },
-      "jfjfjf",
-      { expiresIn: "1m" }
-    );
+    if (isPasswordCorrect) {
+      const role = Object.values(foundUser.role).filter(Boolean);
+      const accessToken = jwt.sign(
+        {
+          id: foundUser._id,
+          username: foundUser.username,
+          role: role,
+        },
+        JWT,
+        {
+          expiresIn: "1m",
+        }
+      );
+      const refreshToken = jwt.sign(
+        {
+          id: foundUser._id,
+          username: foundUser.username,
+          role: role,
+        },
+        REFRESH_JWT,
+        { expiresIn: "1m" }
+      );
 
-    foundUser.refreshTokenDB = refreshToken;
-    const result = await foundUser.save();
-    const { password, refreshTokenDB, ...otherDetails } = result._doc;
-    res.cookie("jwt", refreshToken, {
-      httpOnly: true,
-    });
-    res.status(200).json({
-      message: `Welcome Back ${result.username}`,
-      ...otherDetails,
-      accessToken,
-    });
+      foundUser.refreshTokenDB = refreshToken;
+      const result = await foundUser.save();
+      const { password,refreshTokenDB, ...otherDetails } = result._doc;
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+      });
+      res.status(200).json({
+        message: `Welcome Back ${result.username}`,
+        ...otherDetails,
+        accessToken,
+      });
+    }
   } catch (err) {
     next(err);
   }

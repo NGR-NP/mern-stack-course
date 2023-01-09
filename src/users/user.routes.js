@@ -19,7 +19,7 @@ userRoutes.use(verifyJwt);
 
 userRoutes.post("/", verifyRole(rolesList.Admin), createUser);
 userRoutes.get("/", verifyRole(rolesList.Admin), getUsers);
-userRoutes.get("/:id", verifyCurrentUser, verifyRole(rolesList.User), getUser);
+userRoutes.get("/:id", verifyRole(rolesList.User), getUser);
 userRoutes.delete("/:id", verifyRole(rolesList.Admin), deleteUser);
 userRoutes.put("/:id", verifyRole(rolesList.Admin), updateUser);
 
