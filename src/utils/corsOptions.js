@@ -5,7 +5,7 @@ const corsOptions = {
     if (
       whitelist.indexOf(origin) !== -1 ||
       // /* reminder comment origin on production
-      !origin
+//      !origin
       // */ //reminder
     ) {
       callback(null, true);
