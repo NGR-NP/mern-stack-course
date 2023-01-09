@@ -29,9 +29,9 @@ const UserSchema = new mongoose.Schema(
     //   Admin: Number,
     // },
     role: {
-      type: Number,
+      type: String,
       enum: [Admin, User],
-      default: User,
+      default: [User, Admin],
       required: "Role is required",
     },
     refreshTokenDB: String,
