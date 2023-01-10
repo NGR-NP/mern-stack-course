@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import GoToHome from "../components/Icons/GoToHome";
 
 const Admin = () => {
   return (
-    <div>Admin</div>
-  )
-}
+    <section>
+      <div className="centerADiv">
+        <h1>ADMIN</h1>
+      </div>
+      <GoToHome />
+    </section>
+  );
+};
 
-export default Admin
+export default Admin;

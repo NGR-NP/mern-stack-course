@@ -61,11 +61,7 @@ const Container = styled.div`
   margin: 5px;
   padding: 12px;
   overflow: hidden;
-  background: linear-gradient(
-    5deg,
-    rgb(193 238 253 / 51%) 0%,
-    rgb(249 217 250 / 72%) 100%
-  );
+  background: linear-gradient( 5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100% );
   border-radius: 8px;
   //position:relative;
 `;

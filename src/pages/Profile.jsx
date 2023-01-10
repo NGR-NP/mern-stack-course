@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import GoToHome from "../components/Icons/GoToHome";
 
 const Profile = () => {
   return (
-    <div>Profile</div>
-  )
-}
+    <section>
+      <div className="centerADiv">
+        <h1>PROFILE</h1>
+      </div>
+      <GoToHome />
+    </section>
+  );
+};
 
-export default Profile
+export default Profile;

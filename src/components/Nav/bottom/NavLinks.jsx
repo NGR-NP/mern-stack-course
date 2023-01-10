@@ -1,51 +1,34 @@
 import React from "react";
 import "./css/NavLinks.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Link } from "react-router-dom";
 const NavLinks = () => {
   return (
     <nav role="navigation" className="navLinks">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/">Shop</a>
+          <Link to="shop">Shop</Link>
           <KeyboardArrowDownIcon fontSize="x-small" className="navLinkIcon" />
           <ul aria-label="submenu">
             <li>
-              <a href="/">Mens</a>
+              <Link to="mens">Mens</Link>
             </li>
             <li>
-              <a href="/">Womens</a>
+              <Link to="womens">Womens</Link>
             </li>
             <li>
-              <a href="/">Accosseries</a>
+              <Link to="accosseries">Accosseries</Link>
             </li>
           </ul>
         </li>
         <li>
-          <a href="/">Blog</a>
-          <KeyboardArrowDownIcon fontSize="x-small" className="navLinkIcon" />
-          <ul aria-label="submenu">
-            <li>
-              <a href="/">Blog 1</a>
-            </li>
-            <li>
-              <a href="/">Blog 2</a>
-            </li>
-            <li>
-              <a href="/">Blog 3</a>
-            </li>
-          </ul>
+          <Link to="profile">Profile</Link>
         </li>
         <li>
-          <a href="/">About</a>
-        </li>
-        <li>
-          <a href="/">Our Team</a>
-        </li>
-        <li>
-          <a href="/">Contact</a>
+          <Link to="admin">Admin</Link>
         </li>
       </ul>
     </nav>

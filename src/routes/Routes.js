@@ -6,9 +6,10 @@ import Register from "../pages/Register";
 import Admin from "../pages/Admin";
 import Profile from "../pages/Profile";
 import ProctedRoutes from "./Procted.Routes";
+import Products from "../pages/Products";
 const ROLE = {
-  'User': 100,
-  'Admin': 10,
+  User: 100,
+  Admin: 10,
 };
 export const router = createBrowserRouter([
   {
@@ -28,8 +29,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
-        element: <div>products</div>,
+        path: "/shop",
+        element: <Products />,
       },
       {
         path: "/product/:id",
@@ -66,10 +67,6 @@ export const router = createBrowserRouter([
       {
         path: "/new",
         element: <div>add new product</div>,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
       },
     ],
   },
