@@ -72,7 +72,7 @@ const RegisterComp = () => {
     try {
       const res = await axios.post(REGISTER_URL, { username, email, password });
       setSuccess(true);
-      setToastMessage(res.data.message);
+      setToastMessage(res?.data?.message);
       setUsername("");
       setEmail("");
       setPassword("");
@@ -87,8 +87,8 @@ const RegisterComp = () => {
       const resp = err?.response;
       if (!resp) {
         setErrMsg("server is not responding, Reload and try again");
-      } else if (resp?.data.status === 400) {
-        setErrMsg(resp.data.message);
+      } else if (resp?.data?.status === 400) {
+        setErrMsg(resp.data?.message);
       } else if (resp.data.status === 409) {
         setErrMsg(resp.data.message);
       } else if (resp.data) {

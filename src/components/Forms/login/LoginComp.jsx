@@ -27,14 +27,15 @@ const LoginComp = () => {
     e.preventDefault();
     try {
       const res = await axios.post(LOGIN_URL, { username, password });
-      console.log(res?.data);
-      const accessToken = res?.data?.accessToken;
-      const role = res.data?.result.role;
+      const resp = res?.data;
+      console.log(resp);
+      const accessToken = resp?.accessToken;
+      const role = resp?.result?.role;
       setAuth({ username, password, role, accessToken });
       setSuccess(true);
       setUsername("");
       setPassword("");
-      setToastMessage(res.data.message);
+      setToastMessage(res?.data?.message);
       setTimeout(() => {
         navigate(from, {
           replace: true,
@@ -44,8 +45,8 @@ const LoginComp = () => {
       const resp = err?.response;
       if (!resp) {
         setErrMsg("server is not responding");
-      } else if (resp?.data.status === 400) {
-        setErrMsg(resp.data.message);
+      } else if (resp?.data?.status === 400) {
+        setErrMsg(resp.data?.message);
       } else if (resp) {
         setErrMsg(resp.message);
       } else {

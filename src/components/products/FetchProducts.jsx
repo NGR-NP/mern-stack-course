@@ -24,13 +24,13 @@ const FetchProducts = () => {
     const getProducts = async () => {
       try {
         const res = await axios.get(PRODUCTS_URL);
-        setProducts(res.data);
+        setProducts(res?.data);
       } catch (err) {
         if (!err?.response) {
           setIfErr(true);
           setErrMsg("Server is not responding");
         } else {
-          setErrMsg(err.response.data.message);
+          setErrMsg(err.response?.data?.message);
         }
       }
     };
