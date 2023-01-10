@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Brands from "../sections/brands/Brands";
 import Hero from "../sections/hero/Hero";
 import Products from "../sections/Products/Products";
@@ -8,7 +9,8 @@ const Home = () => {
       <Brands />
       <Products />
       <div>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem facere illo veritatis sequi asperiores assumenda quae culpa sapiente est! Quae nostrum cum earum iure ipsa, voluptatem nisi alias accusamus autem.</h1>
+        <Link to='/admin'>admin</Link>
+        <Link to='/profile'>profile</Link>
       </div>
     </>
   );

@@ -1,15 +1,19 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import AuthContext from "../../../context/AuthProvider";
+import { useEffect, useRef, useState } from "react";
 import CustomToast from "../../Tost/CustomToast";
 import ErrMsg from "../ErrMsg";
 import Info from "../Info";
 import Password from "./inputs/Password";
 import Username from "./inputs/username";
 import axios from "../../../api/axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const LOGIN_URL = "/auth/login";
 const LoginComp = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const errRef = useRef();
 
@@ -22,22 +26,30 @@ const LoginComp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(LOGIN_URL, {username, password});
+      const res = await axios.post(LOGIN_URL, { username, password });
       console.log(res?.data);
       const accessToken = res?.data?.accessToken;
-      const role = res?.data?.role;
+      const role = res.data?.result.role;
       setAuth({ username, password, role, accessToken });
       setSuccess(true);
       setUsername("");
       setPassword("");
       setToastMessage(res.data.message);
+      setTimeout(() => {
+        navigate(from, {
+          replace: true,
+        });
+      }, 2000);
     } catch (err) {
-      if (err.response?.data?.status === 400) {
-        setErrMsg(err.response?.data?.message);
-      } else if (err.response?.data?.status === 401) {
-        setErrMsg(err.response?.data?.message);
+      const resp = err?.response;
+      if (!resp) {
+        setErrMsg("server is not responding");
+      } else if (resp?.data.status === 400) {
+        setErrMsg(resp.data.message);
+      } else if (resp) {
+        setErrMsg(resp.message);
       } else {
-        setErrMsg("Login Error 😔");
+        setErrMsg("Login failed! 😔");
       }
     }
   };
@@ -60,7 +72,7 @@ const LoginComp = () => {
         <div>
           <div className="loginTitle">Login</div>
           <Info
-            message={"Do not have account? Let's"}
+            message={"Don't have an account? Let's"}
             what={"Register"}
             where={"/register"}
           />
@@ -76,8 +88,3 @@ const LoginComp = () => {
 };
 
 export default LoginComp;
-
-/* <div className="infoCont">
-  <p>Do not have an Account?</p>
-  <Link to="/register">Register</Link>
-</div> */

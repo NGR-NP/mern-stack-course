@@ -1,6 +1,6 @@
 import { Dangerous, InfoOutlined } from "@mui/icons-material";
 
-const UsernameComp = ({
+const  UsernameComp = ({
   username,
   validUsername,
   setUsername,

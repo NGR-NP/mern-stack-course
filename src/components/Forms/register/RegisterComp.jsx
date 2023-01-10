@@ -7,6 +7,7 @@ import Info from "../Info";
 import Button from "../Button";
 import CustomToast from "../../Tost/CustomToast";
 import axios from "../../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const isValidUsername = /^[A-z][A-z0-9-_]{2,15}$/;
 const isValidEmail =
@@ -36,6 +37,7 @@ const RegisterComp = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setValidUsername(isValidUsername.test(username));
@@ -59,26 +61,40 @@ const RegisterComp = () => {
     const nameI = isValidUsername.test(username);
     const emailI = isValidEmail.test(email);
     const passwordI = isValidPwd.test(password);
+    const MpasswordI = isValidPwd.test(matchPwd);
     if (!nameI || !emailI || !passwordI) {
       setErrMsg("Nice try");
+      return;
+    } else if (!MpasswordI) {
+      setErrMsg("please comform your password, it will help you");
       return;
     }
     try {
       const res = await axios.post(REGISTER_URL, { username, email, password });
       setSuccess(true);
+      setToastMessage(res.data.message);
       setUsername("");
       setEmail("");
       setPassword("");
       setMatchPwd("");
-      setToastMessage(res.data.message);
+      setTimeout(() => {
+        navigate("/login", {
+          replace: true,
+        });
+      }, 4000);
     } catch (err) {
       console.log(err.response);
-      if (!err?.response) {
-        setErrMsg("Something went wrong!");
-      } else if (err.response.data.status === 400) {
-        setErrMsg(err.response.data.message);
+      const resp = err?.response;
+      if (!resp) {
+        setErrMsg("server is not responding, Reload and try again");
+      } else if (resp?.data.status === 400) {
+        setErrMsg(resp.data.message);
+      } else if (resp.data.status === 409) {
+        setErrMsg(resp.data.message);
+      } else if (resp.data) {
+        setErrMsg(resp.data.message);
       } else {
-        setErrMsg(err.response.data.message);
+        setErrMsg("register failed! 😔");
       }
     }
   };
