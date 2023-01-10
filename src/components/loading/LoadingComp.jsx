@@ -44,7 +44,17 @@ const LoadingComp = () => {
           <Loading />
         </Part>
       </Main>
-      {/* <Main>
+      <Main>
+        <Part>
+          <Loading />
+        </Part>
+      </Main>
+      <Main>
+        <Part>
+          <Loading />
+        </Part>
+      </Main>
+      <Main>
         <Part>
           <Loading />
         </Part>
@@ -63,7 +73,12 @@ const LoadingComp = () => {
         <Part>
           <Loading />
         </Part>
-      </Main> */}
+      </Main>
+      <Main>
+        <Part>
+          <Loading />
+        </Part>
+      </Main>
     </>
   );
 };

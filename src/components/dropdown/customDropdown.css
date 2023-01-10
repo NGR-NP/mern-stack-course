@@ -3,7 +3,7 @@
   font-size: 15px;
   padding: 9px 36px 9px 29px;
   background-color: var(--pink);
-  color: #ffffff;
+  color: #4e4e4e;
   border: 0;
   outline: none;
   border-radius: 6px;
@@ -14,8 +14,7 @@
   position: relative;
 }
 .customDropdown select option{
-  /* font-weight: bold; */
-  font-size: 20px;
+  font-size: 18px;
 }
 .customDropdownIconCont {
   display: flex;
