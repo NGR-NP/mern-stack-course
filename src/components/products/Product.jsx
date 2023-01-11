@@ -140,7 +140,8 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   &:hover {
     transition: all 0.3s ease-in-out;
     transform: scale(1.3);
-
+    bottom: 6%;
+    right: 7%;
     opacity: 1;
   }
   &:active {
