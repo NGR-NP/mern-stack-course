@@ -62,8 +62,7 @@ const Container = styled.div`
   padding: 12px;
   overflow: hidden;
   background: linear-gradient(5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100%);
-  border-radius: 8px;
-  //position:relative;
+  border-radius: calc(8px + 5px);
 `;
 const Part = styled.div`
   position: relative;
