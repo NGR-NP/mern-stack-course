@@ -235,7 +235,7 @@ const Price = styled.p`
       : "red"}; */
   /* color: ${(props) => props.color}; */
   ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag} +  & {
-    bottom: -2%;
+    bottom: -5%;
     transition: all 0.3s ease-in-out;
     opacity: 1;
   }
@@ -254,10 +254,10 @@ const Price = styled.p`
   }
   &:hover {
     transition: all 0.3s ease-in-out;
-    bottom: 1%;
+    bottom: -2%;
     opacity: 1;
     padding: 10px;
-    left: 6%;
+    left: 4%;
   }
 `;
 const AllProducts = ({ product, height }) => {
