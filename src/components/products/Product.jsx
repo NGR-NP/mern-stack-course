@@ -122,8 +122,8 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   position: absolute;
   z-index: 1;
   cursor: pointer;
-  bottom: 7%;
-  right: 6%;
+  bottom: 2%;
+  right: 3%;
   opacity: 0;
   color: ${(props) => props.bagcolor};
   background: rgba(228, 228, 228, 0.627);

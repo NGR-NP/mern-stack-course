@@ -176,8 +176,8 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   position: absolute;
   z-index: 1;
   cursor: pointer;
-  bottom: 7%;
-  right: 6%;
+  bottom: 2%;
+  right: 3%;
   opacity: 0;
   color: ${(props) => props.bagcolor};
   background: rgba(228, 228, 228, 0.627);
@@ -218,7 +218,7 @@ const Price = styled.p`
   box-shadow: 0px 0px 6px 0px rgb(220 220 220);
   backdrop-filter: blur(10px);
   border-radius: 4px;
-  padding: 8px;
+  padding: 5px 8px;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
   /* color: ${(props) =>
