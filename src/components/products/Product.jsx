@@ -188,16 +188,15 @@ const Price = styled.p`
   }
 
   ${AddToShoppingBag}:hover+& {
-    bottom: 1%;
+    bottom: -1%;
     opacity: 1;
     transition: all 0.3s ease-in-out;
     left: 6%;
   }
   ${FavIcon}:hover + ${AddToShoppingBag}+  & {
-    bottom: 1%;
+    bottom: -1%;
     opacity: 1;
     transition: all 0.3s ease-in-out;
-    left: 9%;
   }
   &:hover {
     transition: all 0.3s ease-in-out;
