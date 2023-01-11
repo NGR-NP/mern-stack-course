@@ -61,7 +61,7 @@ const Container = styled.div`
   margin: 5px;
   padding: 12px;
   overflow: hidden;
-  background: linear-gradient( 5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100% );
+  background: linear-gradient(5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100%);
   border-radius: 8px;
   //position:relative;
 `;
@@ -154,6 +154,7 @@ const Price = styled.p`
   cursor: pointer;
   z-index: 1;
   opacity: 0;
+  font-family: var(--font2);
   background: linear-gradient(
     181deg,
     rgb(209 243 255) 0%,
@@ -181,7 +182,7 @@ const Price = styled.p`
       : "red"}; */
   /* color: ${(props) => props.color}; */
   ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag} +  & {
-    bottom: -2%;
+    bottom: -5%;
     transition: all 0.3s ease-in-out;
     opacity: 1;
   }
@@ -200,10 +201,10 @@ const Price = styled.p`
   }
   &:hover {
     transition: all 0.3s ease-in-out;
-    bottom: 1%;
+    bottom: -2%;
     opacity: 1;
     padding: 10px;
-    left: 6%;
+    left: 4%;
   }
 `;
 const Product = ({ product, height }) => {
