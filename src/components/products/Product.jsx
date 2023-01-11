@@ -150,7 +150,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
 const Price = styled.p`
   position: absolute;
   bottom: -30%;
-  left: 3%;
+  left: 2%;
   cursor: pointer;
   z-index: 1;
   opacity: 0;
