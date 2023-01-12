@@ -25,7 +25,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   padding: 20px;
   justify-content: space-between;
-  background: linear-gradient(299deg, rgb(142 218 243 / 50%), rgb(254 213 255));
   user-select: none;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
   border-radius: calc(20px + 8px);
