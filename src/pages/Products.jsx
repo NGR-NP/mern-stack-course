@@ -46,8 +46,8 @@ const Title = styled.h3`
   border-radius: 20px;
   font-family: var(--font7);
   background-image: linear-gradient(90deg, rgb(0 178 255), #ff00b0);
-  color: transparent;
   background-clip: text;
+    color: transparent;
   padding: 13px 69px;
 `;
 const FilterCont = styled.div`
