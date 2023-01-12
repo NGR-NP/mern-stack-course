@@ -1,5 +1,5 @@
 const express = require("express");
-const Routes = require("../../src/routes/routes");
+const routes = require("../../src/routes/routes");
 const cors = require("cors");
 const errorHandler = require("../middleware/errorhandler");
 const routenotavailable = require("../routes/lost.routes");
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/api", Routes);
+app.use("/api", routes);
 
 app.use(errorHandler);
 
