@@ -99,13 +99,13 @@ const Arrow = styled.div`
   display: block;
   height: 100%;
   width: 2rem;
-  background: var(midBlue);
+  background: var(--midBlue);
   pointer-events: none;
   border-radius: 0 5px 5px 0;
   &::before,
   &::after {
     --size: 0.4em;
-    --arrow: rgba(255, 255, 255, 0.766);
+    --arrow: rgba(65, 65, 65, 0.766);
     content: "";
     position: absolute;
     width: 0;
