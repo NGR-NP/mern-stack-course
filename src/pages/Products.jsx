@@ -8,7 +8,6 @@ import ErrMsg from "../components/Forms/ErrMsg";
 const PRODUCTS_URL = "/products";
 
 const Section = styled.section`
-
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -29,26 +28,27 @@ const Container = styled.div`
   background: linear-gradient(299deg, rgb(142 218 243 / 50%), rgb(254 213 255));
   user-select: none;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
-  border-radius: 8px;
+  border-radius: calc(20px + 8px);
 `;
 const Main = styled.div`
   padding: 20px;
-  margin: auto
+  margin: auto;
+  background: #ffffff54;
+  border-radius: calc(20px + 8px);
 `;
 
 const Title = styled.h3`
-  display: flex;
   width: fit-content;
-  margin: auto;
-  font-size: 42px;
-  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
-  justify-content: center;
-  border-radius: 12px;
-  font-family: var(--font4);
-  margin-bottom: 14px;
-  padding: 12px 49px;
-  background-image: linear-gradient(90deg,#b8e6fa,#fcc9ff);
-    color: #656565;
+  margin: 19px auto 32px;
+  text-align: center;
+  font-size: 41px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px 0px;
+  border-radius: 20px;
+  font-family: var(--font7);
+  background-image: linear-gradient(90deg, rgb(0 178 255), #ff00b0);
+  color: transparent;
+  background-clip: text;
+  padding: 13px 69px;
 `;
 const FilterCont = styled.div`
   display: flex;
@@ -62,11 +62,12 @@ const Filter = styled.div`
 `;
 const FTitle = styled.div`
   margin-right: 12px;
-  font-size: 25px;
-  padding: 5px 16px;
-  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
-font-family: var(--font7);
+  font-size: 23px;
+  padding: 10px 13px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px 0px;
+  font-family: var(--font1);
   border-radius: 6px;
+  color: #636363;
 `;
 const ColorLensIcons = styled(ColorLensIcon)`
   position: absolute;
@@ -155,33 +156,33 @@ const Products = () => {
   }, []);
   return (
     <Section>
-    <Main>
-    <Title>Clothes</Title>
-          <FilterCont>
-            <FTitle>Filter Products:</FTitle>
-            <Filter>
-              <ColorLensIcons fontSize="small" color="error" />
-              <Select>
-                <Option>Color</Option>
-                <Option>Red</Option>
-                <Option>Green</Option>
-                <Option>White</Option> 
-              </Select>
-              <Arrow />
-            </Filter>
-          </FilterCont>
-      {isLoading ? (
-        <Container>
-          <LoadingComp />
-        </Container>
-      ) : (
+      <Main>
+        <Title>Clothes</Title>
+        <FilterCont>
+          <FTitle>Filter Products:</FTitle>
+          <Filter>
+            <ColorLensIcons fontSize="small" color="error" />
+            <Select>
+              <Option>Color</Option>
+              <Option>Red</Option>
+              <Option>Green</Option>
+              <Option>White</Option>
+            </Select>
+            <Arrow />
+          </Filter>
+        </FilterCont>
+        {isLoading ? (
+          <Container>
+            <LoadingComp />
+          </Container>
+        ) : (
           <Container>
             {products.slice(0, 20).map((product) => (
               <Product product={product} key={product._id} />
             ))}
           </Container>
-      )}
-      {ifErr ? <ErrMsg errMsg={errMsg} /> : <></>}
+        )}
+        {ifErr ? <ErrMsg errMsg={errMsg} /> : <></>}
       </Main>
     </Section>
   );
