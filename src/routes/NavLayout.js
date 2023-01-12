@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "../sections/nav/Nav";
 
-const PublicRoutes = () => {
+const NavLayout = () => {
   return (
     <>
       <Nav />
@@ -11,4 +11,4 @@ const PublicRoutes = () => {
   );
 };
 
-export default PublicRoutes;
+export default NavLayout;

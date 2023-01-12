@@ -1,8 +1,9 @@
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import styled, { keyframes } from "styled-components";
+
 const scletion = keyframes`
-  /* 0%{
+ /* 0%{
     background:repeating-linear-gradient(315deg,#f9f9f9,transparent 80px);
   }
   20%{
@@ -70,7 +71,6 @@ const Part = styled.div`
   height: 100%;
 `;
 const Loading = styled.div`
-  //width: calc(100% - 52px);
   width: 100%;
   border-radius: 6px;
   position: absolute;
@@ -127,7 +127,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   color: ${(props) => props.bagcolor};
   background: rgba(255, 255, 255, 0.627);
   box-shadow: var(--boxShadow);
-  backdrop-filter: blur(100px);
+  //backdrop-filter: blur(100px);
   padding: 8px;
   border-radius: 50px;
   font-size: 7px;
@@ -162,9 +162,9 @@ const Price = styled.p`
     rgb(253 214 255) 100%
   );
   /* background-color: ${(props) => props.bgcolors}; */
-  background: rgba(255, 255, 255, 0.553);
+  background: rgb(255 255 255 / 81%);
   box-shadow: 0px 0px 6px 0px rgb(220 220 220);
-  backdrop-filter: blur(10px);
+  //backdrop-filter: blur(10px);
   border-radius: 4px;
   padding: 5px 8px;
   transition: all 0.3s ease-in-out;

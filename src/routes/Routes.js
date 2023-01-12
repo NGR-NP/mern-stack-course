@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import PublicRoutes from "./Public.Routes";
+import NavLayout from "./NavLayout";
 import Home from "../pages/Home";
 import Login from "../pages/login";
 import Register from "../pages/Register";
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <PublicRoutes />,
+    element: <NavLayout />,
     children: [
       {
         path: "/",

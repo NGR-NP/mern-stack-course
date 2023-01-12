@@ -7,7 +7,19 @@ import Product from "../components/products/Product";
 import ErrMsg from "../components/Forms/ErrMsg";
 const PRODUCTS_URL = "/products";
 
-const Container = styled.section`
+const Section = styled.section`
+
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-between;
+  background: linear-gradient(299deg, rgb(142 218 243 / 50%), rgb(254 213 255));
+  user-select: none;
+  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
+  border-radius: 8px;
+`;
+const Container = styled.div`
   max-width: 1557px;
   margin: auto;
   display: flex;
@@ -21,18 +33,22 @@ const Container = styled.section`
 `;
 const Main = styled.div`
   padding: 20px;
+  margin: auto
 `;
 
 const Title = styled.h3`
   display: flex;
-  width: 60vmin;
+  width: fit-content;
   margin: auto;
   font-size: 42px;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
   justify-content: center;
-  border-radius: 6px;
-  padding: 12px 15spx;
+  border-radius: 12px;
   font-family: var(--font4);
+  margin-bottom: 14px;
+  padding: 12px 49px;
+  background-image: linear-gradient(90deg,#b8e6fa,#fcc9ff);
+    color: #656565;
 `;
 const FilterCont = styled.div`
   display: flex;
@@ -47,9 +63,9 @@ const Filter = styled.div`
 const FTitle = styled.div`
   margin-right: 12px;
   font-size: 25px;
-  padding: 5px 9px;
+  padding: 5px 16px;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
-font-family: var(--font1);
+font-family: var(--font7);
   border-radius: 6px;
 `;
 const ColorLensIcons = styled(ColorLensIcon)`
@@ -81,7 +97,7 @@ const Arrow = styled.div`
   display: block;
   height: 100%;
   width: 2rem;
-  background: #c2ecff;
+  background: #d6f3ff;
   pointer-events: none;
   border-radius: 0 5px 5px 0;
   &::before,
@@ -138,14 +154,9 @@ const Products = () => {
     getProducts();
   }, []);
   return (
-    <Container>
-      {isLoading ? (
-        <Container>
-          <LoadingComp />
-        </Container>
-      ) : (
-        <Main>
-          <Title>Clothes</Title>
+    <Section>
+    <Main>
+    <Title>Clothes</Title>
           <FilterCont>
             <FTitle>Filter Products:</FTitle>
             <Filter>
@@ -159,15 +170,20 @@ const Products = () => {
               <Arrow />
             </Filter>
           </FilterCont>
+      {isLoading ? (
+        <Container>
+          <LoadingComp />
+        </Container>
+      ) : (
           <Container>
             {products.slice(0, 20).map((product) => (
               <Product product={product} key={product._id} />
             ))}
           </Container>
-        </Main>
       )}
       {ifErr ? <ErrMsg errMsg={errMsg} /> : <></>}
-    </Container>
+      </Main>
+    </Section>
   );
 };
 

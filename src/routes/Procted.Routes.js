@@ -1,13 +1,13 @@
 import React from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-
+import NavLayout from './NavLayout';
 const ProctedRoutes = ({ isAllowed }) => {
   const { auth } = useAuth();
   const location = useLocation();
   return (
   auth?.role?.find((roles) => isAllowed?.includes(roles)) ?
-    <Outlet />
+    <NavLayout/>
    : auth.username ?
     <Navigate to="/unauthorize" state={{ from: location }} replace />
    :
