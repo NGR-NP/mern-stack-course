@@ -49,12 +49,13 @@ const Title = styled.h3`
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  padding: 13px 69px;
+  padding: 11px 120px;
+  letter-spacing: 5px;
 `;
 const FilterCont = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin: 16px;
 `;
 const Filter = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ const Filter = styled.div`
 const FTitle = styled.div`
   margin-right: 12px;
   font-size: 23px;
-  padding: 10px 13px;
+  padding: 8px 20px;
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px 0px;
   font-family: var(--font1);
   border-radius: 6px;
