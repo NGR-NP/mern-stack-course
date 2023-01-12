@@ -158,30 +158,32 @@ const Products = () => {
   return (
     <Section>
       <Main>
-        <Title>Clothes</Title>
-        <FilterCont>
-          <FTitle>Filter Products:</FTitle>
-          <Filter>
-            <ColorLensIcons fontSize="small" color="error" />
-            <Select>
-              <Option>Color</Option>
-              <Option>Red</Option>
-              <Option>Green</Option>
-              <Option>White</Option>
-            </Select>
-            <Arrow />
-          </Filter>
-        </FilterCont>
         {isLoading ? (
           <Container>
             <LoadingComp />
           </Container>
         ) : (
-          <Container>
-            {products.slice(0, 20).map((product) => (
-              <Product product={product} key={product._id} />
-            ))}
-          </Container>
+          <>
+            <Title>Clothes</Title>
+            <FilterCont>
+              <FTitle>Filter Products:</FTitle>
+              <Filter>
+                <ColorLensIcons fontSize="small" color="error" />
+                <Select>
+                  <Option>Color</Option>
+                  <Option>Red</Option>
+                  <Option>Green</Option>
+                  <Option>White</Option>
+                </Select>
+                <Arrow />
+              </Filter>
+            </FilterCont>
+            <Container>
+              {products.slice(0, 20).map((product) => (
+                <Product product={product} key={product._id} />
+              ))}
+            </Container>
+          </>
         )}
         {ifErr ? <ErrMsg errMsg={errMsg} /> : <></>}
       </Main>
