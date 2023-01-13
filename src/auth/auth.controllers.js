@@ -128,7 +128,7 @@ const login = async (req, res, next) => {
         { expiresIn: "30s" }
       );
 
-      foundUser.refreshTokenDB = refreshToken;
+      foundUser.refreshToken = refreshToken;
       const result = await foundUser.save();
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
