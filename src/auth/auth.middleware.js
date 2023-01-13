@@ -5,7 +5,6 @@ const ERROR = require("../utils/error");
 const verifyJwt = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
     if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
-    return next(ERROR(401, "you are not authenticated!"));
     const token = authHeader.split(' ')[1];
   // jwt.verify(token, JWT, (err, decoded) => {
   //   if (err) return next(ERROR(403, "invalid token"));
