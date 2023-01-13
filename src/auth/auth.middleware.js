@@ -14,7 +14,7 @@ const verifyJwt = (req, res, next) => {
   //   next();
   // });
 
-
+  //
   jwt.verify(
     token,
     JWT,
