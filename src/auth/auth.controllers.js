@@ -152,7 +152,7 @@ const login = async (req, res, next) => {
       const newRefreshToken = jwt.sign(
         { "username": foundUser.username },
         REFRESH_JWT,
-        { expiresIn: '15s' }
+        { expiresIn: '20s' }
       );
 
       let newRefreshTokenArray =

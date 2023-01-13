@@ -83,7 +83,7 @@ const genRefreshToken = async (req, res, next) => {
             const newRefreshToken = jwt.sign(
                 { "username": foundUser.username },
                 REFRESH_JWT,
-                { expiresIn: '15s' }
+                { expiresIn: '20s' }
             );
             foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
             const result = await foundUser.save();
