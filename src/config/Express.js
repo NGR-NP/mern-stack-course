@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const accessControl = require("../middleware/accessControl");
 const app = express();
-const allowo ={
+const allowo = {
     origin: 'http://localhost:3000',
 }
 app.use(accessControl);
