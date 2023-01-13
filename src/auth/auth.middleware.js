@@ -4,27 +4,15 @@ const ERROR = require("../utils/error");
 
 const verifyJwt = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
-    if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
-    const token = authHeader.split(' ')[1];
-  // jwt.verify(token, JWT, (err, decoded) => {
-  //   if (err) return next(ERROR(403, "invalid token"));
-  //   req.id = decoded.id;
-  //   req.username = decoded.username;
-  //   req.role = decoded.role;
-  //   next();
-  // });
-
-  //
-  jwt.verify(
-    token,
-    JWT,
-    (err, decoded) => {
-        if (err) return res.sendStatus(403);
-        req.username = decoded.username;
-        req.role = decoded.role;
-        next();
-    }
-);
+  if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
+  const token = authHeader.split(' ')[1];
+  jwt.verify(token, JWT, (err, decoded) => {
+    if (err) return next(ERROR(403, "invalid token"));
+    req.id = decoded.id;
+    req.username = decoded.username;
+    req.role = decoded.role;
+    next();
+  });
 
 };
 const verifyCurrentUser = (req, res, next) => {
@@ -42,7 +30,7 @@ const verifyRole = (...isAllowed) => {
     const roleArray = [...isAllowed];
     console.log(req.role);
     console.log(roleArray);
-      const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
+    const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
 
     if (!result)
       return next(ERROR(401, "unauthorized! only permited user can do that"));

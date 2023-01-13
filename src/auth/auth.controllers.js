@@ -89,7 +89,6 @@ const register = async (req, res, next) => {
   }
 };
 const login = async (req, res, next) => {
-  const cookies = req.cookies;
   if (!req.body.username) return next(ERROR(400, "enter your Username"));
   if (!req.body.password) return next(ERROR(400, "enter your Password"));
 
@@ -107,76 +106,36 @@ const login = async (req, res, next) => {
       return next(ERROR(400, "Wrong credentials!!"));
     }
     if (isPasswordCorrect) {
-      // const role = Object.values(foundUser.role).filter(Boolean);
-      // const accessToken = jwt.sign(
-      //   {
-      //     "id": foundUser._id,
-      //     "username": foundUser.username,
-      //     "role": foundUser.role,
-      //   },
-      //   JWT,
-      //   {
-      //     expiresIn: "10s",
-      //   }
-      // );
-      // const refreshToken = jwt.sign(
-      //   {
-      //     "id": foundUser._id,
-      //     "username": foundUser.username,
-      //     "role": foundUser.role,
-      //   },
-      //   REFRESH_JWT,
-      //   { expiresIn: "30s" }
-      // );
-
-      // foundUser.refreshToken = refreshToken;
-      // const result = await foundUser.save();
-      // res.cookie("jwt", refreshToken, {
-      //   httpOnly: true,
-      // });
-      // res.status(200).json({
-      //   message: `Welcome Back ${result.username}`,
-      //   accessToken,
-      // });
-
-
-
       const accessToken = jwt.sign(
         {
-            "username": foundUser.username,
-            "role": foundUser.role
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": foundUser.role,
         },
         JWT,
-        { expiresIn: '10s' }
-      );
-      const newRefreshToken = jwt.sign(
-        { "username": foundUser.username },
-        REFRESH_JWT,
-        { expiresIn: '20s' }
-      );
-
-      let newRefreshTokenArray =
-        !cookies?.jwt
-          ? foundUser.refreshToken
-          : foundUser.refreshToken.filter(rt => rt !== cookies.jwt);
-
-      if (cookies?.jwt) {
-        const refreshToken = cookies.jwt;
-        const foundToken = await User.findOne({ refreshToken }).exec();
-
-        if (!foundToken) {
-          newRefreshTokenArray = [];
+        {
+          expiresIn: "10s",
         }
+      );
+      const refreshToken = jwt.sign(
+        {
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": foundUser.role,
+        },
+        REFRESH_JWT,
+        { expiresIn: "20s" }
+      );
 
-        res.clearCookie('jwt', { httpOnly: true});
-      }
-
-      foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+      foundUser.refreshToken = refreshToken;
       const result = await foundUser.save();
-
-      res.cookie('jwt', newRefreshToken, { httpOnly: true});
-
-      res.json({ accessToken });
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+      });
+      res.status(200).json({
+        message: `Welcome Back ${result.username}`,
+        accessToken,
+      });
 
 
 
