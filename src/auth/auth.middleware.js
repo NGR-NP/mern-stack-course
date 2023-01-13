@@ -4,16 +4,29 @@ const ERROR = require("../utils/error");
 
 const verifyJwt = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
-  if (!authHeader?.startsWith("Bearer "))
+    if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
     return next(ERROR(401, "you are not authenticated!"));
-  const token = authHeader.split(" ")[1];
-  jwt.verify(token, JWT, (err, decoded) => {
-    if (err) return next(ERROR(403, "invalid token"));
-    req.id = decoded.id;
-    req.username = decoded.username;
-    req.role = decoded.role;
-    next();
-  });
+    const token = authHeader.split(' ')[1];
+  // jwt.verify(token, JWT, (err, decoded) => {
+  //   if (err) return next(ERROR(403, "invalid token"));
+  //   req.id = decoded.id;
+  //   req.username = decoded.username;
+  //   req.role = decoded.role;
+  //   next();
+  // });
+
+
+  jwt.verify(
+    token,
+    JWT,
+    (err, decoded) => {
+        if (err) return res.sendStatus(403);
+        req.user = decoded.username;
+        req.roles = decoded.roles;
+        next();
+    }
+);
+
 };
 const verifyCurrentUser = (req, res, next) => {
   verifyJwt(req, res, () => {
