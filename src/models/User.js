@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema(
       default: User,
       required: "Role is required",
     },
-    refreshToken: [String],
+    refreshToken: String,
   },
   { timestamps: true }
 );
