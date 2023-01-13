@@ -125,7 +125,7 @@ const login = async (req, res, next) => {
           "role": foundUser.role,
         },
         REFRESH_JWT,
-        { expiresIn: "20s" }
+        { expiresIn: "30s" }
       );
 
       foundUser.refreshTokenDB = refreshToken;
