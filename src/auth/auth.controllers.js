@@ -89,6 +89,7 @@ const register = async (req, res, next) => {
   }
 };
 const login = async (req, res, next) => {
+  const cookies = req.cookies;
   if (!req.body.username) return next(ERROR(400, "enter your Username"));
   if (!req.body.password) return next(ERROR(400, "enter your Password"));
 
