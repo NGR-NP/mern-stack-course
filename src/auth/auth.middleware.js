@@ -20,7 +20,7 @@ const verifyJwt = (req, res, next) => {
     JWT,
     (err, decoded) => {
         if (err) return res.sendStatus(403);
-        req.user = decoded.username;
+        req.username = decoded.username;
         req.role = decoded.role;
         next();
     }
