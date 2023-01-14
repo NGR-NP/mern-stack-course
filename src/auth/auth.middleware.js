@@ -24,7 +24,7 @@ const verifyJwt = (req, res, next) => {
         token,
         JWT,
         (err, decoded) => {
-            if (err) return res.sendStatus(403);
+            if (err) return next(ERROR(403, "invalid token"));;
             req.user = decoded.username;
             req.role = decoded.role;
             next();
