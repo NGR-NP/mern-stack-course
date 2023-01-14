@@ -25,9 +25,10 @@ const verifyCurrentUser = (req, res, next) => {
   });
 };
 
-const verifyRole = (...isAllowed) => {
+const verifyRole = (req,res,next) => {
   verifyJwt(req, res,() => {
-    if (req.role === [...isAllowed]){
+    
+    if (req.role === 10){
       next();
     } else{
       return next(ERROR(401, "unauthorized! only admin can do that"));
