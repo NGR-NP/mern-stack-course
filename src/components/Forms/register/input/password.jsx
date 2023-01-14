@@ -26,6 +26,7 @@ const PasswordComp = ({
             type="password"
             name="password"
             id="password"
+            required
             value={password}
             placeholder="Set Password"
             aria-invalid={validPwd ? "false" : "true"}
@@ -58,6 +59,7 @@ const PasswordComp = ({
             type="password"
             id="cnfpassword"
             value={matchPwd}
+            required
             placeholder="Reinter your Password"
             aria-invalid={validMatch ? "false" : "true"}
             aria-describedby="cnfnote"

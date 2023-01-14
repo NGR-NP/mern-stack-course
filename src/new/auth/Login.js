@@ -33,7 +33,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const userData = await login({ username, password }).unwrap();
-      console.log(userData);
       dispatch(setCredentials({ ...userData, username }));
       setUsername("");
       setPassword("");
@@ -41,14 +40,13 @@ const Login = () => {
         replace: true,
       });
     } catch (err) {
-      const resp = err?.response;
-      console.log(err);
+      const resp = err?.data;
       if (!resp) {
         setErrMsg("server is not responding");
-      } else if (resp?.data?.status === 400) {
-        setErrMsg(resp.data?.message);
-      } else if (resp?.data) {
-        setErrMsg(resp.data.message);
+      } else if (resp?.status === 400) {
+        setErrMsg(resp?.message);
+      } else if (resp) {
+        setErrMsg(resp.message);
       } else {
         setErrMsg("Login failed! 😔");
       }

@@ -2,8 +2,14 @@ import styled from "styled-components";
 import { useGetUsersQuery } from "./userApiSlice";
 
 const Section = styled.section`
-  background: var(--bgLineGradBlue);
+  margin: 22px;
   padding: 25px;
+  box-shadow: var(--boxShadow);
+  border-radius: 9px;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const Title = styled.h1`
   font-size: 3rem;
@@ -38,6 +44,7 @@ const UsersList = () => {
         <Table>
           <thead>
             <TR>
+              <TH>id</TH>
               <TH>Username</TH>
               <TH>email</TH>
               <TH>role</TH>
