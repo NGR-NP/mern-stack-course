@@ -106,50 +106,29 @@ const login = async (req, res, next) => {
       return next(ERROR(400, "Wrong credentials!!"));
     }
     if (isPasswordCorrect) {
-      // const accessToken = jwt.sign(
-      //   {
-      //     "id": foundUser._id,
-      //     "username": foundUser.username,
-      //     "role": foundUser.role,
-      //   },
-      //   JWT,
-      //   {
-      //     expiresIn: "20s",
-      //   }
-      // );
-      // const refreshToken = jwt.sign(
-      //   {
-      //     "id": foundUser._id,
-      //     "username": foundUser.username,
-      //     "role": foundUser.role,
-      //   },
-      //   REFRESH_JWT,
-      //   { expiresIn: "30s" }
-      // );
-
-      // foundUser.refreshToken = refreshToken;
-      // const result = await foundUser.save();
-
-
-
       const accessToken = jwt.sign(
         {
-                "username": foundUser.username,
-                "role": foundUser.role
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": foundUser.role,
         },
         JWT,
-        { expiresIn: '10s' }
-    );
-    const refreshToken = jwt.sign(
-        { "username": foundUser.username },
+        {
+          expiresIn: "20s",
+        }
+      );
+      const refreshToken = jwt.sign(
+        {
+          "id": foundUser._id,
+          "username": foundUser.username,
+          "role": foundUser.role,
+        },
         REFRESH_JWT,
-        { expiresIn: '20s' }
-    );
-    foundUser.refreshToken = refreshToken;
-    const result = await foundUser.save();
+        { expiresIn: "30s" }
+      );
 
-
-
+      foundUser.refreshToken = refreshToken;
+      const result = await foundUser.save();
 
       res.cookie("jwt", refreshToken, {
         httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000
@@ -158,9 +137,6 @@ const login = async (req, res, next) => {
         message: `Welcome Back ${result.username}`,
         accessToken,
       });
-
-
-
     }
   } catch (err) {
     next(err);
