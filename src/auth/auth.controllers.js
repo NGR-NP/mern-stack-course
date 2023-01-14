@@ -131,7 +131,7 @@ const login = async (req, res, next) => {
       const result = await foundUser.save();
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
-      });
+      }); 
       res.status(200).json({
         message: `Welcome Back ${result.username}`,
         accessToken,

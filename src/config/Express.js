@@ -12,7 +12,7 @@ const allowo = {
     origin: 'http://localhost:3000',
 }
 app.use(accessControl);
-app.use(cors(allowo));
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
