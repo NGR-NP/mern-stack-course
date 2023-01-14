@@ -114,7 +114,7 @@ const login = async (req, res, next) => {
         },
         JWT,
         {
-          expiresIn: "20s",
+          expiresIn: "10s",
         }
       );
       const refreshToken = jwt.sign(
@@ -124,7 +124,7 @@ const login = async (req, res, next) => {
           "role": foundUser.role,
         },
         REFRESH_JWT,
-        { expiresIn: "30s" }
+        { expiresIn: "20s" }
       );
 
       foundUser.refreshToken = refreshToken;
