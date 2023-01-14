@@ -54,7 +54,7 @@ const RegisterComp = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [username]);
+  }, [username, email, password, matchPwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

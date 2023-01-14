@@ -17,7 +17,10 @@ const ToastMessage = styled.div`
 `;
 const CustomToast = ({ toastmessage, bgcolor }) => {
   return (
-    <ToastMessage bg={bgcolor}>
+    <ToastMessage
+      bg={bgcolor}
+      className={toastmessage ? "toastmessage" : "offscreen"}
+    >
       <Check /> {toastmessage}
     </ToastMessage>
   );

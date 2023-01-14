@@ -1,6 +1,7 @@
 import React from "react";
 
 const Password = ({ password, setPassword }) => {
+  // const handlePasswordInput = (e) => setPassword(e.traget.value);
   return (
     <div className="loginInputCont  bdrBottom">
       <label htmlFor="password">Passowrd</label>

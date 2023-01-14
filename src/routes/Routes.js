@@ -1,20 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import NavLayout from "./NavLayout";
 import Home from "../pages/Home";
-import Login from "../pages/login";
 import Register from "../pages/Register";
 import Admin from "../pages/Admin";
 import Profile from "../pages/Profile";
-import ProctedRoutes from "./Procted.Routes";
 import Products from "../pages/Products";
-const ROLE = {
-  User: 100,
-  Admin: 10,
-};
+import LoginPage from "../pages/login";
+import RequireAuth from "../new/auth/RequireAuth";
+
 export const router = createBrowserRouter([
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: "/register",
@@ -46,27 +43,26 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/",
-    element: <ProctedRoutes isAllowed={[ROLE.User]} />,
-    children: [
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <ProctedRoutes isAllowed={[ROLE.Admin]} />,
+    element: <RequireAuth />,
     children: [
       {
         path: "/admin",
         element: <Admin />,
       },
       {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
         path: "/new",
         element: <div>add new product</div>,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

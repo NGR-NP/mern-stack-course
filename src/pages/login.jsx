@@ -1,16 +1,17 @@
 import React from "react";
 import "../style/Login.css";
 import GoToHome from "../components/Icons/GoToHome";
-import LoginComp from "../components/Forms/login/LoginComp";
+import Login from '../new/auth/Login'
 
-const Login = () => {
+
+const LoginPage = () => {
   return (
 
     <div className="loginSec">
-      <LoginComp/>
+      <Login/>
       <GoToHome />
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

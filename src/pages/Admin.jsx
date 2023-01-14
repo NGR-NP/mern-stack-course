@@ -1,13 +1,12 @@
-import React from "react";
 import GoToHome from "../components/Icons/GoToHome";
-import AllUsers from "../sections/Admin/AllUsers";
+import UsersList from "../new/users/UsersList";
 const Admin = () => {
   return (
     <section>
       <div className="centerADiv">
         <h1>ADMIN</h1>
       </div>
-        <AllUsers/>
+      <UsersList />
       <GoToHome />
     </section>
   );

@@ -5,8 +5,8 @@ import axios from "../api/axios";
 import LoadingComp from "../components/loading/LoadingComp";
 import Product from "../components/products/Product";
 import ErrMsg from "../components/Forms/ErrMsg";
+import Server  from '../images/server.png'
 const PRODUCTS_URL = "/products";
-
 const Section = styled.section`
   margin: auto;
   display: flex;
@@ -43,12 +43,12 @@ const Title = styled.h3`
   font-size: 41px;
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px 0px;
   border-radius: 20px;
-  font-family: var(--font7);
+  font-family: var(--font6);
   background-image: linear-gradient(90deg, rgb(0 178 255), #ff00b0);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  padding: 11px 120px;
+  padding: 5px 118px;
   letter-spacing: 5px;
 `;
 const FilterCont = styled.div`
@@ -105,7 +105,7 @@ const Arrow = styled.div`
   &::before,
   &::after {
     --size: 0.4em;
-    --arrow: rgba(65, 65, 65, 0.766);
+    --arrow: rgb(255 255 255 / 77%);
     content: "";
     position: absolute;
     width: 0;
@@ -126,6 +126,18 @@ const Arrow = styled.div`
     top: 65%;
   }
 `;
+const ServerCont = styled.div`
+	    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+`
+const ServerImg = styled.img`
+	max-width: 800px;
+	width: 60%;
+	border-radius: 57px;
+`
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [errMsg, setErrMsg] = useState("");
@@ -139,12 +151,14 @@ const Products = () => {
         setProducts(res?.data);
         setIsLoading(false);
         setIfErr(false);
+          setErrMsg('')
       } catch (err) {
         if (!err?.response) {
           setIsLoading(false);
           setIfErr(true);
           setErrMsg("Server is not responding");
-        } else if (err.response?.data) {
+        }
+        else if (err.response?.data) {
           setIsLoading(false);
           setIfErr(true);
           setErrMsg(err.response?.data?.message);
@@ -163,8 +177,6 @@ const Products = () => {
             <LoadingComp />
           </Container>
         ) : (
-          <>
-            {products.slice(0, 20).map((product) => (
               <>
                 <Title>Clothes</Title>
                 <FilterCont>
@@ -181,13 +193,20 @@ const Products = () => {
                   </Filter>
                 </FilterCont>
                 <Container>
+            {products.slice(0, 20).map((product) => (
                   <Product product={product} key={product._id} />
-                </Container>
-              </>
             ))}
+            <p style={{margin: "auto"}}>{errMsg}</p>
+                </Container>
           </>
-        )}
-        {ifErr ? <ErrMsg errMsg={errMsg} /> : <></>}
+        )
+        }
+     {ifErr ?
+      <ServerCont>
+      	<ErrMsg errMsg={errMsg} />
+      	<ServerImg src={Server} alt={errMsg}/>
+      </ServerCont>
+      : <></>}
       </Main>
     </Section>
   );

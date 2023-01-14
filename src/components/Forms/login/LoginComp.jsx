@@ -30,8 +30,7 @@ const LoginComp = () => {
       const resp = res?.data;
       console.log(resp);
       const accessToken = resp?.accessToken;
-      const role = resp?.result?.role;
-      setAuth({ username, password, role, accessToken });
+      setAuth({ username, accessToken });
       setSuccess(true);
       setUsername("");
       setPassword("");
