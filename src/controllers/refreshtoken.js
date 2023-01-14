@@ -21,7 +21,7 @@ const genRefreshToken = async (req, res, next) => {
       },
       JWT,
       {
-        expiresIn: "15s",
+        expiresIn: "20s",
       }
     );
     res.json({ accessToken });
