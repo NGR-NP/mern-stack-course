@@ -33,12 +33,12 @@ const genRefreshToken = async (req, res, next) => {
   const refreshToken = cookies.jwt;
 
   const foundUser = await User.findOne({ refreshToken }).exec();
-  if (!foundUser) return res.sendStatus(403); //Forbidden 
+  if (!foundUser) return next(ERROR(403, "expired")); //Forbidden 
   jwt.verify(
       refreshToken,
       REFRESH_JWT,
       (err, decoded) => {
-          if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
+          if (err || foundUser.username !== decoded.username) return next(ERROR(403, "invalid token"));;
           const roles = Object.values(foundUser.roles);
           const accessToken = jwt.sign(
               {
