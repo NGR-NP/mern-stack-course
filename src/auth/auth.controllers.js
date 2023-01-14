@@ -106,36 +106,56 @@ const login = async (req, res, next) => {
       return next(ERROR(400, "Wrong credentials!!"));
     }
     if (isPasswordCorrect) {
+      // const accessToken = jwt.sign(
+      //   {
+      //     "id": foundUser._id,
+      //     "username": foundUser.username,
+      //     "role": foundUser.role,
+      //   },
+      //   JWT,
+      //   {
+      //     expiresIn: "20s",
+      //   }
+      // );
+      // const refreshToken = jwt.sign(
+      //   {
+      //     "id": foundUser._id,
+      //     "username": foundUser.username,
+      //     "role": foundUser.role,
+      //   },
+      //   REFRESH_JWT,
+      //   { expiresIn: "30s" }
+      // );
+
+      // foundUser.refreshToken = refreshToken;
+      // const result = await foundUser.save();
+
+
+
       const accessToken = jwt.sign(
         {
-          "id": foundUser._id,
-          "username": foundUser.username,
-          "role": foundUser.role,
+            "UserInfo": {
+                "username": foundUser.username,
+                "role": foundUser.role
+            }
         },
         JWT,
-        {
-          expiresIn: "10s",
-        }
-      );
-      const refreshToken = jwt.sign(
-        {
-          "id": foundUser._id,
-          "username": foundUser.username,
-          "role": foundUser.role,
-        },
+        { expiresIn: '10s' }
+    );
+    const refreshToken = jwt.sign(
+        { "username": foundUser.username },
         REFRESH_JWT,
-        { expiresIn: "20s" }
-      );
+        { expiresIn: '20s' }
+    );
+    foundUser.refreshToken = refreshToken;
+    const result = await foundUser.save();
 
-      foundUser.refreshToken = refreshToken;
-      const result = await foundUser.save();
+
+
+
       res.cookie("jwt", refreshToken, {
-        secure: true,
-        httpOnly: true,
-        sameSite: 'none',
-        maxAge: 30*24*60*60*1000,
-        
-      }); 
+        httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000
+      });
       res.status(200).json({
         message: `Welcome Back ${result.username}`,
         accessToken,

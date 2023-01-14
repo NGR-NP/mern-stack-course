@@ -21,13 +21,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: "passowrd is required",
     },
-    // role: {
-    //   User: {
-    //     type: Number,
-    //     default: 100,
-    //   },
-    //   Admin: Number,
-    // },
     role: {
       type: [Number],
       enum: [Admin, User],
