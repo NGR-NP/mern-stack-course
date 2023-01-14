@@ -130,6 +130,7 @@ const login = async (req, res, next) => {
       foundUser.refreshToken = refreshToken;
       const result = await foundUser.save();
       res.cookie("jwt", refreshToken, {
+        secure: true,
         httpOnly: true,
       }); 
       res.status(200).json({
