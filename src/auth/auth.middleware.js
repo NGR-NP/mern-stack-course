@@ -29,8 +29,6 @@ const verifyRole = (...isAllowed) => {
   return (req, res, next) => {
     if (!req?.role) return next(ERROR(401, "you are not authorize no role"));
     const roleArray = [...isAllowed];
-    console.log(req.role);
-    console.log(roleArray);
     const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
 
     if (!result)
