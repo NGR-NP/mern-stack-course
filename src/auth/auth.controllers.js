@@ -75,13 +75,14 @@ const login = async (req, res, next) => {
       foundUser.refreshToken = refreshToken;
       const result = await foundUser.save();
 
-      res.cookie("jwt", refreshToken, {
-        httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000
-      });
-      res.status(200).json({
-        message: `Welcome Back ${result.username}`,
-        accessToken,
-      });
+      res
+        .cookie("jwt", refreshToken, {
+          httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000
+        })
+        .status(200).json({
+          message: `Welcome Back ${result.username}`,
+          accessToken,
+        });
     }
   } catch (err) {
     next(err);
