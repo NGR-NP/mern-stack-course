@@ -25,28 +25,17 @@ const verifyCurrentUser = (req, res, next) => {
   });
 };
 
-const verifyRole = (req,res,next) => {
-  verifyJwt(req, res,() => {
-    
-    if (req.role === 10){
-      next();
-    } else{
-      return next(ERROR(401, "unauthorized! only admin can do that"));
-    }
-  });
+const verifyRole = (...isAllowed) => {
+  return (req, res, next) => {
+    if (!req?.role) return next(ERROR(401, "you are not authorize no role"));
+    const roleArray = [...isAllowed];
+    console.log(req.role);
+    console.log(roleArray);
+    const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
+
+    if (!result)
+      return next(ERROR(401, "unauthorized! only permited user can do that"));
+    next();
+  };
 };
-
-// const verifyRole = (...isAllowed) => {
-//   return (req, res, next) => {
-//     if (!req?.role) return next(ERROR(401, "you are not authorize no role"));
-//     const roleArray = [...isAllowed];
-//     console.log(req.role);
-//     console.log(roleArray);
-//     const result = req.role.map(roles => roleArray.includes(roles)).find(val => val === true);
-
-//     if (!result)
-//       return next(ERROR(401, "unauthorized! only permited user can do that"));
-//     next();
-//   };
-// };
 module.exports = { verifyJwt, verifyRole, verifyCurrentUser };
