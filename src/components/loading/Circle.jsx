@@ -9,7 +9,7 @@ const spin = keyframes`
     }
 `;
 const Loading = styled.div`
-  border: 5px solid pink;
+  border: 5px solid #f9a0fc;
   border-top: 5px solid white;
   border-radius: 50%;
   width: 18px;
