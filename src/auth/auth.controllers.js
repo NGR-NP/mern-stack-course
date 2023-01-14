@@ -1,58 +1,3 @@
-// const ERROR = require("../utils/error");
-// const AuthService = require("./index");
-// const register = async (req, res, next) => {
-//   const { email, username, password } = req.body;
-//   if (!email) {
-//     return next(ERROR(400, "enter your email"));
-//   } else if (!username) {
-//     return next(ERROR(400, "enter your username"));
-//   } else if (!password) {
-//     return next(ERROR(400, "enter you password"));
-//   }
-//   try {
-//     const registeredUser = await AuthService.registerNewUser(
-//       username,
-//       email,
-//       password
-//     );
-//     res.status(200).json({
-//       message: `${registeredUser.username} your Account is Created Successfully`,
-//       registeredUser,
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-// const login = async (req, res, next) => {
-//   const { email, password } = req.body;
-//   const Reqpassword = password;
-//   if (!email) {
-//     return next(ERROR(400, "enter your Email or Username"));
-//   } else if (!password) {
-//     return next(ERROR(400, "enter your Password"));
-//   }
-//   try {
-//     const { token, refreshToken, LoggedInUser } =
-//       await AuthService.attemptLogin(email, Reqpassword);
-//     res.json({
-//       message: `Welcome Back ${LoggedInUser.username}`,
-//       user: LoggedInUser,
-//       token,
-//       refreshToken,
-//     });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
-// const me = (req, res) => {
-//   const { user } = req;
-//   return res.status(200).json({
-//     user,
-//   });
-// };
-// module.exports = { register, login, me };
-
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT, REFRESH_JWT } = require("../config/secrets");
@@ -114,7 +59,7 @@ const login = async (req, res, next) => {
         },
         JWT,
         {
-          expiresIn: "10s",
+          expiresIn: "15s",
         }
       );
       const refreshToken = jwt.sign(
@@ -143,3 +88,62 @@ const login = async (req, res, next) => {
   }
 };
 module.exports = { register, login };
+
+
+
+
+
+// const ERROR = require("../utils/error");
+// const AuthService = require("./index");
+// const register = async (req, res, next) => {
+//   const { email, username, password } = req.body;
+//   if (!email) {
+//     return next(ERROR(400, "enter your email"));
+//   } else if (!username) {
+//     return next(ERROR(400, "enter your username"));
+//   } else if (!password) {
+//     return next(ERROR(400, "enter you password"));
+//   }
+//   try {
+//     const registeredUser = await AuthService.registerNewUser(
+//       username,
+//       email,
+//       password
+//     );
+//     res.status(200).json({
+//       message: `${registeredUser.username} your Account is Created Successfully`,
+//       registeredUser,
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+// const login = async (req, res, next) => {
+//   const { email, password } = req.body;
+//   const Reqpassword = password;
+//   if (!email) {
+//     return next(ERROR(400, "enter your Email or Username"));
+//   } else if (!password) {
+//     return next(ERROR(400, "enter your Password"));
+//   }
+//   try {
+//     const { token, refreshToken, LoggedInUser } =
+//       await AuthService.attemptLogin(email, Reqpassword);
+//     res.json({
+//       message: `Welcome Back ${LoggedInUser.username}`,
+//       user: LoggedInUser,
+//       token,
+//       refreshToken,
+//     });
+//   } catch (err) {
+//     return next(err);
+//   }
+// };
+// const me = (req, res) => {
+//   const { user } = req;
+//   return res.status(200).json({
+//     user,
+//   });
+// };
+// module.exports = { register, login, me };

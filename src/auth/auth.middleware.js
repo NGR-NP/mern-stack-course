@@ -7,7 +7,7 @@ const verifyJwt = (req, res, next) => {
   if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
   const token = authHeader.split(' ')[1];
   jwt.verify(token, JWT, (err, decoded) => {
-    if (err) return next(ERROR(403, "invalid token"));
+    if (err) return next(ERROR(403, "token expired"));
     req.id = decoded.id;
     req.username = decoded.username;
     req.role = decoded.role;
