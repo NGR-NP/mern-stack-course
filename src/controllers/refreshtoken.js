@@ -8,7 +8,7 @@ const genRefreshToken = async (req, res, next) => {
   if (!cookies?.jwt) return next(ERROR(401, "cookie not avaliable"));
   const refreshToken = cookies.jwt;
   const foundUser = await User.findOne({ refreshToken });
-  if (!foundUser) return next(ERROR(403, "token expire"));
+  if (!foundUser) return next(ERROR(403, "token expire `${refreshToken} ${cookies.jwt}`"));
   jwt.verify(refreshToken, REFRESH_JWT, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
       return next(ERROR(403, "invalid token"));
