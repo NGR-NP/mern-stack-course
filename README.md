@@ -13,10 +13,6 @@ on this project i used [Material UI Icons](https://mui.com/material-ui/material-
 promptbase ai generated images [marketplace](https://promptbase.com/marketplace?categories=clothes)
 & [illustrations](https://icons8.com/illustrations)
 
-## For picking color from image i used this site called
-
-on slider i [picked color](https://imagecolorpicker.com/en) from image and add that color on slider background using [linear gradient](https://cssgradient.io/)
-
 [image color picker](https://imagecolorpicker.com/en).
 [Generate linear gradient cssgradient](https://cssgradient.io/)
 
