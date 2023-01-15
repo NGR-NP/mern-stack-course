@@ -15,12 +15,17 @@ const Loading = styled.div`
   width: 18px;
   height: 18px;
   position: absolute;
-  right: 45px;
-  top: 19%;
+  left: ${(props) => props.left};
+  right: ${(props) => props.right};
+  /* 45px; */
+  top: ${(props) => props.top};
+  /* 19%; */
+  bottom: ${(props) => props.bottom};
+
   animation: ${spin} 2s linear infinite;
 `;
-const Circle = () => {
-  return <Loading />;
+const Circle = ({ top, bottom, left, right }) => {
+  return <Loading top={top} bottom={bottom} left={left} right={right} />;
 };
 
 export default Circle;

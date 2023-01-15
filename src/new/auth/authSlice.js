@@ -8,7 +8,6 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       const { username, accessToken } = action.payload;
       const decode = jwtDecode(accessToken);
-      console.log(decode)
       console.log(decode.role)
       state.username = username;
       state.token = accessToken;

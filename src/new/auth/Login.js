@@ -67,7 +67,7 @@ const Login = () => {
         <Password password={password} setPassword={setPassword} />
         <div className="centerADiv">
           <button className="loginBtn">
-            {isLoading ? <Circle /> : `Login` }
+            {isLoading ? <Circle top={"19%"} right={"45%"} /> : `Login`}
           </button>
         </div>
       </div>
