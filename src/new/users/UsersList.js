@@ -56,36 +56,15 @@ const Thead = styled.thead`
 `;
 const Tbody = styled.tbody``;
 const Tr = styled.tr`
-  background-color: ${(props) => (props.color ? "rgb(213 0 0 / 68%)" : "")};
-  color: ${(props) => (props.color ? "white" : "")};
   :nth-child(even) {
     background-color: #f4f6fb;
   }
 `;
-const Th = styled.th`
-  padding: 1rem 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-size: 0.9rem;
-  font-weight: 900;
-`;
+
 const Td = styled.td`
   padding: 1rem 2rem;
-  > .red {
-    background: #ffcdd2;
-    color: #c62828;
-  }
-  > .green {
-    background-color: #c8e6c9;
-    color: #388e3c;
-  }
 `;
-const Role = styled.p`
-  border-radius: 0.2rem;
-  padding: 0.2rem 1rem;
-  text-align: center;
-  width: 5rem;
-`;
+
 const UsersList = () => {
   const {
     data: users,
@@ -105,23 +84,19 @@ const UsersList = () => {
           <Table>
             <Thead>
               <Tr>
-                <Th>id</Th>
-                <Th>Username</Th>
-                <Th>email</Th>
-                <Th>role</Th>
+                <Td>id</Td>
+                <Td>Username</Td>
+                <Td>email</Td>
+                <Td>role</Td>
               </Tr>
             </Thead>
             <Tbody>
               {users.map((user) => (
-                <Tr key={user._id} color={user.role.includes(10)}>
+                <Tr key={user._id}>
                   <Td>{user?._id}</Td>
                   <Td>{user.username}</Td>
                   <Td>{user.email}</Td>
-                  <Td>
-                    <Role className={user.role.includes(10) ? "red" : "green"}>
-                      {user.role.map((role) => role).join(", ")}
-                    </Role>
-                  </Td>
+                  <Td>{user.role.map((role) => role).join(", ")}</Td>
                 </Tr>
               ))}
             </Tbody>
