@@ -2,7 +2,7 @@
 
 ![This is an image](./src/images/2laptop.png)
 
-This site is [Live](https://vrit-tech-mernstack-project-by-roll-1.netlify.app/).
+This site is [Live](https://vrit-tech-mern-project-by-tejkarki.netlify.app/).
 
 ## Icon that i used
 
@@ -21,10 +21,6 @@ on slider i [picked color](https://imagecolorpicker.com/en) from image and add t
 [Generate linear gradient cssgradient](https://cssgradient.io/)
 
 
-
-![gif](./src/images/laptop.gif)
-
-## upper demo image and gif was created using 
 [Mobile simulator - responsive testing tool extensions](https://chrome.google.com/webstore/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk)
 
 ## Learn More
