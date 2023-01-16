@@ -12,14 +12,11 @@ const connectMongoDB = () => {
   }
 };
 mongoose.connection.on("disconnected", () => {
-  console.log("\n\n\n\n\n\n\n\n\n❌❌❌❌❌❌❌❌❌❌❌❌");
-  console.log(" 😔 MongoDB Disconnected ❌");
-  console.log("❌❌❌❌❌❌❌❌❌❌❌❌");
+  console.log("\n %cMongoDB Disconnected!", "color:red;font-size:xx-large;font-weight:bold;")
 });
 
 mongoose.connection.on("connected", () => {
-  console.log();
-  console.log("🎉 🎇 🎆 MongoDB connected successfully🥳 🎆 🎇 🎉");
+  console.log("\n %c🎉 🎇 🎆 MongoDB connected successfully🥳 🎆 🎇 🎉", "color:green;font-size:xx-large;font-weight:bold;\n")
 });
 
 module.exports = connectMongoDB;
