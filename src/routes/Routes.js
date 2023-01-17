@@ -9,8 +9,8 @@ import RequireAuth from "../new/auth/RequireAuth";
 import Unauthorized from "../components/access/unauthorized";
 import AllProducts from "../new/products/AllProducts";
 const ROLE = {
-  2020: 10,
-  2023: 100,
+  ADMIN: 10,
+  USER: 100,
 };
 export const router = createBrowserRouter([
   {
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
 
   {
     path: "/",
-    element: <RequireAuth isAllowed={[ROLE[2020]]} />,
+    element: <RequireAuth isAllowed={[ROLE.ADMIN]} />,
     children: [
       {
         path: "/admin",
@@ -64,12 +64,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <RequireAuth isAllowed={[ROLE[2023]]} />,
+    element: <RequireAuth isAllowed={[ROLE.USER]} />,
     children: [
-      {
-        path: "/new",
-        element: <div>add new product</div>,
-      },
       {
         path: "/profile",
         element: <Profile />,
