@@ -8,10 +8,10 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       const { username, accessToken } = action.payload;
       const decode = jwtDecode(accessToken);
-      console.log(decode.role)
+      const role = decode?.role;
       state.username = username;
       state.token = accessToken;
-      state.role = decode.role;
+      state.role = role;
     },
     logOut: (state, action) => {
       state.username = null;

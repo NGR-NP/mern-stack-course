@@ -20,10 +20,8 @@ const AllUsers = () => {
             role: user.role,
           };
         });
-        console.log(response.data);
         isMounted && setUsers(userInfo);
       } catch (err) {
-        console.log(err);
       }
     };
     getUsers();
@@ -55,6 +53,19 @@ const AllUsers = () => {
   );
 };
 export default AllUsers;
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { useState, useEffect } from "react";
 // import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 // import styled from "styled-components";

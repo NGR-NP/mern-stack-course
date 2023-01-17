@@ -4,13 +4,13 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Admin from "../pages/Admin";
 import Profile from "../pages/Profile";
-import Products from "../pages/Products";
 import LoginPage from "../pages/login";
 import RequireAuth from "../new/auth/RequireAuth";
 import Unauthorized from "../components/access/unauthorized";
+import AllProducts from "../new/products/AllProducts";
 const ROLE = {
-  ADMIN: 10,
-  USER: 100,
+  2020: 10,
+  2023: 100,
 };
 export const router = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <Products />,
+        element: <AllProducts />,
       },
       {
         path: "/product/:id",
@@ -43,36 +43,28 @@ export const router = createBrowserRouter([
       },
       {
         path: "/unauthorize",
-        element: <Unauthorized/>,
+        element: <Unauthorized />,
       },
     ],
   },
 
   {
     path: "/",
-    element: <RequireAuth isAllowed={[ROLE.ADMIN]} />,
+    element: <RequireAuth isAllowed={[ROLE[2020]]} />,
     children: [
       {
         path: "/admin",
         element: <Admin />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
         path: "/new",
         element: <div>add new product</div>,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
       },
     ],
   },
   {
     path: "/",
-    element: <RequireAuth isAllowed={[ROLE.USER]} />,
+    element: <RequireAuth isAllowed={[ROLE[2023]]} />,
     children: [
       {
         path: "/new",

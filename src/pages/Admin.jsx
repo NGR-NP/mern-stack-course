@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GoToHome from "../components/Icons/GoToHome";
 import UsersList from "../new/users/UsersList";
 const Section = styled.section`
   padding: 3rem 0;
@@ -8,8 +7,7 @@ const Section = styled.section`
 const Admin = () => {
   return (
     <Section>
-      <UsersList />
-      <GoToHome />
+      <UsersList/>
     </Section>
   );
 };

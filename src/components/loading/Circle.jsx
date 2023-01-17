@@ -17,9 +17,7 @@ const Loading = styled.div`
   position: absolute;
   left: ${(props) => props.left};
   right: ${(props) => props.right};
-  /* 45px; */
   top: ${(props) => props.top};
-  /* 19%; */
   bottom: ${(props) => props.bottom};
 
   animation: ${spin} 2s linear infinite;

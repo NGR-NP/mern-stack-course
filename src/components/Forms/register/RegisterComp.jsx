@@ -89,7 +89,6 @@ const RegisterComp = () => {
         });
       }, 5000);
     } catch (err) {
-      console.log(err.response);
       const resp = err?.response;
       if (!resp) {
         setErrMsg("server is not responding, Reload and try again");

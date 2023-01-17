@@ -28,7 +28,6 @@ const LoginComp = () => {
     try {
       const res = await axios.post(LOGIN_URL, { username, password });
       const resp = res?.data;
-      console.log(resp);
       const accessToken = resp?.accessToken;
       setAuth({ username, accessToken });
       setSuccess(true);
