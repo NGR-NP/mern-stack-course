@@ -13,6 +13,6 @@ route.use("/users", userRoutes);
 route.get("/refresh", genRefreshToken);
 route.get("/logout", logout);
 //route.use(verifyJwt);
-route.get("/me/:id", verifyCurrentUser, me);
+route.get("/me/:id",  me);
 
 module.exports = route;
