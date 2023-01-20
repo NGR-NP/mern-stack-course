@@ -4,7 +4,7 @@ const Username = ({ username, setUsername }) => {
   // const handleUsernameInput = (e) => setUsername(e.traget.value);
   return (
     <div className="loginInputCont bdrTop">
-      <label htmlFor="email">Email</label>
+      <label htmlFor="username">Username</label>
       <input
         className="loginInput"
         autoFocus
