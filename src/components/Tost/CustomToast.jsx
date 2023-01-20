@@ -14,6 +14,7 @@ const ToastMessage = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  z-index: 99999999;
 `;
 const CustomToast = ({ toastmessage, bgcolor }) => {
   return (

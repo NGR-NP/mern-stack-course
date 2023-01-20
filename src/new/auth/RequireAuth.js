@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { selectCurrentRole, selectCurrentToken } from "./authSlice";
-import NavLayout from "../../routes/NavLayout";
+import NavLayout from "../../layout/NavLayout";
 
 const RequireAuth = ({ isAllowed }) => {
   const token = useSelector(selectCurrentToken);
@@ -16,12 +16,5 @@ const RequireAuth = ({ isAllowed }) => {
     <Navigate to="/login" state={{ from: location }} replace />
   );
 };
-
-// return token ? (
-//   <NavLayout />
-// ) :(
-//   <Navigate to="/login" state={{ from: location }} replace />
-// );
-// };
 
 export default RequireAuth;

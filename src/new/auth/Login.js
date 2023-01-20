@@ -18,6 +18,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg("");
+    setShowToast(false);
   }, [username, password]);
 
   const handleSubmit = async (e) => {
@@ -42,12 +44,19 @@ const Login = () => {
     } catch (err) {
       const resp = err?.data;
       if (!resp) {
+        setShowToast(true);
         setErrMsg("server is not responding");
       } else if (resp?.status === 400) {
+        setShowToast(true);
         setErrMsg(resp?.message);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
       } else if (resp) {
+        setShowToast(true);
         setErrMsg(resp.message);
       } else {
+        setShowToast(true);
         setErrMsg("Login failed! 😔");
       }
     }
@@ -55,7 +64,7 @@ const Login = () => {
 
   const LoginForm = (
     <form onSubmit={handleSubmit} className="loginMain">
-      {errMsg ? <ErrMsg errMsg={errMsg} errRef={errRef} /> : <></>}
+      {showToast ? <ErrMsg errMsg={errMsg} errRef={errRef} /> : <></>}
       <div>
         <div className="loginTitle">Login</div>
         <Info
@@ -66,7 +75,7 @@ const Login = () => {
         <Username username={username} setUsername={setUsername} />
         <Password password={password} setPassword={setPassword} />
         <div className="centerADiv">
-          <button className="loginBtn">
+          <button className="loginBtn" disabled={isLoading ? true : false}>
             {isLoading ? <Circle top={"19%"} right={"45%"} /> : `Login`}
           </button>
         </div>

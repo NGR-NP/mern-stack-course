@@ -4,7 +4,20 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
 import "./css/NavUserComp.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUsername } from "../../../new/auth/authSlice";
+import { AccountCircle } from "@mui/icons-material";
+import styled from "styled-components";
+const LUser = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  p {
+    text-transform: capitalize;
+  }
+`;
 const NavUserComp = () => {
+  const username = useSelector(selectCurrentUsername);
   return (
     <div className="navUserComp">
       <div className="navUserCompMain">
@@ -24,15 +37,25 @@ const NavUserComp = () => {
           />
           <div>Cart</div>
         </div>
+
         <div className="navUserCompSec">
-          <Link to="/login" className="navUserCompLink" >
-            <Person3OutlinedIcon
-              color="action"
-              fontSize="medium"
-              titleAccess="Account"
-            />
-            <div>Account</div>
-          </Link>
+          {username ? (
+            <Link to="/profile">
+              <LUser>
+                <AccountCircle />
+                <p>{username}</p>
+              </LUser>
+            </Link>
+          ) : (
+            <Link to="/login" className="navUserCompLink">
+              <Person3OutlinedIcon
+                color="action"
+                fontSize="medium"
+                titleAccess="Account"
+              />
+              <div>Login</div>
+            </Link>
+          )}
         </div>
       </div>
     </div>

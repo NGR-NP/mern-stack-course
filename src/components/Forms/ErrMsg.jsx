@@ -14,8 +14,10 @@ const MSG = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  z-index: 9999999;
 `;
 const ErrMsg = ({ errRef, errMsg }) => {
+  
   return (
     <MSG ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
       <Dangerous /> {errMsg}
