@@ -4,7 +4,7 @@ const ERROR = require("../utils/error");
 const me = async (req, res, next) => {
   const { id } = req;
   if (!id) {
-    return next(ERROR(401, "id not provided"));
+    return next(ERROR(401, "id not provided jwt"));
   }
 
   if (id === req.params.id) {
