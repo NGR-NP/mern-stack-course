@@ -17,10 +17,28 @@ const createProduct = async (req, res, next) => {
 };
 // #R
 const getProducts = async (req, res, next) => {
+  const newQuery = req.query.new;
+  const categoryQuery = req.query.category;
+
+  const products = await Product.find();
+  if (!products) return next(ERROR(400, "no products"));
+
   try {
-    const products = await Product.find();
-    if (!products) return next(ERROR(400, "Products not  available"));
-    res.status(200).json(products);
+    let Products;
+
+    if (newQuery) {
+      Products = await Product.find().sort({ createdAt: -1 }).limit(5);
+    } else if (categoryQuery) {
+      Products = await Product.find({
+        category: {
+          $in: [categoryQuery],
+        },
+      });
+    } else {
+      Products = await Product.find();
+    }
+
+    res.status(200).json(Products);
   } catch (err) {
     next(err);
   }

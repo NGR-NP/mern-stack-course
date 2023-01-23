@@ -17,7 +17,7 @@ const verifyJwt = (req, res, next) => {
 };
 const verifyCurrentUser = (req, res, next) => {
   verifyJwt(req, res, () => {
-    if (req.id === req.params.id) {
+    if (req.id === req.body.id) {
       next();
     } else {
       return next(ERROR(403, "you are not authorized!"));

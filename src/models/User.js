@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const { User, Admin } = require("../constants/roles");
-// const { ADMIN, USER } = require("../constants/roles");
 const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
       required: "username is required",
+      match: [
+        /^[A-z][A-z0-9-_]{2,15}$/,
+        "username must has at list 3 characters",
+      ],
       unique: true,
     },
     email: {
@@ -20,6 +23,10 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: "passowrd is required",
+      // match: [
+      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
+      //   " At list 8 to 24 characters.Must have uppercase & lowercase letters, number and a special character: ! @ # $ %",
+      // ],
     },
     role: {
       type: [Number],

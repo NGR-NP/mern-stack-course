@@ -12,13 +12,12 @@ const genRefreshToken = async (req, res, next) => {
   jwt.verify(refreshToken, REFRESH_JWT, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
       return next(ERROR(403, "invalid token"));
-    // const role = Object.values(foundUser.role).filter(Boolean);
     const accessToken = jwt.sign(
       {
-        "id": decoded.id,
-        "email": decoded.email,
-        "username": decoded.username,
-        "role": decoded.role,
+        id: decoded.id,
+        email: decoded.email,
+        username: decoded.username,
+        role: decoded.role,
       },
       JWT,
       {
@@ -27,8 +26,6 @@ const genRefreshToken = async (req, res, next) => {
     );
     res.json({ accessToken });
   });
-
-
 };
 
 module.exports = genRefreshToken;
