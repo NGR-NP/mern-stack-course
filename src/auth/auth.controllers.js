@@ -60,7 +60,7 @@ const login = async (req, res, next) => {
         },
         JWT,
         {
-          expiresIn: "15m",
+          expiresIn: "15s",
         }
       );
       const refreshToken = jwt.sign(
