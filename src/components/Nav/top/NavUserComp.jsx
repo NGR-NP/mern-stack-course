@@ -47,13 +47,11 @@ const NavUserComp = () => {
               </LUser>
             </Link>
           ) : (
-            <Link to="/login" className="navUserCompLink">
-              <Person3OutlinedIcon
-                color="action"
-                fontSize="medium"
-                titleAccess="Account"
-              />
-              <div>Login</div>
+            <Link to="/register" className="navUserCompLink">
+              <Person3OutlinedIcon color="action"
+            fontSize="medium"
+            titleAccess="Register"/>
+              <div>Register</div>
             </Link>
           )}
         </div>

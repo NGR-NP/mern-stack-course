@@ -36,6 +36,7 @@ const FetchProducts = () => {
     };
     getProducts();
   }, []);
+
   return (
     <>
       {ifErr ? (

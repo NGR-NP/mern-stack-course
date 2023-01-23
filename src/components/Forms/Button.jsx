@@ -1,5 +1,8 @@
+import styled from "styled-components";
 import Circle from "../loading/Circle";
-
+const Btn = styled.button`
+  cursor: ${(props) => (props.loading === "ture" ? "wait" : "")};
+`;
 const Button = ({
   isErr,
   loading,
@@ -11,16 +14,22 @@ const Button = ({
 }) => {
   return (
     <div className="centerADiv">
-      <button
+      <Btn
+        loading={loading.toString()}
         disabled={
-          !validUsername || !validEmail || !validPwd || !validMatch || isErr
+          !validUsername ||
+          !validEmail ||
+          !validPwd ||
+          !validMatch ||
+          isErr ||
+          loading
             ? true
             : false
         }
         className="RLbtn"
       >
-        {loading ? <Circle /> : lets}
-      </button>
+        {loading ? <Circle top={"19%"} right={"45%"} /> : lets}
+      </Btn>
     </div>
   );
 };

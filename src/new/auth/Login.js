@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,6 +10,7 @@ import Username from "../../components/Forms/login/inputs/username";
 import Password from "../../components/Forms/login/inputs/Password";
 import Info from "../../components/Forms/Info";
 import Circle from "../../components/loading/Circle";
+import { ToastContext } from "../../context/ToastContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Login = () => {
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const { successToast } = useContext(ToastContext);
 
   useEffect(() => {
     setErrMsg("");
@@ -36,6 +38,7 @@ const Login = () => {
     try {
       const userData = await login({ username, password }).unwrap();
       dispatch(setCredentials({ ...userData, username }));
+      successToast(`Welcome Back ${username}`);
       setUsername("");
       setPassword("");
       navigate(from, {

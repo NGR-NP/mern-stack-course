@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Circle from "./Circle";
-
 const LoadingData = {
   images: [
     {
@@ -28,9 +27,7 @@ const LoadingData = {
     {
       gif: "/images/loading/loading7.gif",
     },
-    {
-      gif: "/images/loading/loading8.gif",
-    },
+
     {
       gif: "/images/loading/loading9.gif",
     },
@@ -67,7 +64,7 @@ const LoadingGif = () => {
     <Container>
       <ImgCont>
         <Img
-          src={LoadingData.images[imgIdx].gif || "/images/loading/loading.gif"}
+          src={LoadingData.images[imgIdx].gif || "/images/loading/loading7.gif"}
           alt="loading....."
         />
         <Circle bottom={"10%"} right={"10%"} />

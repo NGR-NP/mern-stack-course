@@ -145,6 +145,7 @@ const AllProducts = () => {
     isError,
     error,
   } = useGetProductsQuery();
+  const message = error?.data || "server s not responding";
   let content;
   if (isLoading) {
     content = (
@@ -179,8 +180,8 @@ const AllProducts = () => {
   } else if (isError) {
     content = (
       <ServerCont>
-        <ErrMsg errMsg={error?.data?.message} />
-        <ServerImg src={Server} alt={error.data.message} />
+        <ErrMsg errMsg={message} />
+        <ServerImg src={Server} alt={message} />
       </ServerCont>
     );
   }

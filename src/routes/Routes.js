@@ -8,72 +8,80 @@ import LoginPage from "../pages/login";
 import RequireAuth from "../new/auth/RequireAuth";
 import Unauthorized from "../components/access/unauthorized";
 import AllProducts from "../new/products/AllProducts";
+import ToastLayout from "../layout/ToastLayout";
 const ROLE = {
   ADMIN: 10,
   USER: 100,
 };
 export const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
     path: "/",
-    element: <NavLayout />,
+    element: <ToastLayout />,
     children: [
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
       {
         path: "/",
-        element: <Home />,
+        element: <NavLayout />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "/shop",
+            element: <AllProducts />,
+          },
+          {
+            path: "/product/:id",
+            element: <div>single product</div>,
+          },
+          {
+            path: "/cart",
+            element: <div>cart</div>,
+          },
+          {
+            path: "/unauthorize",
+            element: <Unauthorized />,
+          },
+        ],
       },
-      {
-        path: "/shop",
-        element: <AllProducts />,
-      },
-      {
-        path: "/product/:id",
-        element: <div>single product</div>,
-      },
-      {
-        path: "/cart",
-        element: <div>cart</div>,
-      },
-      {
-        path: "/unauthorize",
-        element: <Unauthorized />,
-      },
-    ],
-  },
 
-  {
-    path: "/",
-    element: <RequireAuth isAllowed={[ROLE.ADMIN]} />,
-    children: [
       {
-        path: "/admin",
-        element: <Admin />,
+        path: "/",
+        element: <RequireAuth isAllowed={[ROLE.ADMIN]} />,
+        children: [
+          {
+            path: "/admin",
+            element: <Admin />,
+          },
+          {
+            path: "/new",
+            element: <div>add new product</div>,
+          },
+        ],
       },
       {
-        path: "/new",
-        element: <div>add new product</div>,
+        path: "/",
+        element: <RequireAuth isAllowed={[ROLE.USER]} />,
+        children: [
+          {
+            path: "/profile",
+            element: <Profile />,
+          },
+        ],
+      },
+      
+      {
+        path: "*",
+        element: <div>404 page not found</div>,
       },
     ],
-  },
-  {
-    path: "/",
-    element: <RequireAuth isAllowed={[ROLE.USER]} />,
-    children: [
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <div>404 page not found</div>,
   },
 ]);

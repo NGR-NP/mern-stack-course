@@ -21,6 +21,7 @@ const Cont = styled.div`
   color: #4f546c;
   font-size: 0.9rem;
   border-radius: calc(22px - 9px);
+  height: 75vh;
 `;
 
 const Title = styled.h1`
@@ -48,8 +49,9 @@ const Table = styled.table`
   background-color: #f6f0f09e;
   text-align: left;
   overflow: hidden;
-  margin: 22px;
+  /* margin: 22px; */
   border-radius: calc(22px - 9px);
+  user-select: text;
 `;
 const Thead = styled.thead`
   box-shadow: 0 5px 10px #e1e5ee;
@@ -59,6 +61,7 @@ const Tr = styled.tr`
   background-color: ${(props) => (props.color ? "rgb(213 0 0 / 68%)" : "")};
   color: ${(props) => (props.color ? "white" : "")};
   :nth-child(even) {
+    cursor: pointer;
     background-color: #f4f6fb;
   }
 `;
@@ -67,7 +70,12 @@ const Th = styled.th`
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 0.9rem;
+  cursor: pointer;
   font-weight: 900;
+  :nth-child(1){
+    padding: 0;
+    text-align: center;
+  }
 `;
 const Td = styled.td`
   padding: 1rem 2rem;
@@ -79,12 +87,22 @@ const Td = styled.td`
     background-color: #c8e6c9;
     color: #388e3c;
   }
+  cursor: pointer;
+  :nth-child(1){
+    width: 10px;
+    background-color: transparent;
+    box-shadow: 1px 1px 7px #9991912e;
+    text-align: center;
+    padding: 24px;
+  }
 `;
 const Role = styled.p`
   border-radius: 0.2rem;
   padding: 0.2rem 1rem;
   text-align: center;
   width: 5rem;
+  user-select: none;
+  cursor: pointer;
 `;
 const UsersList = () => {
   const roleMap = {
@@ -109,20 +127,21 @@ const UsersList = () => {
           <Table>
             <Thead>
               <Tr>
-                <Th>id</Th>
+                <Th>S.N</Th>
                 <Th>Username</Th>
                 <Th>email</Th>
                 <Th>role</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {users.map((user) => (
+              {users.map((user, i) => (
                 <Tr key={user?._id}>
-                  <Td>{user._id}</Td>
-                  <Td>{user.username}</Td>
-                  <Td>{user.email}</Td>
+                  <Td>{i + 1}</Td>
+                  <Td title="username">{user.username}</Td>
+                  <Td title="email">{user.email}</Td>
                   <Td>
                     <Role
+                      title="Role"
                       className={user.role.indexOf(10) !== -1 ? "red" : "green"}
                       key={user?._id}
                     >

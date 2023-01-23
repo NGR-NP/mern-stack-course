@@ -6,6 +6,43 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.valid {
+  position: absolute;
+  top: 23%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(62, 234, 0);
+  transition: all 600ms ease-in-out;
+}
+.invalid {
+  position: absolute;
+  top: 26%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 600ms ease-in-out;
+  color: red;
+}
+.offscreen {
+  transition: all 600ms ease-in-out;
+  display: none;
+}
+.hide {
+  transition: all 600ms ease-in-out;
+  display: none;
+}
+.regGuide {
+  display: flex;
+  align-items: center;
+  background: #ededed;
+  border-radius: 25px;
+  padding: 10px 1.5rem 10px 13px;
+  transition: all 600ms ease-in-out;
+  line-height: 2;
 }

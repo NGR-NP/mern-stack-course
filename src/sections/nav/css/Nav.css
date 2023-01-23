@@ -1,14 +1,13 @@
 .navMain {
   display: grid;
   place-content: center;
+  justify-items: center;
   background: var(--lightBlueBackground);
   background: var(--bgLineGradBlue);
-
-  /* height: 19vh; */
 }
 .navMainLine {
   content: "";
-  width: 100%;
+  width: 97vw;
   height: 2px;
   background-color: var(--lightBlue);
 }
