@@ -16,11 +16,16 @@ route.use("/products", productRoutes);
 route.use("/users", userRoutes);
 route.get("/refresh", genRefreshToken);
 route.get("/logout", logout);
+<<<<<<< HEAD
 
 route.use(verifyJwt);
 route.use("/carts", CartRoutes);
 route.use("/orders", OrderRoutes);
 route.get("/me", me);
 route.get("/revenue", verifyRole(rolesList.Admin), revenue);
+=======
+route.use(verifyJwt);
+route.get("/me/:id",  me);
+>>>>>>> d0f8872dac05a1ce6c81751d74000844fb4475e3
 
 module.exports = route;
