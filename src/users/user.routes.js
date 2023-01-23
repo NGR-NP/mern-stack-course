@@ -26,7 +26,7 @@ userRoutes.put(
   verifyCurrentUser,
   verifyRole(rolesList.User),
   updateUsername
-);
+); 
 userRoutes.put(
   "/change/password/:id",
   verifyCurrentUser,
