@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const saltNum = require("../utils/salt");
 const ERROR = require("../utils/error");
 
 /*      ####CRUD####     */
@@ -20,7 +19,8 @@ const createUser = async (req, res, next) => {
     } else if (emailExist) {
       return res.status(409).json({ message: "Emaill already Registered" });
     }
-    const hash = bcrypt.hashSync(password, saltNum);
+    const salt = bcrypt.genSaltSync(5);
+    const hash = bcrypt.hashSync(password, salt);
     const newObj = { username, email, password: hash, role };
     if (newObj) {
       const newUser = await User.create(newObj);
@@ -40,7 +40,6 @@ const createUser = async (req, res, next) => {
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find().select("-password");
-    // const { password, ...otherDetails } = users;
     res.status(200).json(users);
   } catch (err) {
     next(err);
@@ -57,20 +56,7 @@ const getUser = async (req, res, next) => {
   }
 };
 
-// #UPDATE
-// const updateUser = async (req, res, next) => {
-//   try {
-//     const updateUserById = await User.findByIdAndUpdate(
-//       req.params.id,
-//       { $set: req.body },
-//       { new: true }
-//     );
-//     res.status(200).json(updateUserById);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-// https://www.w3schools.com/nodejs/nodejs_mongodb_update.asp
+//
 const updateUsername = async (req, res, next) => {
   const { username } = req.body;
   try {
@@ -107,28 +93,28 @@ const updateUserPassword = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res, next) => {
-  const { id, username, email, password } = req.body;
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(400).json({ message: "User not Found" });
-    }
-    const duplicate = await User.findOne({ username });
-    if (duplicate && duplicate?._id.toString() !== id) {
-      return res.status(409).json({ message: "Username alredy Taken" });
-    }
-    user.username = username;
-    user.email = email;
-    if (password) {
-      user.password = await bcrypt.hashSync(password, saltNum);
-    }
-    const updatedUser = await user.save();
-    res.json({ message: `${updatedUser.username} updated` });
-  } catch (err) {
-    next(err);
-  }
-};
+// const updateUser = async (req, res, next) => {
+//   const { id, username, email, password } = req.body;
+//   try {
+//     const user = await User.findById(id);
+//     if (!user) {
+//       return res.status(400).json({ message: "User not Found" });
+//     }
+//     const duplicate = await User.findOne({ username });
+//     if (duplicate && duplicate?._id.toString() !== id) {
+//       return res.status(409).json({ message: "Username alredy Taken" });
+//     }
+//     user.username = username;
+//     user.email = email;
+//     if (password) {
+//       user.password = await bcrypt.hashSync(password, saltNum);
+//     }
+//     const updatedUser = await user.save();
+//     res.json({ message: `${updatedUser.username} updated` });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 // DELETE
 const deleteUser = async (req, res, next) => {
@@ -156,5 +142,4 @@ module.exports = {
   updateUsername,
   getUser,
   getUsers,
-  updateUser,
 };

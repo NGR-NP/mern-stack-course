@@ -6,11 +6,11 @@ const ERROR = require("../utils/error");
 const register = async (req, res, next) => {
   const { email, username, password } = req.body;
   if (!email) {
-    return next(ERROR(400, "enter your email"));
+    return next(ERROR(400, "email is required"));
   } else if (!username) {
-    return next(ERROR(400, "enter your username"));
+    return next(ERROR(400, "username is required"));
   } else if (!password) {
-    return next(ERROR(400, "enter you password"));
+    return next(ERROR(400, "password is required"));
   }
   try {
     const emailExist = await User.findOne({ email: email });
@@ -53,21 +53,21 @@ const login = async (req, res, next) => {
     if (isPasswordCorrect) {
       const accessToken = jwt.sign(
         {
-          "id": foundUser._id,
-          "email": foundUser.email,
-          "username": foundUser.username,
-          "role": foundUser.role,
+          id: foundUser._id,
+          email: foundUser.email,
+          username: foundUser.username,
+          role: foundUser.role,
         },
         JWT,
         {
-          expiresIn: "15s",
+          expiresIn: "15m",
         }
       );
       const refreshToken = jwt.sign(
         {
-          "id": foundUser._id,
-          "username": foundUser.username,
-          "role": foundUser.role,
+          id: foundUser._id,
+          username: foundUser.username,
+          role: foundUser.role,
         },
         REFRESH_JWT,
         { expiresIn: "1m" }
@@ -78,9 +78,13 @@ const login = async (req, res, next) => {
 
       res
         .cookie("jwt", refreshToken, {
-          httpOnly: true, secure: true, sameSite: 'None', maxAge: 2 * 60 * 1000
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+          maxAge: 2 * 60 * 1000,
         })
-        .status(200).json({
+        .status(200)
+        .json({
           message: `Welcome Back ${result.username}`,
           accessToken,
         });
@@ -89,7 +93,13 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
+
 module.exports = { register, login };
+
+
+
+
+
 
 
 

@@ -12,24 +12,21 @@ const {
   updateUserPassword,
   updateUsername,
   createUser,
-  updateUser,
 } = require("./user.controllers");
 
 userRoutes.use(verifyJwt);
 
 userRoutes.post("/", verifyRole(rolesList.Admin), createUser);
 userRoutes.get("/", verifyRole(rolesList.Admin), getUsers);
-//userRoutes.get("/", getUsers);
-userRoutes.get("/:id", verifyRole(rolesList.User), getUser);
+userRoutes.get("/:id", verifyRole(rolesList.User),verifyCurrentUser, getUser);
 userRoutes.delete("/:id", verifyRole(rolesList.Admin), deleteUser);
-userRoutes.put("/:id", verifyRole(rolesList.Admin), updateUser);
 
 userRoutes.put(
   "/change/username/:id",
   verifyCurrentUser,
   verifyRole(rolesList.User),
   updateUsername
-);
+); 
 userRoutes.put(
   "/change/password/:id",
   verifyCurrentUser,
