@@ -56,19 +56,20 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width: 280px; //note for small screen 200px
+  min-width: 300px; //note for small screen 200px
   height: ${(props) => props.height}px;
   height: 350px;
   margin: 5px;
-  padding: 12px;
   overflow: hidden;
   background: linear-gradient(5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100%);
   border-radius: calc(8px + 5px);
 `;
 const Part = styled.div`
   position: relative;
-  width: 100%;
   height: 100%;
+`;
+const LCont = styled.div`
+  width: 324px;
 `;
 const Loading = styled.div`
   width: 100%;
@@ -121,11 +122,11 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   position: absolute;
   z-index: 1;
   cursor: pointer;
-  bottom: 2%;
-  right: 3%;
+  bottom: 5%;
+  right: 8%;
   opacity: 0;
   color: ${(props) => props.bagcolor};
-  background:rgb(208 208 208 / 63%);
+  background: rgb(208 208 208 / 63%);
   box-shadow: var(--boxShadow);
   //backdrop-filter: blur(100px);
   padding: 8px;
@@ -151,7 +152,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
 const Price = styled.p`
   position: absolute;
   bottom: -30%;
-  left: 2%;
+  left: 8%;
   cursor: pointer;
   z-index: 1;
   opacity: 0;
@@ -183,7 +184,7 @@ const Price = styled.p`
       : "red"}; */
   /* color: ${(props) => props.color}; */
   ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag} +  & {
-    bottom: -5%;
+    bottom: 1%;
     transition: all 0.3s ease-in-out;
     opacity: 1;
   }
@@ -211,8 +212,10 @@ const Product = ({ product, height }) => {
   return (
     <Container height={height}>
       <Part>
-        <Loading />
-        <Img src={product.img} alt={product.title} />
+        <LCont>
+          <Loading/>
+        </LCont>
+        <Img src={product.img || "/images/MERN.png"} alt={product.title} />
         <FavIcon sx={{ fontSize: 30 }} favcolor={product.color} />
         <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />
         <Price color={product.color} bgcolors={product.color}>

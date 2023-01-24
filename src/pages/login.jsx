@@ -1,4 +1,3 @@
-import React from "react";
 import "../style/Login.css";
 import GoToHome from "../components/Icons/GoToHome";
 import Login from "../new/auth/Login";

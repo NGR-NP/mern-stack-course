@@ -7,7 +7,7 @@
 }
 .navMainLine {
   content: "";
-  width: 97vw;
+  width: calc(100vw - 50px);
   height: 2px;
   background-color: var(--lightBlue);
 }

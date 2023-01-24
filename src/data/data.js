@@ -1,13 +1,13 @@
 export const allCategoriesData = [
   {
     id: "1",
-    value: "men",
-    name: "Men",
+    value: "mens",
+    name: "Mens",
   },
   {
     id: "2",
-    value: "Women",
-    name: "Women",
+    value: "Womens",
+    name: "Womens",
   },
   {
     id: "3",

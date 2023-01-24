@@ -36,6 +36,11 @@
 }
 body {
   background-color: #a8e5ff82;
+  background: radial-gradient(
+    circle,
+    rgb(252 216 255) 48%,
+    rgb(218 243 251) 101%
+  );
 }
 /* *{
   border:0.05px solid rgb(0, 255, 0) ;

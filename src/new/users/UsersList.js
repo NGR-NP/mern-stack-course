@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useGetUsersQuery } from "./userApiSlice";
 import LoadingGif from "../../components/loading/LoadingGif";
+import NoResponse from "../../components/server/NoResponse";
 
 const Section = styled.section`
   margin: 0 22px 22px;
@@ -72,7 +73,7 @@ const Th = styled.th`
   font-size: 0.9rem;
   cursor: pointer;
   font-weight: 900;
-  :nth-child(1){
+  :nth-child(1) {
     padding: 0;
     text-align: center;
   }
@@ -88,7 +89,7 @@ const Td = styled.td`
     color: #388e3c;
   }
   cursor: pointer;
-  :nth-child(1){
+  :nth-child(1) {
     width: 10px;
     background-color: transparent;
     box-shadow: 1px 1px 7px #9991912e;
@@ -161,7 +162,7 @@ const UsersList = () => {
       </Section>
     );
   } else if (isError) {
-    content = <p>{error.data.message}</p>;
+    content = <NoResponse message={error.data?.mesage} />;
   }
   return content;
 };

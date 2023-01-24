@@ -1,8 +1,7 @@
-import { useEffect } from "react";
+import { Logout } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import axios from "../api/axios";
 import {
   logOut,
   selectCurrentEmail,
@@ -20,6 +19,8 @@ const UsrDtlCont = styled.div`
   padding: 20px;
   color: #727272;
   --darkreader-inline-color: #a0988b;
+  box-shadow: var(--boxShadow);
+
 `;
 const UsrDtl = styled.p`
   padding: 10px 15px;
@@ -33,6 +34,9 @@ const Button = styled.button`
   border: navajowhite;
   border-radius: 6px;
   box-shadow: var(--boxShadow);
+  display: flex;
+  align-items: center;
+  gap: 9px;
 `;
 const Profile = () => {
   const id = useSelector(selectCurrentUserId);
@@ -43,17 +47,7 @@ const Profile = () => {
   const handleClick = () => {
     dispatch(logOut());
   };
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await axios(`/me/${id}`);
-        console.log(res);
-      } catch (err) {
-        console.log(err?.response.data.message);
-      }
-    };
-    getUser();
-  }, []);
+  
   return (
     <Main>
       <Cont className="centerADiv">
@@ -72,7 +66,7 @@ const Profile = () => {
                 <b>email: </b> {email || " data not found"}
               </UsrDtl>
             </UsrDtlCont>
-            <Button onClick={handleClick}>logout</Button>
+            <Button onClick={handleClick}>logout <Logout fontSize="small"/></Button>
           </>
         ) : (
           <>

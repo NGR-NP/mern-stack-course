@@ -37,7 +37,7 @@
 }
 .customDropdownArrow::before,
 .customDropdownArrow::after {
-  --size: 0.5em;
+  --size: 0.4em;
   --arrow: rgba(255, 255, 255, 0.766);
   content: "";
   position: absolute;

@@ -1,34 +1,34 @@
 import React from "react";
 import "./css/NavLinks.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const NavLinks = () => {
   return (
     <nav role="navigation" className="navLinks">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <Link to="shop">Shop</Link>
+          <NavLink to="/shop">Shop</NavLink>
           <KeyboardArrowDownIcon fontSize="x-small" className="navLinkIcon" />
           <ul aria-label="submenu">
             <li>
-              <Link to="mens">Mens</Link>
+              <NavLink to="/shop/mens">Mens</NavLink>
             </li>
             <li>
-              <Link to="womens">Womens</Link>
+              <NavLink to="/shop/womens">Womens</NavLink>
             </li>
             <li>
-              <Link to="accosseries">Accosseries</Link>
+              <NavLink to="/shop/accosseries">Accosseries</NavLink>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="profile">Profile</Link>
+          <NavLink to="profile">Profile</NavLink>
         </li>
         <li>
-          <Link to="admin">Admin</Link>
+          <NavLink to="admin">Admin</NavLink>
         </li>
       </ul>
     </nav>
