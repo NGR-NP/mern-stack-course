@@ -219,6 +219,7 @@ const Cart = () => {
   const cart = useSelector(selectCurrentCart);
   const [shipFee, setShipFee] = useState(0);
   const [shipDis, setShipDis] = useState(0);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (cart.total > 7999) {
@@ -228,6 +229,7 @@ const Cart = () => {
       setShipFee(cart.total / 12);
       setShipDis(cart.total / 12 / 2);
     }
+    setTotal(cart.total + shipFee - shipDis)
   }, [cart]);
 
   return (
@@ -304,7 +306,7 @@ const Cart = () => {
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>
-                Rs {Math.trunc(cart.total + shipFee - shipDis)}
+                Rs {Math.trunc(total)}
               </SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
