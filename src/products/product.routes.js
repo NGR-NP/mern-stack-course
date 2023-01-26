@@ -11,7 +11,8 @@ const {
 
 productRoutes.get("/", getProducts);
 productRoutes.get("/:id", getProductById);
-//productRoutes.use(verifyJwt);
+productRoutes.use(verifyJwt);
+
 productRoutes.post("/", verifyRole(rolesList.Admin), createProduct);
 productRoutes.put("/:id", verifyRole(rolesList.Admin), updateProduct);
 productRoutes.delete("/:id", verifyRole(rolesList.Admin), deleteProduct);
