@@ -1,6 +1,6 @@
 import { Logout } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
   logOut,
@@ -20,7 +20,6 @@ const UsrDtlCont = styled.div`
   color: #727272;
   --darkreader-inline-color: #a0988b;
   box-shadow: var(--boxShadow);
-
 `;
 const UsrDtl = styled.p`
   padding: 10px 15px;
@@ -42,12 +41,13 @@ const Profile = () => {
   const id = useSelector(selectCurrentUserId);
   const username = useSelector(selectCurrentUsername);
   const email = useSelector(selectCurrentEmail);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(logOut());
+    navigate("/", { replace: true });
   };
-  
+
   return (
     <Main>
       <Cont className="centerADiv">
@@ -66,7 +66,9 @@ const Profile = () => {
                 <b>email: </b> {email || " data not found"}
               </UsrDtl>
             </UsrDtlCont>
-            <Button onClick={handleClick}>logout <Logout fontSize="small"/></Button>
+            <Button onClick={handleClick}>
+              logout <Logout fontSize="small" />
+            </Button>
           </>
         ) : (
           <>

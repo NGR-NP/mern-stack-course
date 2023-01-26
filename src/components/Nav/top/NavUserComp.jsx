@@ -22,6 +22,10 @@ const LUser = styled.div`
 `;
 const CartCont = styled.div`
   position: relative;
+  
+  a {
+    display: flex;
+  }
 `;
 const Count = styled.div`
   font-size: 0.956rem;
@@ -33,6 +37,8 @@ const Count = styled.div`
   box-shadow: 0px 2px 4px #b6b6b659;
   margin: 0 !important;
   font-family: auto !important;
+  display: flex;
+  align-items: center;
 `;
 const Num = styled.div`
   font-family: var(--font4) !important;
@@ -53,7 +59,7 @@ const Num = styled.div`
 const NavUserComp = () => {
   const username = useSelector(selectCurrentUsername);
   const qty = useSelector(selectCurrentQty);
-  console.log(qty);
+  console.log(username)
   return (
     <div className="navUserComp">
       <div className="navUserCompMain">
