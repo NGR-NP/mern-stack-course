@@ -41,7 +41,7 @@ const getUsers = async (req, res, next) => {
   try {
     const users = await User.find()
 
-const { ...otherDetails} = users._doc;
+const {password, refreshToken, ...otherDetails} = users;
     res.status(200).json({...otherDetails});
   } catch (err) {
     next(err);
