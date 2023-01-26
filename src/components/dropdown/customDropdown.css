@@ -8,6 +8,7 @@
   outline: none;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: 4px 5px 6px #e1e1e1;
 }
 
 .customDropdown {

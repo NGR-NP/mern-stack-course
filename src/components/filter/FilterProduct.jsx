@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
-import { EmojiPeople } from "@mui/icons-material";
+import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { useState } from "react";
 const FilterCont = styled.div`
   display: flex;
   align-items: center;
   margin: 16px;
   position: relative;
   flex-wrap: wrap;
-  
 `;
 const Filter = styled.div`
   display: flex;
@@ -109,7 +109,7 @@ const Reset = styled.div`
   top: 13px;
 `;
 const Button = styled.div`
-  padding: 3px 7px;
+  padding: 4px 9px;
   background-color: #e7e7e7;
   color: #8e0000;
   border-radius: 6px;
@@ -117,40 +117,83 @@ const Button = styled.div`
   cursor: pointer;
   margin-left: 1rem;
   border-radius: 50px;
+  display: flex;
 `;
-const FilterProduct = ({ handleFilter, setSort, setFilters }) => {
+const FilterProduct = ({ handleFilter, setSort, sort, setFilters }) => {
+  const [defvalClr, setDefvalClr] = useState();
+  const [defvalSiz, setDefvalSiz] = useState();
+
+  const resetClr = (e) => {
+    setDefvalClr(e.target.value);
+  };
+  const resetSiz = (e) => {
+    setDefvalSiz(e.target.value);
+  };
+  const handleSort = (e) => {
+    setSort(e.target.value);
+  };
+  const handleReset = () => {
+    setFilters([]);
+    setDefvalClr("defaultValue");
+    setDefvalSiz("defaultValue");
+    setSort("");
+  };
   return (
     <FilterCont>
       <FTitle>Filter Products:</FTitle>
       <Wrap>
         <Filter>
           <SizeIcon fontSize="small" />
-          <Select name="size" defaultValue={"size"} onChange={handleFilter}>
-            <Option value="size" disabled>
+          <Select
+            name="size"
+            value={defvalSiz}
+            defaultValue={"defaultValue"}
+            onChange={(e) => {
+              handleFilter(e);
+              resetSiz(e);
+            }}
+          >
+            <Option value="defaultValue" disabled>
               Size
             </Option>
             <Option value="xl">XL</Option>
-            <Option value="xl">XXL</Option>
+            <Option value="xxl">XXL</Option>
             <Option value="xxxl">XXXL</Option>
+            <Option value="x">X</Option>
           </Select>
           <Arrow />
         </Filter>
         <Filter>
           <ColorIcon fontSize="small" />
-          <Select name="color" defaultValue={"color"} onChange={handleFilter}>
-            <Option value="color" disabled>
+          <Select
+            name="color"
+            value={defvalClr}
+            defaultValue={"defaultValue"}
+            onChange={(e) => {
+              handleFilter(e);
+              resetClr(e);
+            }}
+          >
+            <Option value="defaultValue" disabled>
               Color
             </Option>
             <Option value="red">Red</Option>
             <Option value="green">Green</Option>
             <Option value="white">White</Option>
+            <Option value="black">Black</Option>
+            <Option value="gray">Gray</Option>
+            <Option value="khaki">Khaki</Option>
           </Select>
           <Arrow />
         </Filter>
 
         <Filter className="filter">
           <NewIcon fontSize="small" />
-          <Select name="sort" onChange={(e) => setSort(e.target.value)}>
+          <Select
+            name="sort"
+            value={sort}
+            onChange={handleSort}
+          >
             <Option value="newest">Newest</Option>
             <Option value="asc">Asc</Option>
             <Option value="desc">Desc</Option>
@@ -159,7 +202,9 @@ const FilterProduct = ({ handleFilter, setSort, setFilters }) => {
         </Filter>
       </Wrap>
       <Reset>
-        <Button onClick={() => setFilters([])}><RestartAltIcon/></Button>
+        <Button onClick={handleReset}>
+          <RestartAltIcon fontSize="1.4rem" />
+        </Button>
       </Reset>
     </FilterCont>
   );

@@ -11,6 +11,7 @@ import GetProductsByCatg from "../new/products/GetProductsByCatg";
 import ToastLayout from "../layout/ToastLayout";
 import SingleProduct from "../pages/SingleProduct";
 import Products from "../pages/Products";
+import Cart from "../pages/Cart";
 const ROLE = {
   ADMIN: 10,
   USER: 100,
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/cart",
-            element: <div>cart</div>,
+            element: <Cart/>,
           },
           {
             path: "/unauthorize",

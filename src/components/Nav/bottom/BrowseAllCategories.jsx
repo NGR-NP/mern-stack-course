@@ -6,7 +6,12 @@ import { useNavigate } from "react-router-dom";
 const BrowseAllCategories = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
-    navigate(`/shop/${e.target.value}`);
+    const path = e.target.value;
+    if (path === "allCatg") {
+      navigate("/shop");
+    } else {
+      navigate(`/shop/${e.target.value}`);
+    }
   };
   return (
     <>
@@ -21,10 +26,10 @@ const BrowseAllCategories = () => {
         />
         <select
           className="customDropdownSelect"
-          defaultValue={"defaultvalue"}
+          defaultValue={"allCatg"}
           onClick={handleClick}
         >
-          <option value="defaultvalue" disabled>
+          <option value="allCatg" disabled>
             All Categories
           </option>
           {allCategoriesData.map((data) => (

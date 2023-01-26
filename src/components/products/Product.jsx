@@ -1,7 +1,7 @@
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import styled, { keyframes } from "styled-components";
-
+import { Link } from "react-router-dom";
 const scletion = keyframes`
  /* 0%{
     background:repeating-linear-gradient(315deg,#f9f9f9,transparent 80px);
@@ -63,6 +63,8 @@ const Container = styled.div`
   overflow: hidden;
   background: linear-gradient(5deg, rgb(172 234 255) 0%, rgb(249 217 250) 100%);
   border-radius: calc(8px + 5px);
+  background: #ffffff3d;
+  box-shadow: 1px 1px 7px #dedede47;
 `;
 const Part = styled.div`
   position: relative;
@@ -89,7 +91,7 @@ const Img = styled.img`
   position: relative;
   transition: all 0.3s ease-in;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
   }
 `;
 
@@ -97,14 +99,14 @@ const FavIcon = styled(BookmarkBorderIcon)`
   position: absolute;
   z-index: 1;
   top: -20%;
-  right: 7%;
+  right: 9%;
   opacity: 0;
   transition: all 0.9s ease-in-out;
   cursor: pointer;
   color: ${(props) => props.favcolor};
   ${Img}:hover + & {
+    top: -1%;
     opacity: 1;
-    top: -4.5%;
     transition: all 0.9s ease-in-out;
   }
 
@@ -118,6 +120,7 @@ const FavIcon = styled(BookmarkBorderIcon)`
     fill: #e91f1f;
   }
 `;
+
 const AddToShoppingBag = styled(LocalMallIcon)`
   position: absolute;
   z-index: 1;
@@ -125,7 +128,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   bottom: 5%;
   right: 8%;
   opacity: 0;
-  color: ${(props) => props.bagcolor};
+  color: ${(props) => props.bagcolor[0] || 'black'};
   background: rgb(208 208 208 / 63%);
   box-shadow: var(--boxShadow);
   //backdrop-filter: blur(100px);
@@ -133,7 +136,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   border-radius: 50px;
   font-size: 7px;
   transition: all 2s ease-in-out;
-  ${Img}:hover + ${FavIcon} + & {
+  ${Img}:hover + ${FavIcon} +  & {
     transform: scale(1.2);
     opacity: 1;
     transition: all 0.3s ease-in-out;
@@ -157,6 +160,7 @@ const Price = styled.p`
   z-index: 1;
   opacity: 0;
   font-family: var(--font2);
+  color: black;
   background: linear-gradient(
     181deg,
     rgb(209 243 255) 0%,
@@ -183,7 +187,7 @@ const Price = styled.p`
       ? "black"
       : "red"}; */
   /* color: ${(props) => props.color}; */
-  ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag} +  & {
+  ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag}+ & {
     bottom: 1%;
     transition: all 0.3s ease-in-out;
     opacity: 1;
@@ -213,14 +217,18 @@ const Product = ({ product, height }) => {
     <Container height={height}>
       <Part>
         <LCont>
-          <Loading/>
+          <Loading />
         </LCont>
+        <Link className="link" to={`/product/${product._id}`}>
         <Img src={product.img || "/images/MERN.png"} alt={product.title} />
         <FavIcon sx={{ fontSize: 30 }} favcolor={product.color} />
+
         <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />
-        <Price color={product.color} bgcolors={product.color}>
-          Rs. {product.price}
-        </Price>
+          <Price color={product.color} bgcolors={product.color}>
+            Rs. {product.price}
+          </Price>
+          {/* <VisibilityIcon /> */}
+        </Link>
       </Part>
     </Container>
   );

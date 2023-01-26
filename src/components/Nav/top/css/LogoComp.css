@@ -1,7 +1,7 @@
 .logoComp{
     cursor: pointer;
     font-size: 4rem;
-    background-image: linear-gradient(90deg, var(--midBlue), var(--pink));
+    background-image: linear-gradient(90deg, #00b1ff, #ef00ff);
     background-clip: text;
     color: transparent;
 }
