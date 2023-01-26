@@ -6,12 +6,12 @@ export const allCategoriesData = [
   },
   {
     id: "2",
-    value: "Womens",
+    value: "womens",
     name: "Womens",
   },
   {
     id: "3",
-    value: "Accosseries",
+    value: "accosseries",
     name: "Accosseries",
   },
 ];
