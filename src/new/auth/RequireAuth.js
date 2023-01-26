@@ -20,26 +20,3 @@ const RequireAuth = ({ isAllowed }) => {
 
 export default RequireAuth;
 
-
-
-// console.log("require auth rerender");
-// const location = useLocation();
-// // const role = useSelector(selectCurrentRole);
-
-// const [role, setRole] = useState([]);
-// const token = useSelector(selectCurrentToken);
-
-// console.log(token);
-// useEffect(() => {
-//   const decodeJwt = () => {
-//     if (token) {
-//       const decode = jwtDecode(token);
-//       console.log(decode);
-//       const passrole = decode.role;
-//       console.log(passrole)
-//       setRole(passrole);
-//       console.log(role)
-//     }
-//   };
-//   decodeJwt();
-// }, [token]);
