@@ -141,12 +141,12 @@ const GetProductsByCatg = () => {
   useEffect(() => {
     if (sort === "newest") {
       setFilteredProduct((prev) =>
-        [...prev].sort((t, z) => t.createdAt - z.createdAt)
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
       );
     } else if (sort === "asc") {
-      setFilteredProduct((prev) => [...prev].sort((t, z) => t.price - z.price));
+      setFilteredProduct((prev) => [...prev].sort((a, b) => a.price - b.price));
     } else {
-      setFilteredProduct((prev) => [...prev].sort((t, z) => z.price - t.price));
+      setFilteredProduct((prev) => [...prev].sort((t, z) => b.price - a.price));
     }
   }, [sort]);
   const message = error?.data?.message || "server s not responding";
