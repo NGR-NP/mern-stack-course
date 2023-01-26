@@ -221,7 +221,7 @@ const Cart = () => {
   const [shipDis, setShipDis] = useState(0);
 
   useEffect(() => {
-    if (cart.total > 7999) {
+    if (cart.total < 7999) {
       setShipFee(cart.total / 20);
       setShipDis(cart.total / 20 / 2);
     } else {
