@@ -39,10 +39,8 @@ const createUser = async (req, res, next) => {
 //   #READ (all)
 const getUsers = async (req, res, next) => {
   try {
-    const users = await User.find()
-
-const {password, refreshToken, ...otherDetails} = users;
-    res.status(200).json({...otherDetails});
+    const users = await User.find().select(["-password" , "-refreshToken"]);
+    res.status(200).json(users);
   } catch (err) {
     next(err);
   }
