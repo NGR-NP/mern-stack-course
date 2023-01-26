@@ -191,8 +191,11 @@ const Wrap = styled.div`
   flex-direction: column;
 `;
 const Links = styled(Link)`
-  background-color: red;
-  padding: 4px;
+  background-color: #ededed;
+  box-shadow: var(--boxShadow);
+  padding: 12px 20px;
+  color: red;
+  border-radius: 8px;
 `;
 const EmptyCart = styled(ProductionQuantityLimitsIcon)`
   font-size: 10rem;
