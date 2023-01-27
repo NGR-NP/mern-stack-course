@@ -2,7 +2,7 @@
 
 ![This is an image](./src/images/2laptop.png)
 
-This site is [Live](https://vrit-tech-mern-project-by-tejkarki.netlify.app/).
+[Live Demo](https://vrit-tech-mern-project-by-tejkarki.netlify.app/).
 
 ## Icon that i used
 
