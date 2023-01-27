@@ -13,12 +13,15 @@ on this project i used [Material UI Icons](https://mui.com/material-ui/material-
 promptbase ai generated images [marketplace](https://promptbase.com/marketplace?categories=clothes)
 & [illustrations](https://icons8.com/illustrations)
 
-[image color picker](https://imagecolorpicker.com/en).
+
 [Generate linear gradient cssgradient](https://cssgradient.io/)
 
 
 [Mobile simulator - responsive testing tool extensions](https://chrome.google.com/webstore/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk)
 
+
+
+[canva slides](https://www.canva.com/design/DAFYyzTjL5I/71o0gL47Z9NUXYrz-yIBgA/edit?utm_content=DAFYyzTjL5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -39,7 +42,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 
 
-canva slides : [https://www.canva.com/design/DAFYyzTjL5I/71o0gL47Z9NUXYrz-yIBgA/edit?utm_content=DAFYyzTjL5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]
 
 
 ### Advanced Configuration
