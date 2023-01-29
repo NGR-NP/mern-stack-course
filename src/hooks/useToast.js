@@ -1,29 +1,27 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-const useToast = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [message, setMessage] = useState("");
+// const useToast = () => {
+//   const [isVisible, setIsVisible] = useState(false);
+//   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    if (isVisible) {
-      const timeout = setTimeout(() => setIsVisible(false), 5000);
-      return () => clearTimeout(timeout);
-    }
-  }, [isVisible]);
+//   useEffect(() => {
+//     if (isVisible) {
+//       const timeout = setTimeout(() => setIsVisible(false), 5000);
+//       return () => clearTimeout(timeout);
+//     }
+//   }, [isVisible]);
 
-  const showToast = (toastMessage) => {
-    setMessage(toastMessage);
-    
-    setIsVisible(true);
-  };
+//   const showToast = (toastMessage) => {
+//     setMessage(toastMessage);
 
-  const hideToast = () => {
-    setIsVisible(false);
-  };
-  console.log(message + "hooks");
-  console.log(isVisible + "hooks");
+//     setIsVisible(true);
+//   };
 
-  return { isVisible, setIsVisible, setMessage, message, showToast, hideToast };
-};
+//   const hideToast = () => {
+//     setIsVisible(false);
+//   };
 
-export default useToast;
+//   return { isVisible, setIsVisible, setMessage, message, showToast, hideToast };
+// };
+
+// export default useToast;

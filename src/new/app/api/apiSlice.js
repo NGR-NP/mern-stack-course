@@ -3,7 +3,9 @@ import { logOut, setCredentials } from "../../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://mern-stack-course-production.up.railway.app/api",
+
   // baseUrl: "https://vrit-tech-mern-project-by-tejkarki.up.railway.app/api",
+
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;

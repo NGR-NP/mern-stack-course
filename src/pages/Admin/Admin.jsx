@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import UsersList from "../new/users/UsersList";
+import UsersList from "../../sections/Admin/UsersList";
 const Section = styled.section`
   padding: 3rem 0;
   background: linear-gradient(

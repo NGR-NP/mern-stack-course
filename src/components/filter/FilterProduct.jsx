@@ -3,7 +3,7 @@ import ColorLensIcon from "@mui/icons-material/ColorLens";
 import EmojiPeople from "@mui/icons-material/EmojiPeople";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const FilterCont = styled.div`
   display: flex;
   align-items: center;
@@ -12,6 +12,7 @@ const FilterCont = styled.div`
   flex-wrap: wrap;
 `;
 const Filter = styled.div`
+  --left: 21px;
   display: flex;
   align-items: center;
   position: relative;
@@ -37,23 +38,23 @@ const FTitle = styled.div`
 `;
 const ColorIcon = styled(ColorLensIcon)`
   position: absolute;
-  left: 10px;
+  left: var(--left);
   color: ${(props) => props.color};
 `;
 const SizeIcon = styled(EmojiPeople)`
   position: absolute;
-  left: 10px;
+  left: var(--left);
 `;
 
 const NewIcon = styled(FiberNewIcon)`
   position: absolute;
-  left: 10px;
+  left: var(--left);
 `;
 const Select = styled.select`
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
 
   font-size: 18px;
-  padding: 9px 36px 9px 29px;
+  padding: 9px 4px 9px 29px;
   text-align: center;
   background-color: var(--pink);
   color: #4e4e4e;
@@ -61,16 +62,17 @@ const Select = styled.select`
   outline: none;
   border-radius: 6px;
   cursor: pointer;
+  margin: 0 13px;
 `;
 const Option = styled.option`
   font-size: 18px;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
 `;
 const Arrow = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  right: -6px;
   display: block;
   height: 100%;
   width: 2rem;
@@ -119,24 +121,89 @@ const Button = styled.div`
   border-radius: 50px;
   display: flex;
 `;
-const FilterProduct = ({ handleFilter, setSort, sort, setFilters }) => {
-  const [defvalClr, setDefvalClr] = useState();
-  const [defvalSiz, setDefvalSiz] = useState();
+const FilterProduct = ({
+  products,
+  handleFilter,
+  setSort,
+  sort,
+  setFilters,
+}) => {
+  const [dflVluClr, setDflVluClr] = useState();
+  const [dflVluSize, setDflVluSize] = useState();
+  const [clrOptions, setClrOptions] = useState();
+  const [sizeOptions, setSizeOptions] = useState();
+  const [clr, setClr] = useState("");
+  // useEffect(() => {
+  //   if (products) {
+  //     const uniqueClr = [
+  //       ...new Set(products.flatMap((product) => product.color)),
+  //     ];
+  //     setClrOptions(
+  //       uniqueClr.map((color) => (
+  //         <Option key={color} val={color}>
+  //           {color}
+  //         </Option>
+  //       ))
+  //     );
+  //   } else {
+  //     setClrOptions([]);
+  //   }
+  // }, [products]);
+
+  // useEffect(() => {
+  //   if (products) {
+  //     const colors = products.map((product) => product.color);
+  //     const flatColors = colors.flat();
+  //     const uniqueColors = Array.from(new Set(flatColors));
+  //     setClrOptions(
+  //       uniqueColors.map((color) => <Option value={color}>{color}</Option>)
+  //     );
+  //   } else {
+  //     setClrOptions([]);
+  //   }
+  // }, [products]);
+
+  useEffect(() => {
+    if (products) {
+      const uniqueClr = Array.from(
+        new Set(products.map((product) => product.color).flat())
+      );
+      const uniqueSize = Array.from(
+        new Set(products.map((product) => product.size).flat())
+      );
+      setClrOptions(
+        uniqueClr.map((color) => (
+          <Option key={color} val={color}>
+            {color}
+          </Option>
+        ))
+      );
+      setSizeOptions(
+        uniqueSize.map((size) => (
+          <Option key={size} val={size}>
+            {size}
+          </Option>
+        ))
+      );
+    } else {
+      setClrOptions([]);
+      setSizeOptions([]);
+    }
+  }, [products]);
 
   const resetClr = (e) => {
-    setDefvalClr(e.target.value);
+    setDflVluClr(e.target.value);
   };
+
   const resetSiz = (e) => {
-    setDefvalSiz(e.target.value);
+    setDflVluSize(e.target.value);
   };
-  const handleSort = (e) => {
-    setSort(e.target.value);
-  };
+
   const handleReset = () => {
     setFilters([]);
-    setDefvalClr("defaultValue");
-    setDefvalSiz("defaultValue");
-    setSort("");
+    setDflVluClr("defaultValue");
+    setDflVluSize("defaultValue");
+    setSort("newest");
   };
   return (
     <FilterCont>
@@ -146,7 +213,7 @@ const FilterProduct = ({ handleFilter, setSort, sort, setFilters }) => {
           <SizeIcon fontSize="small" />
           <Select
             name="size"
-            value={defvalSiz}
+            value={dflVluSize}
             defaultValue={"defaultValue"}
             onChange={(e) => {
               handleFilter(e);
@@ -156,44 +223,33 @@ const FilterProduct = ({ handleFilter, setSort, sort, setFilters }) => {
             <Option value="defaultValue" disabled>
               Size
             </Option>
-            <Option value="xl">XL</Option>
-            <Option value="xxl">XXL</Option>
-            <Option value="xxxl">XXXL</Option>
-            <Option value="x">X</Option>
+            {sizeOptions}
           </Select>
           <Arrow />
         </Filter>
         <Filter>
-          <ColorIcon fontSize="small" />
+          <ColorIcon fontSize="small" color={clr} />
           <Select
             name="color"
-            value={defvalClr}
+            value={dflVluClr}
             defaultValue={"defaultValue"}
             onChange={(e) => {
               handleFilter(e);
               resetClr(e);
+              setClr(e.target.value);
             }}
           >
             <Option value="defaultValue" disabled>
               Color
             </Option>
-            <Option value="red">Red</Option>
-            <Option value="green">Green</Option>
-            <Option value="white">White</Option>
-            <Option value="black">Black</Option>
-            <Option value="gray">Gray</Option>
-            <Option value="khaki">Khaki</Option>
+            {clrOptions}
           </Select>
           <Arrow />
         </Filter>
 
         <Filter className="filter">
           <NewIcon fontSize="small" />
-          <Select
-            name="sort"
-            value={sort}
-            onChange={handleSort}
-          >
+          <Select name="sort" onChange={(e) => setSort(e.target.value)}>
             <Option value="newest">Newest</Option>
             <Option value="asc">Asc</Option>
             <Option value="desc">Desc</Option>

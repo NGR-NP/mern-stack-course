@@ -14,6 +14,7 @@ const Password = ({ password, setPassword }) => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         placeholder="Enter your Password"
+        autoComplete="current-password"
       />
     </div>
   );

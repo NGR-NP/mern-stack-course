@@ -7,6 +7,8 @@ import { Add, AddShoppingCart, Remove } from "@mui/icons-material";
 import Options from "../components/Options/Options";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../new/cart/cartSlice";
+import { showToastMessage } from "../new/custonToast/toastSlice";
+
 const Section = styled.section`
   margin: 4rem 0;
   @media screen and (max-width: 850px) {
@@ -210,10 +212,6 @@ const CatgCont = styled.div`
 const SingleProduct = ({ val }) => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
-  const [qty, setQty] = useState(1);
-  const dispatch = useDispatch();
 
   const {
     data: product,
@@ -225,6 +223,11 @@ const SingleProduct = ({ val }) => {
     id,
   });
 
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+
   const handleQty = (type) => {
     if (type === "dec") {
       qty > 1 && setQty(qty - 1);
@@ -233,7 +236,24 @@ const SingleProduct = ({ val }) => {
     }
   };
   const handleAddCart = () => {
-    dispatch(addProductToCart({ ...product, qty, color, size }));
+    if (color === "" || size === "") {
+      setColor(product.color[0]);
+      setSize(product.size[0]);
+      dispatch(
+        showToastMessage({
+          message: "please choose color and size",
+          type: "error",
+        })
+      );
+    } else {
+      dispatch(addProductToCart({ ...product, qty, color, size }));
+      dispatch(
+        showToastMessage({
+          message: "Products added Successfully!",
+          type: "success",
+        })
+      );
+    }
   };
   let content;
   if (isLoading) {
@@ -250,6 +270,7 @@ const SingleProduct = ({ val }) => {
             <Desc>{product?.desc}</Desc>
             <Amount>
               <Price>Rs.{product.price}</Price>
+
               <Wrap>
                 <Remove className="icon" onClick={() => handleQty("dec")} />
                 <Qty>{qty}</Qty>

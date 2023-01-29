@@ -222,7 +222,6 @@ const Product = ({ product, height }) => {
         <Link className="link" to={`/product/${product._id}`}>
         <Img src={product.img || "/images/MERN.png"} alt={product.title} />
         <FavIcon sx={{ fontSize: 30 }} favcolor={product.color} />
-
         <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />
           <Price color={product.color} bgcolors={product.color}>
             Rs. {product.price}

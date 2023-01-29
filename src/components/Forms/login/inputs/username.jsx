@@ -12,6 +12,7 @@ const Username = ({ username, setUsername }) => {
         id="username"
         name="username"
         type="username"
+        autoComplete="username"
         onChange={(e) => setUsername(e.target.value)}
         value={username}
         required

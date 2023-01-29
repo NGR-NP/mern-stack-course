@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useGetUsersQuery } from "./userApiSlice";
+import { useGetUsersQuery } from "../../new/users/userApiSlice";
 import LoadingGif from "../../components/loading/LoadingGif";
 import NoResponse from "../../components/server/NoResponse";
 
@@ -24,7 +24,6 @@ const Cont = styled.div`
   border-radius: calc(22px - 9px);
   height: 75vh;
 `;
-
 const Title = styled.h1`
   display: inline-block;
   font-size: 2rem;
@@ -136,7 +135,7 @@ const UsersList = () => {
             </Thead>
             <Tbody>
               {users.map((user, i) => (
-                <Tr key={user?._id}>
+                <Tr key={user._id}>
                   <Td>{i + 1}</Td>
                   <Td title="username">{user.username}</Td>
                   <Td title="email">{user.email}</Td>
@@ -144,7 +143,7 @@ const UsersList = () => {
                     <Role
                       title="Role"
                       className={user.role.indexOf(10) !== -1 ? "red" : "green"}
-                      key={user?._id}
+                      key={user._id}
                     >
                       {user.role
                         .filter(

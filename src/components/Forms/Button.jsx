@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Circle from "../loading/Circle";
-const Btn = styled.button`
-  cursor: ${(props) => (props.loading === "ture" ? "wait" : "")};
-`;
+const Btn = styled.button``;
 const Button = ({
   isErr,
   loading,
@@ -15,14 +13,13 @@ const Button = ({
   return (
     <div className="centerADiv">
       <Btn
-        loading={loading.toString()}
         disabled={
           !validUsername ||
           !validEmail ||
           !validPwd ||
           !validMatch ||
-          isErr ||
-          loading
+          loading ||
+          isErr
             ? true
             : false
         }

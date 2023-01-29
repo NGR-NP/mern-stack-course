@@ -49,7 +49,6 @@ const Main = styled.div`
   border-radius: calc(20px + 8px);
   @media screen and (max-width: 400px) {
     padding: 2rem 0;
-
   }
 `;
 
@@ -96,8 +95,6 @@ const GetProductsByCatg = () => {
       [e.target.name]: value,
     });
   };
-  console.log(filters);
-  console.log(sort);
 
   useEffect(() => {
     products &&
@@ -121,6 +118,7 @@ const GetProductsByCatg = () => {
         `Sorry, the ${filters.color.toUpperCase()} color product is currently out of Stock, but we have other great colors in Stock that you might like!`
       );
     }
+
     // const FMsg = "product is currently not available in our store. but we have other color and size"
     // if (filters.color) {
     //   setFilterMsg(
@@ -132,24 +130,28 @@ const GetProductsByCatg = () => {
     //   );
     // }
   }, [products, catg, filters]);
+
   let displayCatg;
   if (decodedString === "undefined") {
     displayCatg = "Clothes";
   } else {
     displayCatg = decodedString;
   }
+
   useEffect(() => {
     if (sort === "newest") {
       setFilteredProduct((prev) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+        [...prev].sort((t, z) => new Date(z.createdAt) - new Date(t.createdAt))
       );
     } else if (sort === "asc") {
-      setFilteredProduct((prev) => [...prev].sort((a, b) => a.price - b.price));
+      setFilteredProduct((prev) => [...prev].sort((t, z) => t.price - z.price));
     } else {
-      setFilteredProduct((prev) => [...prev].sort((t, z) => b.price - a.price));
+      setFilteredProduct((prev) => [...prev].sort((t, z) => z.price - t.price));
     }
   }, [sort]);
+
   const message = error?.data?.message || "server s not responding";
+
   let content;
   if (isLoading) {
     content = (
@@ -179,6 +181,7 @@ const GetProductsByCatg = () => {
       <Main>
         <Title>{displayCatg}</Title>
         <FilterProduct
+          products={products}
           sort={sort}
           setSort={setSort}
           setFilters={setFilters}

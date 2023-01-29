@@ -19,7 +19,8 @@
     rgba(227, 248, 255, 1) 0%,
     rgb(251, 213, 253) 100%
   );
-  --boxShadow: 0px 0px 20px 5px rgb(0 0 0 / 13%);
+  --boxShadow1: 0px 0px 20px 5px rgb(0 0 0 / 13%);
+  --boxShadow: 0px 6px 20px 5px rgb(0 0 0 / 9%);
   --font1: "Alegreya", serif;
   --font2: "BioRhyme", serif;
   --font3: "Eczar", serif;

@@ -2,16 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import NavLayout from "../layout/NavLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
-import Admin from "../pages/Admin";
+import Admin from "../pages/Admin/Admin";
 import Profile from "../pages/Profile";
 import LoginPage from "../pages/login";
 import RequireAuth from "../new/auth/RequireAuth";
 import Unauthorized from "../components/access/unauthorized";
 import GetProductsByCatg from "../new/products/GetProductsByCatg";
-import ToastLayout from "../layout/ToastLayout";
 import SingleProduct from "../pages/SingleProduct";
 import Products from "../pages/Products";
 import Cart from "../pages/Cart";
+import Layout from "../new/components/Layout";
 const ROLE = {
   ADMIN: 10,
   USER: 100,
@@ -19,11 +19,11 @@ const ROLE = {
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <ToastLayout />,
+    element: <Layout />,
     children: [
       {
         path: "/login",
-        element:  <LoginPage />,
+        element: <LoginPage />,
       },
       {
         path: "/register",
@@ -40,16 +40,18 @@ export const router = createBrowserRouter([
           {
             path: "/shop/:catg",
             element: <GetProductsByCatg />,
-          },{
+          },
+          {
             path: "/shop",
             element: <GetProductsByCatg />,
           },
           {
-            path: "/products/:catg",
-            element: <Products/>,
-          },{
-            path: "/products",
-            element: <Products/>,
+            path: "/old/shop/:catg",
+            element: <Products />,
+          },
+          {
+            path: "/old/shop",
+            element: <Products />,
           },
           {
             path: "/product/:id",
@@ -57,7 +59,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/cart",
-            element: <Cart/>,
+            element: <Cart />,
           },
           {
             path: "/unauthorize",
@@ -93,7 +95,7 @@ export const router = createBrowserRouter([
 
       {
         path: "*",
-        element: <div>404 page not found</div>,
+        element: <div className="centerADiv">404 page not found</div>,
       },
     ],
   },

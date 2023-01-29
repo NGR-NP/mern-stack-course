@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ import Username from "../../components/Forms/login/inputs/username";
 import Password from "../../components/Forms/login/inputs/Password";
 import Info from "../../components/Forms/Info";
 import Circle from "../../components/loading/Circle";
-import { ToastContext } from "../../context/ToastContext";
+import { showToastMessage } from "../custonToast/toastSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ const Login = () => {
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { successToast } = useContext(ToastContext);
 
   useEffect(() => {
     setErrMsg("");
@@ -38,7 +37,12 @@ const Login = () => {
     try {
       const userData = await login({ username, password }).unwrap();
       dispatch(setCredentials({ ...userData, username }));
-      successToast(`Welcome Back ${username}`);
+      dispatch(
+        showToastMessage({
+          message: `Welcome Back ${username}`,
+          type: "success",
+        })
+      );
       setUsername("");
       setPassword("");
       navigate(from, {
@@ -67,7 +71,7 @@ const Login = () => {
 
   const LoginForm = (
     <form onSubmit={handleSubmit} className="loginMain">
-      {showToast ? <ErrMsg errMsg={errMsg} errRef={errRef} /> : <></>}
+      {showToast && <ErrMsg errMsg={errMsg} errRef={errRef} />}
       <div>
         <div className="loginTitle">Login</div>
         <Info

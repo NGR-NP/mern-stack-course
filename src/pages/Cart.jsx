@@ -1,21 +1,32 @@
 import styled from "styled-components";
-import { Add, Remove } from "@mui/icons-material";
-import { useSelector } from "react-redux";
-import { selectCurrentCart } from "../new/cart/cartSlice";
-import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  emptyCart,
+  selectCurrentProduct,
+  selectCurrentQty,
+} from "../new/cart/cartSlice";
 import { useState } from "react";
-import { useEffect } from "react";
+import TopBottons from "../components/cart/TopBottons";
+import SummaryComp from "../components/cart/SummaryComp";
+import ProductComp from "../components/cart/ProductComp";
+import AreYouSure from "../dilogs/AreYouSure";
+import EmptyCartComp from "../components/cart/EmptyCartComp";
+import { showToastMessage } from "../new/custonToast/toastSlice";
+
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  padding: 20px;
+  padding: 2rem 1.5rem;
   max-width: 1300px;
-  box-shadow: var(--boxShadow);
+  box-shadow: 0px 6px 20px 5px rgb(0 0 0 / 9%);
   margin: 4rem auto;
-  border-radius: 9px;
+  border-radius: 51px;
   @media screen and(max-width: 400px) {
     padding: "10px";
+  }
+  @media screen and (max-width: 360px) {
+    padding: 2rem 0;
+    border-radius: 0;
   }
 `;
 
@@ -24,293 +35,67 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Top = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-`;
-
-const TopButton = styled.button`
-  padding: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "rgb(249 160 252)" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
-`;
-
-const TopTexts = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 9px;
-  @media screen and (max-width: 460px) {
-    display: none;
-  }
-`;
-const TopText = styled.div`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
-`;
-
 const Bottom = styled.div`
   display: flex;
-  justify-content: space-between;
-  @media screen and (max-width: 875px) {
-    flex-direction: column;
-  }
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 `;
 
 const Info = styled.div`
   flex: 3;
 `;
 
-const Product = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media screen and (max-width: 675px) {
-    flex-direction: column;
-  }
-`;
-
-const ProductDetail = styled.div`
-  flex: 2;
-  display: flex;
-`;
-
-const Image = styled.img`
-  width: 200px;
-`;
-
-const Details = styled.div`
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-const ProductName = styled.div``;
-
-const ProductId = styled.div``;
-
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
-
-const ProductSize = styled.div``;
-
-const PriceDetail = styled.div`
-  flex: 0.2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 2rem 0 0;
-  @media screen and (max-width: 675px) {
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    gap: 25px;
-  }
-`;
-
-const ProductAmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  .icon {
-    box-shadow: var(--boxShadow);
-    border-radius: 50px;
-    padding: 4px;
-    cursor: pointer;
-  }
-`;
-
-const ProductAmount = styled.div`
-  background: transparent;
-  color: black;
-  padding: 8px 14px;
-  font-size: 1.47rem;
-  border-radius: 9px;
-  box-shadow: var(--boxShadow);
-  margin: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and(max-width: 400px) {
-    margin: "5px 15px";
-  }
-`;
-
-const ProductPrice = styled.div`
-  text-transform: capitalize;
-  font-size: 1.4rem;
-  font-weight: 200;
-  font-family: var(--font6);
-  @media screen and(max-width: 400px) {
-    marginbottom: "20px";
-  }
-`;
-
 const Hr = styled.hr`
   background-color: #eee;
   border: none;
   height: 1px;
-`;
-
-const Summary = styled.div`
-  flex: 1;
-  border: 0.5px solid lightgray;
-  border-radius: 10px;
-  padding: 20px;
-  height: fit-content;
-  position: sticky;
-  top: 8%;
-  /* @media screen and (max-width: 875px) {} */
-`;
-
-const SummaryTitle = styled.h1`
-  font-weight: 200;
-`;
-
-const SummaryItem = styled.div`
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
-`;
-const Wrap = styled.div`
-  flex-direction: column;
-`;
-const Links = styled(Link)`
-  background-color: #ededed;
-  box-shadow: var(--boxShadow);
-  padding: 12px 20px;
-  color: red;
-  border-radius: 8px;
-`;
-const EmptyCart = styled(ProductionQuantityLimitsIcon)`
-  font-size: 10rem;
-`;
-const SummaryItemText = styled.div``;
-
-const SummaryItemPrice = styled.div``;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(249 160 252);
-  color: white;
-  font-weight: 600;
-  outline: none;
-  border: none;
-  border-radius: 4px;
+  width: 98%;
 `;
 
 const Cart = () => {
-  const cart = useSelector(selectCurrentCart);
-  const [shipFee, setShipFee] = useState(0);
-  const [shipDis, setShipDis] = useState(0);
-  const [total, setTotal] = useState(0);
+  const product = useSelector(selectCurrentProduct);
+  const qty = useSelector(selectCurrentQty);
+  const dispatch = useDispatch();
+  const [showConf, setShowConf] = useState(false);
 
-  useEffect(() => {
-    if (cart.total > 7999) {
-      setShipFee(cart.total / 20);
-      setShipDis(shipFee / 2);
-    } else {
-      setShipFee(cart.total / 12);
-      setShipDis(shipFee / 2);
-    }
-    setTotal(cart.total + shipFee - shipDis)
-  }, [cart]);
+  const handleYes = () => {
+    dispatch(emptyCart());
+    dispatch(
+      showToastMessage({
+        message: "All Products removed Successfully!",
+        type: "success",
+      })
+    );
+    setShowConf(false);
+  };
 
   return (
     <Container>
+      {showConf && (
+        <AreYouSure
+          handleNo={setShowConf}
+          message={"Are you Sure?"}
+          handleYes={handleYes}
+        />
+      )}
       <Wrapper>
         <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag({cart.qty})</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
+        <TopBottons setShowConf={setShowConf} qty={qty} />
         <Bottom>
           <Info>
-            {cart.qty === 0 ? (
-              <Wrap className="centerADiv">
-                <EmptyCart />
-                <p> Empty Cart</p>
-                <Links to="/shop">Shop Now</Links>
-              </Wrap>
+            {product.length === 0 ? (
+              <EmptyCartComp />
             ) : (
-              cart.product.map((product) => (
+              product.map((product, idx) => (
                 <>
-                  <Product>
-                    <ProductDetail>
-                      <Image src={product.img} />
-                      <Details>
-                        <ProductName>
-                          <b>Product:</b> {product.title}
-                        </ProductName>
-                        <ProductId>
-                          <b>ID:</b> {product._id}
-                        </ProductId>
-                        <ProductColor color={product.color} />
-                        <ProductSize>
-                          <b>Size:</b> {product.size}
-                        </ProductSize>
-                      </Details>
-                    </ProductDetail>
-                    <PriceDetail>
-                      <ProductAmountContainer>
-                        <Remove className="icon" />
-                        <ProductAmount>{product.qty}</ProductAmount>
-                        <Add className="icon" />
-                      </ProductAmountContainer>
-                      <ProductPrice>
-                        Rs {product.price * product.qty}
-                      </ProductPrice>
-                    </PriceDetail>
-                  </Product>
+                  <ProductComp key={idx} product={product} />
                   <Hr />
                 </>
               ))
             )}
           </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Rs {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping Fee</SummaryItemText>
-              <SummaryItemPrice>Rs {Math.trunc(shipFee)}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>
-                Rs <s>{Math.trunc(shipDis)}</s>
-              </SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>
-                Rs {Math.trunc(total)}
-              </SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
+          {qty >= 1 && <SummaryComp />}
         </Bottom>
       </Wrapper>
     </Container>

@@ -8,6 +8,7 @@ const cartSlice = createSlice({
     total: 0,
     estimateShippingCharge: 0,
     discountedShippingFree: 0,
+    priceAfterDiscount: 0,
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -16,8 +17,6 @@ const cartSlice = createSlice({
       state.qty += 1;
       state.product.push(action.payload);
       state.total += calcTotal;
-      state.estimateShippingCharge = calcTotal / 9;
-      state.discountedShippingFree = calcTotal / 14;
     },
     removeProductFromCart: (state, action) => {
       const { id } = action.payload;
@@ -39,8 +38,21 @@ const cartSlice = createSlice({
       state.total -= product.price;
     },
     calculateShipping: (state, action) => {
-      state.estimateShippingCharge = state.total / 9;
-      state.discountedShippingFree = state.total / 14;
+      const { shipFee, shipDis } = action.payload;
+      
+      state.estimateShippingCharge = Math.trunc(shipFee);
+      state.discountedShippingFree = Math.trunc(shipDis);
+      state.priceAfterDiscount =
+        state.total +
+        state.estimateShippingCharge -
+        state.discountedShippingFree;
+    },
+    emptyCart: (state, action) => {
+      state.product = [];
+      state.qty = 0;
+      state.total = 0;
+      state.estimateShippingCharge = 0;
+      state.discountedShippingFree = 0;
     },
   },
 });
@@ -50,8 +62,16 @@ export const {
   incrementProductQty,
   decremenProductQty,
   calculateShipping,
+  emptyCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
-export const selectCurrentQty = (state) => state.cart.qty;
 export const selectCurrentCart = (state) => state.cart;
+export const selectCurrenttotal = (state) => state.cart.total;
+export const selectCurrentQty = (state) => state.cart.qty;
+export const selectCurrentProduct = (state) => state.cart.product;
+export const selectCurrentshippingCharge = (state) =>
+  state.cart.estimateShippingCharge;
+export const selectCurrentdiscount = (state) =>
+  state.cart.discountedShippingFree;
+export const selectCurrentPriceAfterDiscount = (state) => state.cart.priceAfterDiscount;

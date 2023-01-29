@@ -1,7 +1,3 @@
-import { apiSlice } from "./api/apiSlice";
-import authReducer from "../auth/authSlice";
-import cartReducer from "../cart/cartSlice";
-
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import {
@@ -14,6 +10,10 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { apiSlice } from "./api/apiSlice";
+import authReducer from "../auth/authSlice";
+import cartReducer from "../cart/cartSlice";
+import toastReducer from "../custonToast/toastSlice";
 const persistConfig = {
   key: "root",
   version: 1,
@@ -28,8 +28,9 @@ export const store = configureStore({
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authPersistedReducer,
     cart: cartPersistedReducer,
+    toast: toastReducer,
   },
-  middleware:  (getDefaultMiddleware) =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
