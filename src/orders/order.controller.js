@@ -2,14 +2,18 @@ const Order = require("../models/Order");
 const ERROR = require("../utils/error");
 
 const CreateOrder = async (req, res, next) => {
-  const { id, products: [{ productId, qty, color, size }], amount, address } = req.body
+  const { id, products, amount, address } = req.body
+
+  const productArray = [];
+
+  products.forEach(product => {
+    const { productId, qty, color, size } = product;
+    productArray.push({ productId, qty, color, size });
+  });
   try {
     const newOrder = new Order({
       userId: id,
-      products:
-        [{
-          productId, qty, color, size
-        }],
+      products: productArray,
       address,
       amount,
     });
