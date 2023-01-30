@@ -2,7 +2,7 @@ const Order = require("../models/Order");
 const ERROR = require("../utils/error");
 
 const CreateOrder = async (req, res, next) => {
-  const { id, productId, qty, color, size, amount, address } = req.body
+  const { id, products, productId, qty, color, size, amount, address } = req.body
   try {
     const newOrder = new Order({
       userId: id,
