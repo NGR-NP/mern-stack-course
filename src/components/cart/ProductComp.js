@@ -69,16 +69,16 @@ const PriceDetail = styled.div`
     flex-direction: row;
     justify-content: space-between;
 
-    margin-bottom: 20px;
+    margin-top: 0.1rem;
+    margin-right: 2rem;
+    margin-bottom: 1.1rem;
+    margin-left: 4rem;
     gap: 2rem;
   }
-  /* @media screen and (max-width: 360px) {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    gap: 1rem;
-  } */
+  @media screen and (max-width: 500px) {
+    margin-left: 2rem;
+  }
+  
 `;
 
 const ProductAmountContainer = styled.div`

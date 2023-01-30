@@ -7,7 +7,7 @@ const Wrap = styled.div`
   flex-direction: column;
 `;
 const Links = styled(Link)`
-  background-color: #f155f1;
+  background-color: #fd6acb;
   box-shadow: var(--boxShadow);
   padding: 12px 20px;
   color: #ffffff;

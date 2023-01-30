@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import CustomToastM from "../../components/CustomToastM";
@@ -14,38 +14,18 @@ const Layout = () => {
   const message = useSelector(selectCurrentMessage);
   const type = useSelector(selectCurrentType);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (visible) {
-  //     const timeoutId = setTimeout(() => {
-  //       dispatch(hideToastMessage());
-  //     }, 3000);
-
-  //     return () => {
-  //       clearTimeout(timeoutId);
-  //     };
-  //   }
-  // }, [visible, dispatch]);
-
-  const timeoutId = useRef(null);
-
   useEffect(() => {
     if (visible) {
-      if (timeoutId.current) {
-        clearTimeout(timeoutId.current);
-      }
-
-      timeoutId.current = setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         dispatch(hideToastMessage());
-        timeoutId.current = null;
       }, 3000);
 
       return () => {
-        if (timeoutId.current) {
-          clearTimeout(timeoutId.current);
-        }
+        clearTimeout(timeoutId);
       };
     }
   }, [visible, dispatch]);
+
   return (
     <>
       {visible && <CustomToastM message={message} type={type} />}
@@ -55,3 +35,24 @@ const Layout = () => {
 };
 
 export default Layout;
+
+// const timeoutId = useRef(null);
+
+// useEffect(() => {
+//   if (visible) {
+//     if (timeoutId.current) {
+//       clearTimeout(timeoutId.current);
+//     }
+
+//     timeoutId.current = setTimeout(() => {
+//       dispatch(hideToastMessage());
+//       timeoutId.current = null;
+//     }, 3000);
+
+//     return () => {
+//       if (timeoutId.current) {
+//         clearTimeout(timeoutId.current);
+//       }
+//     };
+//   }
+// }, [visible, dispatch]);

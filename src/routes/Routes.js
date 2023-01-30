@@ -12,6 +12,7 @@ import SingleProduct from "../pages/SingleProduct";
 import Products from "../pages/Products";
 import Cart from "../pages/Cart";
 import Layout from "../new/components/Layout";
+import Checkout from "../pages/Checkout";
 const ROLE = {
   ADMIN: 10,
   USER: 100,
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
           {
             path: "/profile",
             element: <Profile />,
+          },
+          {
+            path: "/checkout",
+            element: <Checkout />,
           },
         ],
       },

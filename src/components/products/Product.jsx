@@ -128,7 +128,7 @@ const AddToShoppingBag = styled(LocalMallIcon)`
   bottom: 5%;
   right: 8%;
   opacity: 0;
-  color: ${(props) => props.bagcolor[0] || 'black'};
+  color: ${(props) => props.bagcolor[0] || "black"};
   background: rgb(208 208 208 / 63%);
   box-shadow: var(--boxShadow);
   //backdrop-filter: blur(100px);
@@ -166,27 +166,27 @@ const Price = styled.p`
     rgb(209 243 255) 0%,
     rgb(253 214 255) 100%
   );
-  /* background-color: ${(props) => props.bgcolors}; */
   background: rgb(255 255 255 / 81%);
+  background-color: ${(props) =>
+    (props.color === "red" && "red") ||
+    (props.color === "green" && "green") ||
+    (props.color === "purple" && "purple") ||
+    (props.color === "skyblue" && "skyblue") ||
+    (props.color === "yellow" && "yellow") ||
+    (props.color === "white" && "white")};
   box-shadow: 0px 0px 6px 0px rgb(220 220 220);
   //backdrop-filter: blur(10px);
   border-radius: 4px;
   padding: 5px 8px;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
-  /* color: ${(props) =>
-    props.color === "red"
-      ? "white"
-      : "red" || props.color === "green"
-      ? "white"
-      : "geen" || props.color === ",,purple"
-      ? "white"
-      : "purple" || props.color === "sky blue"
-      ? "black"
-      : "skyblue" || props.color === "white"
-      ? "black"
-      : "red"}; */
-  /* color: ${(props) => props.color}; */
+  color: ${(props) =>
+    (props.color === "red" && "white") ||
+    (props.color === "green" && "white") ||
+    (props.color === "purple" && "white") ||
+    (props.color === "skyblue" && "white") ||
+    (props.color === "yellow" && "#ff006a") ||
+    (props.color === "white" && "black")};
   ${Img}:hover+ ${FavIcon} + ${AddToShoppingBag}+ & {
     bottom: 1%;
     transition: all 0.3s ease-in-out;
@@ -220,10 +220,10 @@ const Product = ({ product, height }) => {
           <Loading />
         </LCont>
         <Link className="link" to={`/product/${product._id}`}>
-        <Img src={product.img || "/images/MERN.png"} alt={product.title} />
-        <FavIcon sx={{ fontSize: 30 }} favcolor={product.color} />
-        <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />
-          <Price color={product.color} bgcolors={product.color}>
+          <Img src={product.img || "/images/MERN.png"} alt={product.title} />
+          <FavIcon sx={{ fontSize: 30 }} favcolor={product.color} />
+          <AddToShoppingBag sx={{ fontSize: 30 }} bagcolor={product.color} />
+          <Price color={product.color[0]} bgcolors={product.color[0]}>
             Rs. {product.price}
           </Price>
           {/* <VisibilityIcon /> */}

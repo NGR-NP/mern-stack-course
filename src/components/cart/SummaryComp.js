@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
   calculateShipping,
@@ -19,7 +20,6 @@ const Summary = styled.div`
   box-shadow: var(--boxShadow);
   display: flex;
   flex-direction: column;
-  /* @media screen and (max-width: 875px) {} */
 `;
 
 const SummaryTitle = styled.h1`
@@ -58,6 +58,7 @@ const SummaryComp = () => {
   const PriceAfterDiscount = useSelector(selectCurrentPriceAfterDiscount);
   const [shipFee, setShipFee] = useState(0);
   const [shipDis, setShipDis] = useState(0);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     if (total > 7999) {
@@ -69,6 +70,7 @@ const SummaryComp = () => {
     }
     dispatch(calculateShipping({ shipFee, shipDis }));
   }, [total, shipFee, shipDis, dispatch]);
+
   return (
     <Summary>
       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
@@ -88,7 +90,7 @@ const SummaryComp = () => {
         <SummaryItemText>Total</SummaryItemText>
         <SummaryItemPrice>Rs.{PriceAfterDiscount}</SummaryItemPrice>
       </SummaryItem>
-      <Button>CHECKOUT NOW</Button>
+      <Button onClick={() => navigate("/checkout")}>CHECKOUT NOW</Button>
     </Summary>
   );
 };

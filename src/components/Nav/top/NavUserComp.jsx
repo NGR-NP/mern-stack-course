@@ -59,7 +59,6 @@ const Num = styled.div`
 const NavUserComp = () => {
   const username = useSelector(selectCurrentUsername);
   const qty = useSelector(selectCurrentQty);
-  console.log(username)
   return (
     <div className="navUserComp">
       <div className="navUserCompMain">

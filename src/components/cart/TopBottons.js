@@ -11,10 +11,18 @@ const Btn = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
+  border: ${(props) =>
+    (props.type === "filled" && "none") || (props.type === "red" && "none")};
   background-color: ${(props) =>
-    props.type === "filled" ? "rgb(249 160 252)" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+    props.type === "filled"
+      ? "rgb(249 160 252)"
+      : props.type === "red"
+      ? "red"
+      : "transparent"};
+  color: ${(props) =>
+    props.type === "filled" || props.type === "red" ? "white" : "black"};
+  box-shadow: var(--boxShadow1);
+  border-radius: 3px;
 `;
 const TopTexts = styled.div`
   display: flex;
@@ -33,18 +41,22 @@ const TopText = styled.div`
 const TopBottons = ({ setShowConf, qty }) => {
   return (
     <Cont>
-      {qty === 0 ? (
-        <Btn>
-          <Link to="/shop">Start Shopping</Link>
-        </Btn>
-      ) : (
-        <Btn onClick={() => setShowConf(true)}>Clear Cart</Btn>
-      )}
+      <Link to="/shop">
+        {qty <= 0 ? (
+          <Btn>Start Shopping</Btn>
+        ) : (
+          <Btn type="filled">Continue Shopping</Btn>
+        )}
+      </Link>
       <TopTexts>
         <TopText>Shopping Bag({qty})</TopText>
         <TopText>Your Wishlist (0)</TopText>
       </TopTexts>
-      <Btn type="filled">CHECKOUT NOW</Btn>
+      {qty >= 1 && (
+        <Btn type="red" onClick={() => setShowConf(true)}>
+          Clear Cart
+        </Btn>
+      )}
     </Cont>
   );
 };
