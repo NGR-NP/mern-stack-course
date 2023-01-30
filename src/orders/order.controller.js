@@ -2,8 +2,14 @@ const Order = require("../models/Order");
 const ERROR = require("../utils/error");
 
 const CreateOrder = async (req, res, next) => {
+  const { userId, productId, qty, color, size, amount, address } = req.body
   try {
-    const newOrder = new Order(req.body);
+    const newOrder = new Order({
+      userId,
+      product: { productId, qty, color, size },
+      address,
+      amount,
+    });
     const saveOrder = await newOrder.save();
     res.status(200).json(saveOrder);
   } catch (err) {
@@ -27,7 +33,7 @@ const updateOrders = async (req, res, next) => {
 const deleteOrder = async (req, res, next) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: "order canceled !" });
+    res.status(200).json({ message: "order canceled!" });
   } catch (err) {
     next(err);
   }
@@ -59,7 +65,9 @@ const revenue = async (req, res, next) => {
   console.log(lastMonth);
 
   // set date and time two months before the current date and time
-  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 13));
+//  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 13));
+  const prevMonth = new Date(date.setMonth(lastMonth.getMonth() - 1));
+
   console.log(prevMonth);
 
   try {

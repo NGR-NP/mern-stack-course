@@ -11,6 +11,12 @@ const OrderSchema = new mongoose.Schema(
         productId: {
           type: String,
         },
+        color:{
+          type: String,
+        },
+        size: {
+          type: String,
+        },
         qty: {
           type: Number,
           default: 1,

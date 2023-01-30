@@ -11,7 +11,7 @@ const {
 
 OrderRoutes.get("/all", verifyRole(rolesList.Admin), getAllOrders);
 
-// OrderRoutes.use(verifyCurrentUser);
+OrderRoutes.use(verifyCurrentUser);
 OrderRoutes.post("/", CreateOrder);
 OrderRoutes.put("/:id", updateOrders);
 OrderRoutes.delete("/:id", deleteOrder);
