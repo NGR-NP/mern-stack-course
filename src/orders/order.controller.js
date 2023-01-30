@@ -6,7 +6,7 @@ const CreateOrder = async (req, res, next) => {
   try {
     const newOrder = new Order({
       userId: id,
-      product: { productId, qty, color, size },
+      products: { productId, qty, color, size },
       address,
       amount,
     });
