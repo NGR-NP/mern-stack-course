@@ -6,7 +6,9 @@ const CreateOrder = async (req, res, next) => {
   try {
     const newOrder = new Order({
       userId: id,
-      products: { productId, qty, color, size },
+      products: [{
+        productId, qty, color, size
+      }],
       address,
       amount,
     });
@@ -65,7 +67,7 @@ const revenue = async (req, res, next) => {
   console.log(lastMonth);
 
   // set date and time two months before the current date and time
-//  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 13));
+  //  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 13));
   const prevMonth = new Date(date.setMonth(lastMonth.getMonth() - 1));
 
   console.log(prevMonth);
