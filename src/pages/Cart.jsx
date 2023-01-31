@@ -12,8 +12,7 @@ import AreYouSure from "../dilogs/AreYouSure";
 import EmptyCartComp from "../components/cart/EmptyCartComp";
 import { showToastMessage } from "../new/custonToast/toastSlice";
 
-import { Container, Info, Title, Wrapper, Bottom,Hr,} from "./style/cartStyle";
-
+import { Container, Info, Title, Wrapper, Bottom, Hr } from "./style/cartStyle";
 
 const Cart = () => {
   const product = useSelector(selectCurrentProduct);

@@ -50,6 +50,7 @@ const Button = styled.button`
   outline: none;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 `;
 const SummaryComp = () => {
   const total = useSelector(selectCurrenttotal);
