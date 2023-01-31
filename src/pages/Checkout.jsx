@@ -1,10 +1,11 @@
 
 import CheckoutForm from "../components/checkout/CheckoutForm";
+import { Title } from "./style/cartStyle";
 const Checkout = () => {
 
   return (
     <div>
-      <div>Enter your shipping details</div>
+      <Title>Enter your shipping details</Title>
       <CheckoutForm/>
     </div>
   );
