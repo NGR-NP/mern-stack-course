@@ -1,8 +1,9 @@
 const AddressComp = ({ address, setAddress }) => {
   return (
-    <div>
+    <div style={{paddingTop: "1rem"}} className="loginInputCont">
       <input
         type="text"
+        className="loginInput"
         name="address"
         placeholder="address"
         value={address}

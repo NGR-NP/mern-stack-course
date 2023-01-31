@@ -12,7 +12,10 @@ import { useNavigate } from "react-router-dom";
 import AddressComp from "./inputs/AddressComp";
 import NumberComp from "./inputs/NumberComp";
 import { useState } from "react";
-
+import styled from "styled-components";
+const Wrap = styled.div`
+  width: inherit;
+`;
 const CheckoutForm = () => {
   const product = useSelector(selectCurrentProduct);
   const id = useSelector(selectCurrentUserId);
@@ -86,8 +89,8 @@ const CheckoutForm = () => {
     }
   };
   return (
-    <form onSubmit={handleOrder}>
-      <div>
+    <form onSubmit={handleOrder} className="loginMain centerADiv">
+      <Wrap>
         <AddressComp setAddress={setAddress} number={number} />
         <NumberComp setNumber={setNumber} number={number} />
         <div className="centerADiv">
@@ -95,7 +98,7 @@ const CheckoutForm = () => {
             {isLoading ? <Circle top={"19%"} right={"45%"} /> : `Checkout`}
           </button>
         </div>
-      </div>
+      </Wrap>
     </form>
   );
 };
