@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { logOut, setCredentials } from "../../auth/authSlice";
+import { showToastMessage } from "../../custonToast/toastSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://mern-stack-course-production.up.railway.app/api",
@@ -28,6 +29,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(logOut());
+      api.dispatch(
+        showToastMessage({ message: "session expired!", type: "error" })
+      );
     }
   }
 
