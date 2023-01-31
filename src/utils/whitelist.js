@@ -1,5 +1,4 @@
-const { ALLOWED_DOMAIN_DEV } = require("../config/secrets");
-const { ALLOWED_DOMAIN } = require("../config/secrets");
+const { ALLOWED_DOMAIN, ALLOWED_DOMAIN_DEV } = require("../config/secrets");
 const whitelist = [
   ALLOWED_DOMAIN,
   ALLOWED_DOMAIN_DEV,
