@@ -1,4 +1,5 @@
-const allowedOrigins = require("../utils/whitelist");
+// const allowedOrigins = require("../utils/whitelist");
+const allowedOrigins = ["*"]
 
 const accessControl = (req, res, next) => {
   const origin = req.headers.origin;
