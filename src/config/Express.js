@@ -9,10 +9,9 @@ const bodyParser = require("body-parser");
 const accessControl = require("../middleware/accessControl");
 const app = express();
 
-// app.use(accessControl);
+app.use(accessControl);
 // app.use(cors(corsOptions));
-// app.use(cors());
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
