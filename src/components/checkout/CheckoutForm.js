@@ -35,6 +35,11 @@ const CheckoutForm = () => {
       size: product.size,
     });
   });
+  if (ordersData.length === 0) {
+    dispatch(
+      showToastMessage({ message: "Your Cart is empty", type: "error" })
+    );
+  }
   const handleOrder = async (e) => {
     e.preventDefault();
     try {
@@ -82,9 +87,10 @@ const CheckoutForm = () => {
           })
         );
       } else {
-        dispatch(
-          showToastMessage({ message: "Orders Failed!", type: "error" })
-        );
+        // dispatch(
+        //   showToastMessage({ message: "Orders Failed!", type: "error" })
+        // );
+        console.error(err);
       }
     }
   };

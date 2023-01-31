@@ -1,20 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { selectCurrentRole, selectCurrentToken } from "./authSlice";
 import NavLayout from "../../layout/NavLayout";
-import { showToastMessage } from "../custonToast/toastSlice";
 
 const RequireAuth = ({ isAllowed }) => {
   console.log("require auth rerender");
   const token = useSelector(selectCurrentToken);
   const role = useSelector(selectCurrentRole);
   const location = useLocation();
-  const dispatch = useDispatch();
-  if (!token) {
-    dispatch(
-      showToastMessage({ message: "Your are not Loggedin", type: "error" })
-    );
-  }
 
   return role?.find((roles) => isAllowed?.includes(roles)) ? (
     <NavLayout />
