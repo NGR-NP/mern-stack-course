@@ -50,10 +50,11 @@ const Num = styled.div`
   justify-content: center;
   .num {
     font-family: var(--font3);
-    margin: 0 !important;
+    margin: 0;
     color: white !important;
     padding: 0px;
     position: absolute;
+    margin-top: 3px;
   }
 `;
 const NavUserComp = () => {

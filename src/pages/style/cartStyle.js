@@ -16,4 +16,25 @@ export const Wrapper = styled.div`
     border-radius: 0;
   }
 `;
- 
+export const Title = styled.h1`
+font-weight: 300;
+text-align: center;
+`;
+
+export const Bottom = styled.div`
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
+`;
+
+export const Info = styled.div`
+flex: 3;
+`;
+
+export const Hr = styled.hr`
+background-color: #eee;
+border: none;
+height: 1px;
+width: 98%;
+`;

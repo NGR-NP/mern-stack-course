@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emptyCart,
@@ -13,30 +12,8 @@ import AreYouSure from "../dilogs/AreYouSure";
 import EmptyCartComp from "../components/cart/EmptyCartComp";
 import { showToastMessage } from "../new/custonToast/toastSlice";
 
-import { Container, Wrapper } from "./style/cartStyle";
+import { Container, Info, Title, Wrapper, Bottom,Hr,} from "./style/cartStyle";
 
-const Title = styled.h1`
-  font-weight: 300;
-  text-align: center;
-`;
-
-const Bottom = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-`;
-
-const Info = styled.div`
-  flex: 3;
-`;
-
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
-  width: 98%;
-`;
 
 const Cart = () => {
   const product = useSelector(selectCurrentProduct);
