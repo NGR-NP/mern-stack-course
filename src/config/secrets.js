@@ -8,4 +8,5 @@ module.exports = {
   HASH_SALT: process.env.HASH_SALT,
   EXPIREIN: process.env.EXPIREIN,
   ALLOWED_DOMAIN: process.env.ALLOWED_DOMAIN,
+  ALLOWED_DOMAIN_DEV: process.env.ALLOWED_DOMAIN_DEV,
 };
