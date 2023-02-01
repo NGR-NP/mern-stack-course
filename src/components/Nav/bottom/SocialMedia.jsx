@@ -7,7 +7,7 @@ import "./css/SocialMedia.css";
 const SocialMedia = () => {
   return (
     <div className="socialMediaSec">
-      <div className="socialMediaMain">
+      <div className="socialMediaMain column">
         <FacebookOutlinedIcon
           className="socialMediaIcon"
           titleAccess="Facebook"

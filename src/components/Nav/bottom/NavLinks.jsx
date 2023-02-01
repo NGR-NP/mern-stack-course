@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavLinks = () => {
   return (
     <nav role="navigation" className="navLinks">
-      <ul>
+      <ul className="column">
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
