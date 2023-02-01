@@ -46,6 +46,7 @@ const InputCont = styled.div`
     cursor: pointer;
   }
   @media screen and (max-width: ) {
+    
   }
 `;
 const Title = styled.div`
