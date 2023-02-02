@@ -34,7 +34,18 @@ This Project is a React application that utilizes the Redux library to manage st
 
 ### React RouterProvider [App.js](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/App.js)
 
-The RouterProvider component provides the routing functionality to the application and the `"router"` object defines the pages where i set all routing functionality into the  application. 
+The RouterProvider component provides the routing functionality to the application and the `"router"` object has a specific path and is associated with a specific component that will be rendered when that path is accessed. For example, a route with a path of `"/"` might be associated with a Home component that will be rendered when the user accesses the root of the application. Another route with a path of `"/about"` might be associated with an About component that will be rendered when the user accesses the `"/about"` page of the application.
+
+### CreateBrowserRouter
+
+on createBrowserRouter i had define the different routes in the project. The `router` boject is created using the `createBrowserRouter` function and it contains different path for the Website, such as `/login`, `/register`, `/`. `/admin`, etc. Each path has a corresponding component, such as `loginPage`, `registerpage`, `Homepage`, `Adminpage`, etc . that will dbe display on the page when the corresponding path is visited.
+
+this application also has feature for role-based authorization, where only users with specific roles are allowed to assess certain pages. For example, the `RequireAuth` component is used to only allow user with the Role of ADMIN to access the `/admin' and '/new` pages. similary, users with the role of USER are allowed to access the `/profile` and `/checkout` pages
+
+
+### RequireAuth 
+`RequireAuth` component which acts as an authorization checker for different routes in the application. it uses the `useSelector` hook from `react-redux` to access the token and role stored in the `Redux store`. THe `iisAllowed` prop passed to this component is an array of allowed roles that are allowed to access the current pages.
+
 
 
 [canva slides](https://www.canva.com/design/DAFYyzTjL5I/71o0gL47Z9NUXYrz-yIBgA/edit?utm_content=DAFYyzTjL5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
