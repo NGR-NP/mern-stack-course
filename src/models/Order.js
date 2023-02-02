@@ -23,7 +23,6 @@ const OrderSchema = new mongoose.Schema(
         qty: {
           type: Number,
           default: 1,
-          
         },
       },
     ],
