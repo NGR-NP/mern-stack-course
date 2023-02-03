@@ -44,6 +44,7 @@ this application also has feature for role-based authorization, where only users
 
 
 ### check user is loggedin or not as well as their role [(RequireAuth.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/new/auth/RequireAuth.js)
+![requireAuth](./src/images/readme/requireAuth.png)
 `RequireAuth` component which acts as an authorization checker for different routes in the application. it uses the `useSelector` hook from `react-redux` to access the token and role stored in the `Redux store`. THe `iisAllowed` prop passed to this component is an array of allowed roles that are allowed to access the current pages.
 
 The component also checks if the current user's role is included in the `"isAllowed"` props array. if  it is, the user is allowed to access the page. If the user's role is not included in `"isAllowed"` props array, the component checks if the user has a token. If they have a token , they are redirected to the `"unauthorized"` page. If they don't have a token, They are redirected to the `"login"` page.
