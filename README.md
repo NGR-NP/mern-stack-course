@@ -36,7 +36,7 @@ This Project is a React application that utilizes the Redux library to manage st
 
 The RouterProvider component provides the routing functionality to the application and the `"router"` object has a specific path and is associated with a specific component that will be rendered when that path is accessed. For example, a route with a path of `"/"` might be associated with a Home component that will be rendered when the user accesses the root of the application. Another route with a path of `"/about"` might be associated with an About component that will be rendered when the user accesses the `"/about"` page of the application.
 
-### CreateBrowserRouter
+### CreateBrowserRouter [(Routes.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/routes/Routes.js)
 
 on createBrowserRouter i had define the different routes in the project. The `router` boject is created using the `createBrowserRouter` function and it contains different path for the Website, such as `/login`, `/register`, `/`. `/admin`, etc. Each path has a corresponding component, such as `loginPage`, `registerpage`, `Homepage`, `Adminpage`, etc . that will dbe display on the page when the corresponding path is visited.
 
