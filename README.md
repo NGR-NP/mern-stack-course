@@ -19,7 +19,7 @@ promptbase ai generated images [marketplace](https://promptbase.com/marketplace?
 
 [Mobile simulator - responsive testing tool extensions](https://chrome.google.com/webstore/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk)
 
-## React main file, [index.js](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/index.js)
+## React main file, [(index.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/index.js)
 
 This Project is a React application that utilizes the Redux library to manage state and the Redux Persist library to persist the state to local storage. The main file, index.js, serves as the entry point for the applicaton.
 
@@ -32,7 +32,7 @@ This Project is a React application that utilizes the Redux library to manage st
 4. The `PersistGate` component is used to persist the state of the store to local storage. This means that the state of the application will persist even after a page refresh or if the user closes the application. The `PersistGate` component takes in the `persistor`, which is also imported from the `"./new/app/store"` file. The `persistor` is responsible for persisting the state of the store to local storage.
  
 
-### React RouterProvider [App.js](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/App.js)
+### React RouterProvider [(App.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/App.js)
 
 The RouterProvider component provides the routing functionality to the application and the `"router"` object has a specific path and is associated with a specific component that will be rendered when that path is accessed. For example, a route with a path of `"/"` might be associated with a Home component that will be rendered when the user accesses the root of the application. Another route with a path of `"/about"` might be associated with an About component that will be rendered when the user accesses the `"/about"` page of the application.
 
