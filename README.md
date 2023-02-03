@@ -28,6 +28,8 @@ This Project is a React application that utilizes the Redux library to manage st
 2. a ReactDOM root is created using the document.getElementById method and the render method is used to render the application.
 
 3. The application is wrapped in a `React.StrictMode` components for improved debgugging and performance, and the `Redux Provider` is used to provide the store to the rest of the application.
+
+
 ![indexjs](./src/images/readme/indexjs%20persist.png)
 
 4. The `PersistGate` component is used to persist the state of the store to local storage. This means that the state of the application will persist even after a page refresh or if the user closes the application. The `PersistGate` component takes in the `persistor`, which is also imported from the `"./new/app/store"` file. The `persistor` is responsible for persisting the state of the store to local storage.
