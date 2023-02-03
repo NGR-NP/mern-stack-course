@@ -43,7 +43,7 @@ on createBrowserRouter i had define the different routes in the project. The `ro
 this application also has feature for role-based authorization, where only users with specific roles are allowed to assess certain pages. For example, the `RequireAuth` component is used to only allow user with the Role of ADMIN to access the `/admin' and '/new` pages. similary, users with the role of USER are allowed to access the `/profile` and `/checkout` pages
 
 
-### check user is loggedin or not as well as role [(RequireAuth.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/new/auth/RequireAuth.js)
+### check user is loggedin or not as well as their role [(RequireAuth.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/new/auth/RequireAuth.js)
 `RequireAuth` component which acts as an authorization checker for different routes in the application. it uses the `useSelector` hook from `react-redux` to access the token and role stored in the `Redux store`. THe `iisAllowed` prop passed to this component is an array of allowed roles that are allowed to access the current pages.
 
 
