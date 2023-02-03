@@ -24,6 +24,7 @@ promptbase ai generated images [marketplace](https://promptbase.com/marketplace?
 This Project is a React application that utilizes the Redux library to manage state and the Redux Persist library to persist the state to local storage. The main file, index.js, serves as the entry point for the applicaton.
 
 1. It starts by importing the required libraies and components, including the App components, the `Redux store` and the `persistor`. The store andd persistor and imported from the `"./new/app/store"` file.
+
 ![indexjs](./src/images/readme/indexjs%20reactstrictmode.png)
 2. a ReactDOM root is created using the document.getElementById method and the render method is used to render the application.
 
