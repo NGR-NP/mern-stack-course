@@ -42,13 +42,13 @@ The RouterProvider component provides the routing functionality to the applicati
 
 The `RouterProvider` component provides the routing functionality to the application and The `"router"` object is passed as a prop to the `RouterProvider` component in the App component. This allows the `RouterProvider` component to have access to the different routes defined in the `"router"` object and to render the appropriate component when a specific path is accessed.
 
-### CreateBrowserRouter [(Routes.js)](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/routes/Routes.js)
 
 By defining the routes in a separate file and importing them into the App components, it makes it easier to manage and maintain the structure of the application. Any changes to the routes can be made in the `"./routes/Routes"` file, and will be reflecated in the rest of the application without having to make changes in the multiple palces;
 
+### All Routes [Routes.js](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/routes/Routes.js)
+
 on createBrowserRouter i had define the different routes in the project. The `router` boject is created using the `createBrowserRouter` function and it contains different path for the Website, such as `/login`, `/register`, `/`. `/admin`, etc. Each path has a corresponding component, such as `loginPage`, `registerpage`, `Homepage`, `Adminpage`, etc . that will dbe display on the page when the corresponding path is visited.
 
-### All Routes [Routes.js](https://github.com/NGR-NP/mern-stack-course/blob/E-commerce-ui/src/routes/Routes.js)
 
 This code defines the different routes or pages in the project. The "router" object is created using the `"createBrowserRouter"` function and it contains different paths for the website, such as `"/login"`, `"/register"`, `"/"`, `"/admin"`, etc. Each path has a corresponding component, such as `"LoginPage"`, `"Register"`, "`Home"`, `"Admin"`, etc., that will be displayed on the page when the corresponding path is visited.
 
