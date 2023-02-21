@@ -248,7 +248,10 @@ const FilterProduct = ({
 
         <Filter className="filter">
           <NewIcon fontSize="small" />
-          <Select onChange={(e) => setSort(e.target.value)}>
+          <Select
+            defaultValue={"newest"}
+            onChange={(e) => setSort(e.target.value)}
+          >
             <Option value="newest">Newest</Option>
             <Option value="asc">Asc</Option>
             <Option value="desc">Desc</Option>
