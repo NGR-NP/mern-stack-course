@@ -126,9 +126,6 @@ const ProductPrice = styled.div`
 `;
 const ProductComp = ({ product }) => {
   const dispatch = useDispatch();
-  const handleDec = () => {
-    product.qty > 1 && dispatch(decremenProductQty({ uId: product.uId }));
-  };
   return (
     <Product>
       <ProductDetail>
@@ -149,7 +146,10 @@ const ProductComp = ({ product }) => {
       </ProductDetail>
       <PriceDetail>
         <ProductAmountContainer>
-          <Remove className="icon" onClick={handleDec} />
+          <Remove
+            className="icon"
+            onClick={() => dispatch(decremenProductQty({ uId: product.uId }))}
+          />
           <ProductAmount>{product?.qty}</ProductAmount>
           <Add
             className="icon"

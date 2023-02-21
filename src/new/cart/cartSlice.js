@@ -33,13 +33,19 @@ const cartSlice = createSlice({
     decremenProductQty: (state, action) => {
       const { uId } = action.payload;
       const product = state.product.find((product) => product.uId === uId);
-      product.qty -= 1;
-      state.qty -= 1;
-      state.total -= product.price * product.qty;
+      if (product.qty > 1) {
+        product.qty -= 1;
+        state.qty -= 1;
+        state.total -= product.price;
+      } else {
+        state.product = state.product.filter((product) => product.uId !== uId);
+        state.qty -= 1;
+        state.total -= product.price;
+      }
     },
     calculateShipping: (state, action) => {
       const { shipFee, shipDis } = action.payload;
-      
+
       state.estimateShippingCharge = Math.trunc(shipFee);
       state.discountedShippingFree = Math.trunc(shipDis);
       state.priceAfterDiscount =
@@ -74,4 +80,5 @@ export const selectCurrentshippingCharge = (state) =>
   state.cart.estimateShippingCharge;
 export const selectCurrentdiscount = (state) =>
   state.cart.discountedShippingFree;
-export const selectCurrentPriceAfterDiscount = (state) => state.cart.priceAfterDiscount;
+export const selectCurrentPriceAfterDiscount = (state) =>
+  state.cart.priceAfterDiscount;
