@@ -1,4 +1,6 @@
 import { Add, Remove } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { incrementProductQty } from "../../new/cart/cartSlice";
 import styled from "styled-components";
 const Product = styled.div`
   display: flex;
@@ -78,7 +80,6 @@ const PriceDetail = styled.div`
   @media screen and (max-width: 500px) {
     margin-left: 2rem;
   }
-  
 `;
 
 const ProductAmountContainer = styled.div`
@@ -121,6 +122,8 @@ const ProductPrice = styled.div`
   }
 `;
 const ProductComp = ({ product }) => {
+  const dispatch = useDispatch();
+  const uId = product.uId;
   return (
     <Product>
       <ProductDetail>
@@ -143,7 +146,10 @@ const ProductComp = ({ product }) => {
         <ProductAmountContainer>
           <Remove className="icon" />
           <ProductAmount>{product?.qty}</ProductAmount>
-          <Add className="icon" />
+          <Add
+            className="icon"
+            onClick={() => dispatch(incrementProductQty(uId))}
+          />
         </ProductAmountContainer>
         <ProductPrice>Rs.{product?.price * product?.qty}</ProductPrice>
       </PriceDetail>

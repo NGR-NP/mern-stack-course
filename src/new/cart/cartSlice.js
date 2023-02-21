@@ -26,8 +26,8 @@ const cartSlice = createSlice({
       state.qty -= 1;
     },
     incrementProductQty: (state, action) => {
-      const { id } = action.payload;
-      const product = state.product.find((product) => product._id === id);
+      const { uId } = action.payload;
+      const product = state.product.find((product) => product.uId === uId);
       product.qty += 1;
       state.qty += 1;
       state.total += product.price;
