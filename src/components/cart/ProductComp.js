@@ -52,7 +52,9 @@ const Details = styled.div`
 
 const ProductName = styled.div``;
 
-const ProductId = styled.div``;
+const ProductId = styled.div`
+user-select: text;
+`;
 
 const ProductColor = styled.div`
   width: 20px;

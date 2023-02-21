@@ -203,7 +203,6 @@ const FilterProduct = ({
     setFilters([]);
     setDflVluClr("defaultValue");
     setDflVluSize("defaultValue");
-    setSort("newest");
   };
   return (
     <FilterCont>
@@ -249,7 +248,7 @@ const FilterProduct = ({
 
         <Filter className="filter">
           <NewIcon fontSize="small" />
-          <Select name="sort" onChange={(e) => setSort(e.target.value)}>
+          <Select onChange={(e) => setSort(e.target.value)}>
             <Option value="newest">Newest</Option>
             <Option value="asc">Asc</Option>
             <Option value="desc">Desc</Option>
