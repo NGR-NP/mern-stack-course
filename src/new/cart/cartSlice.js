@@ -34,7 +34,7 @@ const cartSlice = createSlice({
       const { uId } = action.payload;
       const product = state.product.find((product) => product.uId === uId);
       state.qty -= 1;
-      state.total -= product.price;
+      state.total -= product.price * product.qty;
     },
     calculateShipping: (state, action) => {
       const { shipFee, shipDis } = action.payload;
