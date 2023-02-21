@@ -1,6 +1,9 @@
 import { Add, Remove } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { incrementProductQty } from "../../new/cart/cartSlice";
+import {
+  decremenProductQty,
+  incrementProductQty,
+} from "../../new/cart/cartSlice";
 import styled from "styled-components";
 const Product = styled.div`
   display: flex;
@@ -143,11 +146,14 @@ const ProductComp = ({ product }) => {
       </ProductDetail>
       <PriceDetail>
         <ProductAmountContainer>
-          <Remove className="icon" />
+          <Remove
+            className="icon"
+            onClick={() => dispatch(decremenProductQty({ uId: product.uId }))}
+          />
           <ProductAmount>{product?.qty}</ProductAmount>
           <Add
             className="icon"
-            onClick={() => dispatch(incrementProductQty({uId : product.uId}))}
+            onClick={() => dispatch(incrementProductQty({ uId: product.uId }))}
           />
         </ProductAmountContainer>
         <ProductPrice>Rs.{product?.price * product?.qty}</ProductPrice>
