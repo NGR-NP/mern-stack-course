@@ -246,7 +246,9 @@ const SingleProduct = ({ val }) => {
         })
       );
     } else {
-      dispatch(addProductToCart({ ...product, qty, color, size }));
+      dispatch(
+        addProductToCart({ ...product, qty, color, size, uId: Date.now() })
+      );
       dispatch(
         showToastMessage({
           message: "Products added Successfully!",

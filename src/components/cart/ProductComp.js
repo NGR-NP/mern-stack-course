@@ -123,7 +123,6 @@ const ProductPrice = styled.div`
 `;
 const ProductComp = ({ product }) => {
   const dispatch = useDispatch();
-  const uId = product.uId;
   return (
     <Product>
       <ProductDetail>
@@ -148,7 +147,7 @@ const ProductComp = ({ product }) => {
           <ProductAmount>{product?.qty}</ProductAmount>
           <Add
             className="icon"
-            onClick={() => dispatch(incrementProductQty(uId))}
+            onClick={() => dispatch(incrementProductQty({uId : product.uId}))}
           />
         </ProductAmountContainer>
         <ProductPrice>Rs.{product?.price * product?.qty}</ProductPrice>

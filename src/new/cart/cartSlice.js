@@ -12,17 +12,15 @@ const cartSlice = createSlice({
   },
   reducers: {
     addProductToCart: (state, action) => {
-      // const { price, qty } = action.payload;
-      const { price, qty , ...product} = action.payload;
+      const { price, qty } = action.payload;
       const calcTotal = price * qty;
       state.qty += 1;
-      // state.product.push(action.payload);
-      state.product.push({...product, uId: Date.now()});
+      state.product.push(action.payload);
       state.total += calcTotal;
     },
     removeProductFromCart: (state, action) => {
-      const { id } = action.payload;
-      state.product = state.product.filter((product) => product._id !== id);
+      const { uId } = action.payload;
+      state.product = state.product.filter((product) => product.uId !== uId);
       state.qty -= 1;
     },
     incrementProductQty: (state, action) => {
@@ -32,9 +30,8 @@ const cartSlice = createSlice({
       state.total += product.price;
     },
     decremenProductQty: (state, action) => {
-      const { id } = action.payload;
-      const product = state.product.find((product) => product._id === id);
-      product.qty -= 1;
+      const { uId } = action.payload;
+      const product = state.product.find((product) => product.uId === uId);
       state.qty -= 1;
       state.total -= product.price;
     },
