@@ -137,6 +137,7 @@ const ProductComp = ({ product }) => {
           </ProductName>
           <ProductId>
             <b>ID:</b> {product?._id}
+            
           </ProductId>
           <ProductColor color={product?.color} />
           <ProductSize>
