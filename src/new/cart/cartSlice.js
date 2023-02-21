@@ -5,6 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     product: [],
     qty: 0,
+    tt: 1,
     total: 0,
     estimateShippingCharge: 0,
     discountedShippingFree: 0,
