@@ -33,6 +33,7 @@ const cartSlice = createSlice({
     decremenProductQty: (state, action) => {
       const { uId } = action.payload;
       const product = state.product.find((product) => product.uId === uId);
+      product.qty -= 1;
       state.qty -= 1;
       state.total -= product.price * product.qty;
     },
