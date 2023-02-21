@@ -133,11 +133,11 @@ const ProductComp = ({ product }) => {
         <ImageBg src="./images/clothes.png" />
         <Details>
           <ProductName>
-            <b>Product:</b> {product?.title}
+            <b>{product?.title}</b>
           </ProductName>
           <ProductId>
             <b>ID:</b> {product?._id}
-            
+
           </ProductId>
           <ProductColor color={product?.color} />
           <ProductSize>
