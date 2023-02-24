@@ -18,7 +18,7 @@ const Main = styled.div`
 const Sec = styled.div`
 display: inline-block;
 position: relative;
-width: 5rem
+width: 5rem;
 height: 5rem;
 `
 const Circle = styled.div`
