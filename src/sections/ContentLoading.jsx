@@ -56,7 +56,7 @@ const ContentLoadding = () => {
 
     return (
         <>
-            {loading &&<p>t</p>}
+            {loading &&
                 <Main>
                     <Sec>
                         <Circle />
@@ -65,7 +65,7 @@ const ContentLoadding = () => {
                         <Circle />
                     </Sec>
                 </Main>
-            {/* // } */}
+            }
         </>
     );
 };
