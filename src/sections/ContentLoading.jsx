@@ -13,9 +13,9 @@ const ContentLoadding = () => {
 
     return (
         <>
-            {loading &&
-                <Circle top="0"/>
-            }
+            {/* {loading && */}
+                <Circle top="20px"/>
+            {/* } */}
         </>
     );
 };
