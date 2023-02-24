@@ -11,6 +11,7 @@ const ring = keyframes`
 const Main = styled.div`
   position: fixed;
   margin-top: 2.25rem;
+  left: 50%;
   width: 100vw;
   color: rgb(209 213 219 / 1);
   z-index: 9999;
