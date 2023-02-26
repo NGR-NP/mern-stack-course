@@ -11,13 +11,13 @@
 // module.exports = errorHandler;
 const errorHandler = (err, req, res, next) => {
   const status = err.status || 500;
-  const errorMessage = err.message || 'Something went wrong!';
+  const message = err.message || 'Something went wrong!';
   const stack = err.stack;
 
   res.status(status).json({
     success: false,
     status,
-    message: errorMessage,
+    message,
     stack
   });
 };
