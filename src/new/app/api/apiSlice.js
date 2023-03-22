@@ -40,7 +40,7 @@ import { showToastMessage } from "../../custonToast/toastSlice";
 
 const baseUrls = [
   "https://mern-stack-course-production.up.railway.app/api",
-  "https://vrit-tech-mern-project-by-tejkarki.up.railway.app/api",
+  // "https://vrit-tech-mern-project-by-tejkarki.up.railway.app/api",
 ];
 
 let currentBaseUrlIndex = 0;
