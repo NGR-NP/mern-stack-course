@@ -8,6 +8,7 @@ const register = async (req, res, next) => {
   if (!email) {
     return next(ERROR(400, "email is required"));
   } else if (!username) {
+    
     return next(ERROR(400, "username is required"));
   } else if (!password) {
     return next(ERROR(400, "password is required"));

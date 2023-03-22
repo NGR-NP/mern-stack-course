@@ -4,16 +4,16 @@ const ERROR = require("../utils/error");
 const CreateOrder = async (req, res, next) => {
   const { id, products, amount, address } = req.body
 
-  const productArray = [];
+  const orderData = [];
 
   products.forEach(product => {
     const { productId, qty, color, size } = product;
-    productArray.push({ productId, qty, color, size });
+    orderData.push({ productId, qty, color, size });
   });
   try {
     const newOrder = new Order({
       userId: id,
-      products: productArray,
+      products: orderData,
       address,
       amount,
     });
